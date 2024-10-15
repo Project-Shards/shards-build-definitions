@@ -1,0 +1,42 @@
+name: arch
+id: arch
+
+stages:
+- id: build
+  base: docker.io/library/archlinux:latest
+  singlelayer: false
+  labels:
+    maintainer: hello
+  modules:
+    - name: booo
+      type: shell
+      commands:
+        - pacman -Syu --noconfirm
+    - name: waow
+      type: pacman
+      packages:
+        - "systemd"
+        - "linux"
+        - "linux-firmware"
+        - "systemd-ukify"
+        - "neofetch"
+    - name: user
+      type: shell
+      commands:
+        - echo "root" | passwd root --stdin
+    - name: ukify
+      type: shell
+      commands:
+        - mv /autodetect /usr/lib/initcpio/install/autodetect
+        - mkdir -p /efi/EFI/Linux
+        - ukify build --linux=/boot/vmlinuz-linux --initrd=/boot/initramfs-linux-fallback.img --cmdline=@/etc/kernel/cmdline --output=/efi/EFI/Linux/linux.efi
+        - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
+finalize:
+  - name: repart
+    type: systemd-repart
+    output: disk-repart.raw
+    size: "3G"
+    json: "off"
+    spec_output: "test"
+    split: false
+    seed: "9473a621-1617-4697-87e5-031afef28359"
