@@ -1,1 +1,1 @@
-root=LABEL=arch-root rw loglevel=4
+rw mount.usrflags=ro mount.usrfstype=squashfs systemd.firstboot=no

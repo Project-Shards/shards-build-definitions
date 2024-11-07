@@ -20,23 +20,69 @@ stages:
         - "linux-firmware"
         - "systemd-ukify"
         - "neofetch"
+        - "python-pyelftools"
+        - "base-devel"
+        - "cryptsetup"
+        - "btrfs-progs"
+        - "cpio"
+        - "plymouth"
+        - "util-linux-libs"
+        - "squashfs-tools"
+        - "jq"
     - name: user
       type: shell
       commands:
+        - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+        - locale-gen
+        - /cleanup/prepare-image.sh --seed "9473a621-1617-4679-87e5-031afef28359" --rootsource /dev/gpt-auto-root --rootfstype btrfs --rootfsopts relatime --noboot
+
+    - name: modules
+      type: includes
+      includes:
+        - modules/generate-initramfs.yml
+
+    - name: usr-image
+      type: shell
+      commands:
+        - mkdir -p /cleanup/usrimage
+        - cp -r /usr/lib/repart.d /cleanup/usrimage/definitions
+        - rm /cleanup/usrimage/definitions/50-root.conf
+        - mkdir -p /var/tmp
+        - systemd-repart --defer-partitions=esp --definitions=/cleanup/usrimage/definitions --empty=create --size=auto --dry-run=no --offline=true --no-pager --seed="35e34b2b-1fcf-4ab1-ae63-bcda061741c1" --root=/ --split=true /cleanup/usrimage/disk.raw --json=pretty > /cleanup/usrimage/repart.json
+        - echo "done"
         - echo "root" | passwd root --stdin
+
     - name: ukify
       type: shell
       commands:
-        - mv /autodetect /usr/lib/initcpio/install/autodetect
+        - VERSION=$(ls -1 /lib/modules | head -n1)
+        - ROOTHASH=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
+        - echo usrhash=${ROOTHASH} >> /etc/kernel/cmdline
         - mkdir -p /efi/EFI/Linux
-        - ukify build --linux=/boot/vmlinuz-linux --initrd=/boot/initramfs-linux-fallback.img --cmdline=@/etc/kernel/cmdline --output=/efi/EFI/Linux/linux.efi
+        - generate-initramfs /initramfs-root "${VERSION}" "/usr/lib" "/usr/lib/systemd"
+        - mkdir -p /initramfs-root/usr/lib/modules/"${VERSION}"/kernel/drivers/video
+        - depmod -a -b /initramfs-root/usr "${VERSION}"
+        - cd /initramfs-root
+        - find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
+        - ukify build --linux=/boot/vmlinuz-linux --initrd=/initramfs.img --cmdline=@/etc/kernel/cmdline --output=/efi/EFI/Linux/linux.efi
         - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
+
 finalize:
+  - name: initramfs-checks
+    type: shell-final
+    commands:
+      - mkdir -p $PROJROOT/dbg
+      - cp -r $FSROOT/initramfs-root $PROJROOT/dbg/initramfs-root
+      - cp -r $FSROOT/initramfs.img $PROJROOT/dbg/initramfs.img
+      - cp -r $FSROOT/efi/EFI/Linux/linux.efi $PROJROOT/dbg/linux.efi
+      - cp -r $FSROOT/cleanup/usrimage $PROJROOT/dbg/usrimage
+      - cp -r $PROJROOT/dbg/usrimage/disk.raw $PROJROOT/disk-repart.raw
   - name: repart
     type: systemd-repart
     output: disk-repart.raw
-    size: "3G"
-    json: "off"
+    size: "auto"
+    json: "pretty"
     spec_output: "test"
     split: false
-    seed: "9473a621-1617-4697-87e5-031afef28359"
+    empty: "refuse"
+    seed: "35e34b2b-1fcf-4ab1-ae63-bcda061741c1"
