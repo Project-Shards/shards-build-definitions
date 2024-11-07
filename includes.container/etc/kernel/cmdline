@@ -1,1 +1,1 @@
-rw mount.usrflags=ro mount.usrfstype=squashfs systemd.firstboot=no
+rw systemd.debug-shell=1 mount.usrflags=ro mount.usrfstype=squashfs systemd.firstboot=no
