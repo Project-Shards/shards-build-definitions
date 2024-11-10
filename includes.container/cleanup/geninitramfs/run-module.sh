@@ -13,11 +13,18 @@ done
 shift $#
 
 install_file_at_path() {
-    if ! [ -e "${1}" ]; then
-        echo "${1} does not exist" 1>&2
-        return 1
+    path=${1}
+    dest=$(echo ${2} | sed 's|/sysroot/|/|')
+    if ! ls ${1} 2>/dev/null ; then
+	echo "${1} does not exist" 1>&2
+	if ! ls "/sysroot/"${1} 2>/dev/null ; then
+            echo "${1} does not exist" 1>&2
+            return 1
+	else
+	    path="/sysroot/"${1}
+	fi
     fi
-    python3 /usr/libexec/generate-initramfs/copy-initramfs.py "${libdirs[@]}" "${root}" "${kernelver}" "${1}" "${2}"
+    python3 /usr/libexec/generate-initramfs/copy-initramfs.py "${libdirs[@]}" "${root}" "${kernelver}" "${path}" "${2}"
 }
 
 install_file() {

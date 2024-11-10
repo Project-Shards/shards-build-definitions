@@ -38,8 +38,21 @@ install() {
     install_file /usr/lib/${multiarch}/plymouth/label-pango.so
     install_file /usr/lib/${multiarch}/plymouth/renderers/drm.so
     install_file /usr/lib/${multiarch}/plymouth/renderers/frame-buffer.so
+#    install_file /usr/lib/libply.so.5
     install_files /usr/share/plymouth/themes/spinner/*.png
     install_file /usr/share/fonts/cantarell/Cantarell-VF.otf
+
+    cp -r /sysroot/usr/share/plymouth /initramfs-root/usr/share/plymouth
+    cp /sysroot/usr/lib/libply* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libevdev* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libxkbcommon* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libpango* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libpng* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libdrm* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libfreetype* /initramfs-root/usr/lib/
+    cp /sysroot/usr/lib/libfontconfig* /initramfs-root/usr/lib/
+    cp /sysroot/usr/share/fonts/cantarell/Cantarell-VF.otf /initramfs-root/usr/share/fonts/cantarell/Cantarell-VF.otf
+    #cp /initramfs-root/sysroot/usr/lib/libply.so.5 /initramfs-root/usr/lib/libply.so.5
 
     for unit in "${UNITS[@]}"; do
         install_file "${system}/${unit}"

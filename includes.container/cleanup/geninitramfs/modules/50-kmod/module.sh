@@ -36,7 +36,7 @@ MODULES_BY_NAME=(
 )
 
 FILES=(
-    /usr/lib/${multiarch}/libkmod.so.2
+   /usr/lib/${multiarch}/libkmod.so.2
 )
 
 install() {
@@ -66,8 +66,8 @@ install() {
 #    done
 
     mkdir -p /initramfs-root/usr/lib/modules
-    cp -r /usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}
-    
+    cp -r /sysroot/usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}
+
     while IFS= read -r -d '' line; do
         case "${line}" in
             *.firmware=*)
