@@ -5,7 +5,7 @@ All build definitions for project shards.
 This is still a wip, and currently only boots a generic arch linux installation.
 
 # building
-Build [vib](https://github.com/vanilla-os/vib) from the main branch (the current release is not guaranteed to work)
+Build [vib](https://github.com/vanilla-os/vib) from the main branch (the current vib release is not guaranteed to work)
 
 Get podman, systemd-repart and squashfs-tools
 
@@ -16,7 +16,7 @@ To boot it first run `truncate -s 20G disk-repart.raw` and then just use qemu to
 
 Some boot notes:
 - The first boot may take a while due to repart having to partition the disk
-- Login will fail, switch to tty 9 and run `passwd` to set a root password
+- The default password for the user `lain` is `lain`, if login doesn't work switch to the root tty with ctrl+alt+f9 and run `passwd lain` to change the password, ctrl+alt+f1 will go back to the login screen
 - It will prompt you for an encryption password during boot, the password is `meowzers` (you can change it in `includes.container/cleanup/geninitramfs/modules/50-repart/gen-recovery-key.sh`)
 
 # licensing

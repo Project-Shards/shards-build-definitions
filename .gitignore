@@ -2,6 +2,7 @@
 .*~
 *.raw
 *#
+.#*
 Containerfile
 sources
 dbg

@@ -10,31 +10,6 @@ BINARIES=(
     blkid
 )
 
-MODULES=(
-    drivers/hid
-    drivers/input/keyboard
-    drivers/nvdimm
-    drivers/gpu/drm
-    drivers/md
-    drivers/mmc
-    fs/squashfs
-    fs/overlayfs
-    fs/erofs
-    fs/exfat
-    fs/btrfs
-    drivers/nvme
-    drivers/scsi
-    drivers/input
-    drivers/virtio
-    drivers/block
-)
-
-MODULES_BY_NAME=(
-    crypto-sha256
-    crypto-hmac
-    crypto-xts
-)
-
 FILES=(
    /usr/lib/${multiarch}/libkmod.so.2
 )
@@ -46,24 +21,6 @@ install() {
     for f in "${FILES[@]}"; do
         install_file "${f}"
     done
-
-    for name in ${MODULES_BY_NAME[@]}; do
-        for path in $(modinfo -k "${kernelver}" -b /usr -n "${name}"); do
-            case "${path}" in
-                /*)
-                    install_file "${path}"
-                    ;;
-            esac
-        done
-    done
-
-#    for mod in "${MODULES[@]}"; do
-#        if [ -d "/usr/lib/modules/${kernelver}/kernel/${mod}" ]; then
-#            while IFS= read -r -d '' file; do
-#                install_file "${file}"
-#            done < <(find "/usr/lib/modules/${kernelver}/kernel/" -type f -print0)
-#        fi
-#    done
 
     mkdir -p /initramfs-root/usr/lib/modules
     cp -r /sysroot/usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}

@@ -4,5 +4,10 @@ commands:
   - mkdir -p /sysroot/etc
   - echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
   - systemd-firstboot --root /sysroot --locale en_US.UTF-8 --timezone UTC
-  - systemctl --root "${sysroot}" preset-all
-  - systemctl --root "${sysroot}" --global preset-all
+  - systemctl --root /sysroot preset-all
+  - systemctl --root /sysroot --global preset-all
+  - systemctl --root /sysroot enable global-preset-all.service
+  - cd /sysroot/usr/lib/systemd/system/multi-user.target.wants
+  - ln -s ../global-preset-all.service global-preset-all.service
+  - ln -s ../create-initial-user.service create-initial-user.service
+  - rm /sysroot/usr/lib/systemd/system-preset/99-*

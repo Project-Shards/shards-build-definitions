@@ -28,6 +28,7 @@ stages:
         - "squashfs-tools"
         - "jq"
         - "glibc-locales"
+        - "tree"
 
     - name: setup-pacman
       type: shell
@@ -56,6 +57,10 @@ stages:
         - "squashfs-tools"
         - "jq"
         - "glibc-locales"
+        - "gnome"
+        - "gdm"
+        - "networkmanager"
+        - "avahi"
 
     - name: modules
       type: includes
@@ -66,6 +71,9 @@ stages:
     - name: usr-image
       type: shell
       commands:
+        - mkdir -p /sysroot/usr/share/factory
+        - rm -rf /sysroot/usr/share/factory/etc
+        - mv -T /sysroot/etc /sysroot/usr/share/factory/etc
         - mkdir -p /cleanup/usrimage
         - cp -r /sysroot/usr/lib/repart.d /cleanup/usrimage/definitions
         - rm /cleanup/usrimage/definitions/50-root.conf

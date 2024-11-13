@@ -38,7 +38,6 @@ install() {
     install_file /usr/lib/${multiarch}/plymouth/label-pango.so
     install_file /usr/lib/${multiarch}/plymouth/renderers/drm.so
     install_file /usr/lib/${multiarch}/plymouth/renderers/frame-buffer.so
-#    install_file /usr/lib/libply.so.5
     install_files /usr/share/plymouth/themes/spinner/*.png
     install_file /usr/share/fonts/cantarell/Cantarell-VF.otf
 
@@ -52,7 +51,6 @@ install() {
     cp /sysroot/usr/lib/libfreetype* /initramfs-root/usr/lib/
     cp /sysroot/usr/lib/libfontconfig* /initramfs-root/usr/lib/
     cp /sysroot/usr/share/fonts/cantarell/Cantarell-VF.otf /initramfs-root/usr/share/fonts/cantarell/Cantarell-VF.otf
-    #cp /initramfs-root/sysroot/usr/lib/libply.so.5 /initramfs-root/usr/lib/libply.so.5
 
     for unit in "${UNITS[@]}"; do
         install_file "${system}/${unit}"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Create initial user
+ConditionFirstBoot=yes
+Before=systemd-user-sessions.service
+
+# yes this can be done with systemd-sysusers but im lazy and this will be removed eventually either way
+[Service]
+Type=oneshot
+ExecStart=useradd -m lain
+ExecStart=echo "lain" | passwd lain
+
+[Install]
+WantedBy=multi-user.target
