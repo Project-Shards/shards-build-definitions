@@ -30,7 +30,7 @@ if ! [ -f "vm/disk-repart.raw" ]; then
     ${VIB} compile ./recipe.yml
     run0 chmod 777 ./disk-repart.raw
     mv ./disk-repart.raw vm/disk-repart.raw
-    truncate --size 50G ./disk-repart.raw
+    truncate --size 50G vm/disk-repart.raw
 fi
 
 QEMU_ARGS=()
@@ -48,7 +48,7 @@ if ! [ "${no_tpm+set}" = set ]; then
 fi
 QEMU_ARGS+=(-drive "if=virtio,file=vm/disk-repart.raw,media=disk,format=raw")
 QEMU_ARGS+=(-vga virtio -display gtk,gl=on)
-QEMU_ARGS+=(-full-screen)
+#QEMU_ARGS+=(-full-screen)
 QEMU_ARGS+=(-device ich9-intel-hda)
 QEMU_ARGS+=(-audiodev pa,id=sound0)
 QEMU_ARGS+=(-device hda-output,audiodev=sound0)

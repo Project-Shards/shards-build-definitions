@@ -1,0 +1,26 @@
+name: kernel-image
+type: shell
+commands:
+  - CMDLINE="rw systemd.debug-shell=1 mount.usrflags=ro mount.usrfstype=erofs systemd.firstboot=no"
+
+  - VERSION=$(ls -1 /sysroot/lib/modules | head -n1)
+  - ROOTHASH=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
+  - CMDLINE="${CMDLINE} usrhash=${ROOTHASH}"
+  - mkdir -p /efi/EFI/Linux
+  - cp -r /sysroot/usr/lib/tmpfiles.d/20-systemd-stub.conf /usr/lib/tmpfiles.d/20-systemd-stub.conf
+  - cp -r /sysroot/usr/lib/repart.d /usr/lib/repart.d
+  - generate-initramfs /initramfs-root "${VERSION}" "/usr/lib" "/usr/lib/systemd"
+  - cp -r /initramfs-root/sysroot/usr/* /initramfs-root/usr/
+  - mkdir -p /initramfs-root/usr/lib/modules/"${VERSION}"/kernel/drivers/video
+  - depmod -a -b /initramfs-root/usr "${VERSION}"
+  - cd /initramfs-root
+  - find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
+  - ukify build --linux=/boot/vmlinuz-linux --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
+  - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
+
+  - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
+  - image_version="${label##shards_usr_v_}"
+  - cp "/efi/EFI/Linux/linux.efi" "/cleanup/update-images/shards_${image_version}.efi"
+  - xz ${XZFLAGS} "/cleanup/update-images/shards_${image_version}.efi"
+
+

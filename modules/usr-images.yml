@@ -1,0 +1,14 @@
+name: usr-images
+type: shell
+commands:
+  - mkdir -p /sysroot/usr/share/factory
+  - rm -rf /sysroot/usr/share/factory/etc
+  - mv -T /sysroot/etc /sysroot/usr/share/factory/etc
+  - mkdir -p /cleanup/usrimage
+  - cp -r /sysroot/usr/lib/repart.d /cleanup/usrimage/definitions
+  - rm /cleanup/usrimage/definitions/50-root.conf
+  - rm /cleanup/usrimage/definitions/30-usr-verity-B.conf
+  - rm /cleanup/usrimage/definitions/31-usr-b.conf
+  - mkdir -p /var/tmp
+  - systemd-repart --defer-partitions=esp --definitions=/cleanup/usrimage/definitions --empty=create --size=auto --dry-run=no --offline=true --no-pager --seed="d2006edc-a112-4e3d-9502-c04ded047acd" --root=/sysroot --split=true /cleanup/usrimage/disk.raw --json=pretty > /cleanup/usrimage/repart.json
+  - echo "root" | passwd root --stdin

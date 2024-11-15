@@ -6,7 +6,8 @@ Before=systemd-user-sessions.service
 # yes this can be done with systemd-sysusers but im lazy and this will be removed eventually either way
 [Service]
 Type=oneshot
-ExecStart=bash /usr/bin/create-user.sh
+ExecStart=/usr/bin/bash /usr/bin/create-user.sh
 
 [Install]
 WantedBy=multi-user.target
+

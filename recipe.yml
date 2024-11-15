@@ -1,5 +1,6 @@
-name: arch
-id: arch
+name: Shards
+id: shards
+includespath: includes.container
 
 stages:
 - id: build
@@ -13,7 +14,8 @@ stages:
       commands:
         - pacman -Syu --noconfirm
         - mkdir -p /sysroot
-    - name: waow
+
+    - name: build-depends
       type: pacman
       packages:
         - "linux"
@@ -30,111 +32,16 @@ stages:
         - "glibc-locales"
         - "tree"
 
-    - name: setup-pacman
-      type: shell
-      commands:
-        - cp -r /sysroot/usr /usr
-        - mkdir -p /sysroot/etc/
-        - cp -r /etc/pacman* /sysroot/etc/
-        - mkdir -p /sysroot/var/cache/pacman
-        - mkdir -p /sysroot/var/lib/pacman
-        - pacman -Sy --sysroot=/sysroot
-
-    - name: bootstrap
-      type: pacman
-      ExtraFlags:
-        - "--sysroot=/sysroot"
-      packages:
-        - "base"
-        - "systemd"
-        - "linux"
-        - "linux-firmware"
-        - "fastfetch"
-        - "flatpak"
-        - "cryptsetup"
-        - "btrfs-progs"
-        - "plymouth"
-        - "util-linux-libs"
-        - "erofs-utils"
-        - "jq"
-        - "glibc-locales"
-        - "gnome"
-        - "gdm"
-        - "networkmanager"
-        - "avahi"
-
     - name: modules
       type: includes
       includes:
+        - modules/bootstrap-sysroot.yml
         - modules/os-release.yml
         - modules/prepare-sysroot.yml
         - modules/generate-initramfs.yml
-
-    - name: usr-image
-      type: shell
-      commands:
-        - mkdir -p /sysroot/usr/share/factory
-        - rm -rf /sysroot/usr/share/factory/etc
-        - mv -T /sysroot/etc /sysroot/usr/share/factory/etc
-        - mkdir -p /cleanup/usrimage
-        - cp -r /sysroot/usr/lib/repart.d /cleanup/usrimage/definitions
-        - rm /cleanup/usrimage/definitions/50-root.conf
-        - rm /cleanup/usrimage/definitions/30-usr-verity-B.conf
-        - rm /cleanup/usrimage/definitions/31-usr-b.conf
-        - mkdir -p /var/tmp
-        - systemd-repart --defer-partitions=esp --definitions=/cleanup/usrimage/definitions --empty=create --size=auto --dry-run=no --offline=true --no-pager --seed="d2006edc-a112-4e3d-9502-c04ded047acd" --root=/sysroot --split=true /cleanup/usrimage/disk.raw --json=pretty > /cleanup/usrimage/repart.json
-        - echo "root" | passwd root --stdin
-
-    - name: ukify
-      type: shell
-      commands:
-        - VERSION=$(ls -1 /sysroot/lib/modules | head -n1)
-        - ROOTHASH=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
-        - echo usrhash=${ROOTHASH} >> /etc/kernel/cmdline
-        - mkdir -p /efi/EFI/Linux
-        - cp -r /sysroot/usr/lib/tmpfiles.d/20-systemd-stub.conf /usr/lib/tmpfiles.d/20-systemd-stub.conf
-        - cp -r /sysroot/usr/lib/repart.d /usr/lib/repart.d
-        - generate-initramfs /initramfs-root "${VERSION}" "/usr/lib" "/usr/lib/systemd"
-        - cp -r /initramfs-root/sysroot/usr/* /initramfs-root/usr/
-        - mkdir -p /initramfs-root/usr/lib/modules/"${VERSION}"/kernel/drivers/video
-        - depmod -a -b /initramfs-root/usr "${VERSION}"
-        - cd /initramfs-root
-        - find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
-        - ukify build --linux=/boot/vmlinuz-linux --initrd=/initramfs.img --cmdline=@/etc/kernel/cmdline --output=/efi/EFI/Linux/linux.efi
-        - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
-
-    - name: update-images
-      type: shell
-      commands:
-        - mkdir -p /cleanup/update-images
-        - cd /cleanup/update-images
-        - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
-        - image_version="${label##shards_usr_v_}"
-        - roothash=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
-        - usr_part_uuid=$(jq -r '(.[] | select(.file | match("/21-usr-a.conf$"))).uuid' /cleanup/usrimage/repart.json)
-        - usr_verity_part_uuid=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).uuid' /cleanup/usrimage/repart.json)
-        - echo "${label}" >> /cleanup/update-images/vars
-        - echo >> /cleanup/update-images/vars
-        - echo "${image_version}" >> /cleanup/update-images/vars
-        - echo >> /cleanup/update-images/vars
-        - echo "${roothash}" >> /cleanup/update-images/vars
-        - echo >> /cleanup/update-images/vars
-        - echo "${usr_part_uuid}" >> /cleanup/update-images/vars
-        - echo >> /cleanup/update-images/vars
-        - echo "${usr_verity_part_uuid}" >> /cleanup/update-images/vars
-        - echo >> /cleanup/update-images/vars
-        - cp /cleanup/usrimage/disk.usr-verity.raw "usr_${image_version}_${usr_verity_part_uuid}.verity"
-        - xz ${XZFLAGS} "usr_${image_version}_${usr_verity_part_uuid}.verity"
-        - cp /cleanup/usrimage/disk.usr.raw "usr_${image_version}_${usr_part_uuid}.raw"
-        - xz ${XZFLAGS} "usr_${image_version}_${usr_part_uuid}.raw"
-
-    - name: update-kernel
-      type: shell
-      commands:
-        - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
-        - image_version="${label##shards_usr_v_}"
-        - cp "/efi/EFI/Linux/linux.efi" "/cleanup/update-images/shards_${image_version}.efi"
-        - xz ${XZFLAGS} "/cleanup/update-images/shards_${image_version}.efi"
+        - modules/usr-images.yml
+        - modules/update-images.yml
+        - modules/kernel-image.yml
 
     - name: update-repo
       type: shell
@@ -148,9 +55,12 @@ finalize:
     commands:
       - mkdir -p $PROJROOT/update-images
       - cp -r $FSROOT/cleanup/usrimage/disk.raw $PROJROOT/disk-repart.raw
+      - touch $PROJROOT/update-images/SHA256SUMS
+      - ls $FSROOT/cleanup/
+      - ls $FSROOT/cleanup/update-images
       - cat $FSROOT/cleanup/update-images/SHA256SUMS >> $PROJROOT/update-images/SHA256SUMS
       - rm $FSROOT/cleanup/update-images/SHA256SUMS
-      - cp -r $FSROOT/cleanup/update-images/* $PROJROOT/update-images/.
+      - cp -r $FSROOT/cleanup/update-images/*.xz $PROJROOT/update-images/.
   - name: repart
     type: systemd-repart
     output: disk-repart.raw

@@ -1,0 +1,14 @@
+name: update-images
+type: shell
+commands:
+  - mkdir -p /cleanup/update-images
+  - cd /cleanup/update-images
+  - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
+  - image_version="${label##shards_usr_v_}"
+  - roothash=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
+  - usr_part_uuid=$(jq -r '(.[] | select(.file | match("/21-usr-a.conf$"))).uuid' /cleanup/usrimage/repart.json)
+  - usr_verity_part_uuid=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).uuid' /cleanup/usrimage/repart.json)
+  - cp /cleanup/usrimage/disk.usr-verity.raw "usr_${image_version}_${usr_verity_part_uuid}.verity"
+  - xz ${XZFLAGS} "usr_${image_version}_${usr_verity_part_uuid}.verity"
+  - cp /cleanup/usrimage/disk.usr.raw "usr_${image_version}_${usr_part_uuid}.raw"
+  - xz ${XZFLAGS} "usr_${image_version}_${usr_part_uuid}.raw"

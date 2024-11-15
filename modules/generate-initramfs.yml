@@ -1,8 +1,11 @@
 name: generate-initramfs
 type: shell
 commands:
-  - install -Dm755 /cleanup/geninitramfs/generate-initramfs.sh "/usr/bin/generate-initramfs"
-  - install -Dm755 -t "/usr/libexec/generate-initramfs" /cleanup/geninitramfs/copy-initramfs.py
-  - install -Dm755 -t "/usr/libexec/generate-initramfs" /cleanup/geninitramfs/run-module.sh
+  - install -Dm755 /sources/generate-initramfs/geninitramfs/generate-initramfs.sh "/usr/bin/generate-initramfs"
+  - install -Dm755 -t "/usr/libexec/generate-initramfs" /sources/generate-initramfs/geninitramfs/copy-initramfs.py
+  - install -Dm755 -t "/usr/libexec/generate-initramfs" /sources/generate-initramfs/geninitramfs/run-module.sh
   - install -Dm755 -d "/usr/share/generate-initramfs/modules"
-  - cp -rT /cleanup/geninitramfs/modules "/usr/share/generate-initramfs/modules"
+  - cp -rT /sources/generate-initramfs/geninitramfs/modules "/usr/share/generate-initramfs/modules"
+sources:
+  - type: local
+    url: files/geninitramfs
