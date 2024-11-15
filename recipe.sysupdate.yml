@@ -1,6 +1,6 @@
-name: Shards
-id: shards
-includespath: includes.container
+name: Shards sysupdate Images
+id: shards.sysupdate
+includespath: includes.sysupdate
 
 stages:
 - id: build

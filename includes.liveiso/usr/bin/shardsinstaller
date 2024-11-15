@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+echo "Available disks:"
+lsblk -npd --output NAME
+echo "Enter disk to install Project Shards on:"
+read TARGETDISK
+
+echo "Installing Project Shards on ${TARGETDISK}"
+read -p "This will wipe ALL data. Type 'I understand' to confirm: " confirm
+if [[ ${confirm} != 'I understand' ]]; then
+    echo "Not confirmed. Exiting"
+    exit
+fi
+
+echo "Confirmed. Installing onto ${TARGETDISK}"
+run0 bash -c "xzcat /usr/share/shardsimages/install-disk.img.xz | dd if=/dev/stdin of=${TARGETDISK} bs=4M status=progress"
+read -p "Installation finished. Press enter to exit"

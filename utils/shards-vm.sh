@@ -46,7 +46,7 @@ if ! [ "${no_tpm+set}" = set ]; then
     QEMU_ARGS+=(-tpmdev emulator,id=tpm0,chardev=chrtpm)
     QEMU_ARGS+=(-device tpm-tis,tpmdev=tpm0)
 fi
-QEMU_ARGS+=(-drive "if=virtio,file=vm/disk-repart.raw,media=disk,format=raw")
+QEMU_ARGS+=(-drive "if=virtio,file=vm/disk-repart.raw,media=disk,format=qcow2")
 QEMU_ARGS+=(-vga virtio -display gtk,gl=on)
 #QEMU_ARGS+=(-full-screen)
 QEMU_ARGS+=(-device ich9-intel-hda)

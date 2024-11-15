@@ -15,12 +15,12 @@ commands:
   - depmod -a -b /initramfs-root/usr "${VERSION}"
   - cd /initramfs-root
   - find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
-  - ukify build --linux=/boot/vmlinuz-linux --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
+  - ukify build --linux=/sysroot/usr/lib/modules/${VERSION}/vmlinuz --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
   - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
 
   - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
   - image_version="${label##shards_usr_v_}"
   - cp "/efi/EFI/Linux/linux.efi" "/cleanup/update-images/shards_${image_version}.efi"
-  - xz ${XZFLAGS} "/cleanup/update-images/shards_${image_version}.efi"
+  - xz -T$(nproc) "/cleanup/update-images/shards_${image_version}.efi"
 
 

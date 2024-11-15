@@ -29,7 +29,7 @@ install() {
         case "${line}" in
             *.firmware=*)
                 firmware="${line##*.firmware=}"
-                path="/usr/lib/firmware/${firmware}.xz"
+                path="/sysroot/usr/lib/firmware/${firmware}.xz"
                 if [ -f "${path}" ]; then
                     install_file "${path}"
                 else
@@ -37,7 +37,5 @@ install() {
                 fi
                 ;;
         esac
-    done <"/usr/lib/modules/${kernelver}/modules.builtin.modinfo"
-
-    install_files "/usr/lib/modules/${kernelver}"/modules.{builtin{,.bin,.alias.bin,.modinfo},order}
+    done <"/sysroot/usr/lib/modules/${kernelver}/modules.builtin.modinfo"
 }
