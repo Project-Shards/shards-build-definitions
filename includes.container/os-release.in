@@ -1,0 +1,12 @@
+NAME="Project Shards"
+VERSION=%pretty_version%
+VERSION_ID=%pretty_version%
+ID=project.shards
+PRETTY_NAME="Project Shards"
+ANSI_COLOR="0;38;2;46;204;113"
+IMAGE_VERSION=%version%
+SYSEXT_LEVEL=%version%
+VARIANT="Project Shards GNOME"
+VARIANT_ID=shards-gnome
+IMAGE_ID=shards-gnome
+DEFAULT_HOSTNAME=shards
