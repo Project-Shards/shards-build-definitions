@@ -13,6 +13,8 @@ stages:
       type: shell
       commands:
         - pacman -Syu --noconfirm
+        - pacman-key --init
+        - pacman-key --populate archlinux
         - mkdir -p /sysroot
 
     - name: build-depends
@@ -27,6 +29,11 @@ stages:
         - "dracut"
         - "gnome"
         - "gdm"
+        - "udisks2"
+        - "meson"
+        - "base-devel"
+        - "pv"
+        - "plymouth"
 
     - name: initramfs
       type: shell
@@ -34,7 +41,7 @@ stages:
         - mkdir -p /efi
         - KVERSION=$(ls -1 /usr/lib/modules | head -n1)
         - cp /usr/lib/modules/${KVERSION}/vmlinuz /efi/vmlinuz-linux
-        - dracut --no-machineid --kernel-image /efi/vmlinuz-linux --kver "$(ls -1 /usr/lib/modules | head -n1)" --kernel-cmdline 'rw quiet root=live:LABEL=shards-liveiso' --add dmsquash-live --install plymouth --install head --install tail --install less --install lsof /efi/initramfs.img
+        - dracut --no-machineid --kernel-image /efi/vmlinuz-linux --kver "$(ls -1 /usr/lib/modules | head -n1)" --kernel-cmdline 'rw quiet splash root=live:LABEL=shards-liveiso' --add dmsquash-live --install plymouth --install head --install tail --install less --install lsof /efi/initramfs.img
         - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
 
     - name: install-image
@@ -43,7 +50,7 @@ stages:
         - if ! [ -e /sources/install-image/images ]; then exit 1; fi
         - mkdir -p /usr/share/shardsimages
         - cp /sources/install-image/images/* /usr/share/shardsimages/
-        - xz -T$(nproc) /usr/share/shardsimages/*
+        - xz -T$(nproc) /usr/share/shardsimages/*.img
       sources:
         - type: local
           url: images
@@ -59,6 +66,21 @@ stages:
       sources:
         - type: local
           url: files/gdm-config
+
+    - name: shards-installer
+      type: meson
+      BuildFlags:
+        - "--prefix /usr"
+      source:
+        type: git
+        url: https://github.com/Project-Shards/shards-installer.git
+        branch: main
+
+    - name: cleanup
+      type: shell
+      commands:
+        - pacman -R --noconfirm base-devel meson
+        - rm -rf /var/cache/pacman
 
 finalize:
   - name: genimage stage1

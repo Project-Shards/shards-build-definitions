@@ -11,6 +11,7 @@ Before=shutdown.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+ExecStart=rm -r /run/repart.d/*.conf
 ExecStart=/usr/bin/cp -rT /sysusr/usr/lib/repart.d /run/repart.d
 ExecStart=/usr/bin/sed -i 's/Encrypt=key-file+tpm2/Encrypt=key-file/g' /run/repart.d/50-root.conf
 ExecStart=/usr/bin/touch /run/recovery-password

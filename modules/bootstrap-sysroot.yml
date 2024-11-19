@@ -18,6 +18,7 @@ packages:
   - "glibc-locales"
   - "gnome"
   - "gdm"
+  - "gnome-initial-setup"
   - "networkmanager"
   - "avahi"
 modules:

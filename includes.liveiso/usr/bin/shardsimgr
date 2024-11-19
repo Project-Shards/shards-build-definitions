@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+set -e
+source /tmp/shardsinstaller
+echo "shardsimgr:: Flashing install-disk.img.xz to ${INSTALL_DISK}"
+pkexec bash -c " pv -n /usr/share/shardsimages/install-disk.img.xz | xzcat - | dd of=${INSTALL_DISK} status=none bs=4096"
