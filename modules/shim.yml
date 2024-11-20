@@ -1,0 +1,22 @@
+name: shim
+type: make
+buildcommand: make DEFAULT_LOADER='\\EFI\\systemd\\systemd-bootx64.efi' EFIDIR=project.shards ESPROOTDIR=efi/ VENDOR_DB_FILE=/sources/shim/signing-keys/VENDOR.esl
+installcommand: make install DEFAULT_LOADER='\\EFI\\systemd\\systemd-bootx64.efi' EFIDIR=project.shards ESPROOTDIR=efi/ VENDOR_DB_FILE=/sources/shim/signing-keys/VENDOR.esl DESTDIR=/sysroot
+sources:
+  - type: git
+    url: https://github.com/rhboot/shim.git
+    branch: main
+    commit: 5914984a1ffeab841f482c791426d7ca9935a5e6
+  - type: local
+    url: files/signing-keys
+modules:
+  - name: shim-vendor-key
+    type: shell
+    commands:
+      - cert-to-efi-sig-list -g 'de24fbbf-d47f-401a-98b0-116ce8a27458' /sources/shim/signing-keys/VENDOR.crt /sources/shim/signing-keys/VENDOR.esl
+  - name: get-submodules
+    type: shell
+    commands:
+      - cd /sources/shim/shim
+      - git submodule init
+      - git submodule update

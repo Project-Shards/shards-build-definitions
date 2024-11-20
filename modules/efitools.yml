@@ -1,0 +1,33 @@
+name: efitools
+type: shell
+commands:
+  - SHARDS_KEYS_UUID="de24fbbf-d47f-401a-98b0-116ce8a27458"
+  - cd /sources/efitools/efitools
+  - rm /sources/efitools/signing-keys/Makefile
+  - mv /sources/efitools/signing-keys/* .
+  - mv /sources/efitools/efitools-extra/* .
+
+  - patch -Np1 -i ./Add-static-keyword-for-IsValidVariableHeader.patch
+  - make PREFIX="/usr" CRTPATHS="/usr/lib" MYGUID="${SHARDS_KEYS_UUID}" CFLAGS+=-Wno-error=implicit-function-declaration CFLAGS+=-fno-stack-protector
+
+  - ./cert-to-efi-sig-list -g '${SHARDS_KEYS_UUID}' PK_MIC.crt PK-mic.esl
+  - ./sign-efi-sig-list -k PK_MIC.key -c PK_MIC.crt PK PK-mic.esl PK-mic.auth
+  - ./cert-to-efi-sig-list -g '${SHARDS_KEYS_UUID}' KEK.crt KEK-mic.esl
+  - ./cert-to-efi-sig-list -g '${SHARDS_KEYS_UUID}' DB.crt DB-mic.esl
+
+  - bash extra-keys.sh ${SHARDS_KEYS_UUID}
+
+  - install -Dm644 -t '/sysroot/usr/share/efitools/efi' *-signed.efi
+  - install -Dm644 -t '/sysroot/usr/share/efitools/efi' {PK,KEK,DB}.auth
+  - install -Dm644 -t '/sysroot/usr/share/efitools/efi' {PK-mic,KEK-mic,DB-mic}.auth
+
+  - make install
+sources:
+  - type: git
+    url: https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git
+    branch: master
+    commit: 392836a46ce3c92b55dc88a1aebbcfdfc5dcddce
+  - type: local
+    url: files/signing-keys
+  - type: local
+    url: files/efitools-extra

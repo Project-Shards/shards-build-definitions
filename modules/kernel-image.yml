@@ -15,7 +15,19 @@ commands:
   - depmod -a -b /initramfs-root/usr "${VERSION}"
   - cd /initramfs-root
   - find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
-  - ukify build --linux=/sysroot/usr/lib/modules/${VERSION}/vmlinuz --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
+
+  - cd /sources/kernel-image/signing-keys
+
+  - ukify build --pcr-private-key=tpm2-pcr-private.pem --pcr-public-key=tpm2-pcr-public.pem --phases="enter-initrd,enter-initrd:leave-initrd,enter-initrd:leave-initrd:sysinit" --secureboot-private-key=VENDOR.key --secureboot-certificate=VENDOR.crt --linux=/sysroot/usr/lib/modules/${VERSION}/vmlinuz --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
+
+  - mkdir -p /efi/loader/keys/auto
+  - mkdir -p /efi/loader/keys/private
+  - cp /sysroot/usr/share/efitools/efi/PK.auth /efi/loader/keys/private/PK.auth
+  - cp /sysroot/usr/share/efitools/efi/KEK.auth /efi/loader/keys/private/KEK.auth
+  - cp /sysroot/usr/share/efitools/efi/DB.auth /efi/loader/keys/private/DB.auth
+  - cp /sysroot/usr/share/efitools/efi/PK-mic.auth /efi/loader/keys/auto/PK.auth
+  - cp /sysroot/usr/share/efitools/efi/KEK-mic.auth /efi/loader/keys/auto/KEK.auth
+  - cp /sysroot/usr/share/efitools/efi/DB-mic.auth /efi/loader/keys/auto/DB.auth
   - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
 
   - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
@@ -23,4 +35,13 @@ commands:
   - cp "/efi/EFI/Linux/linux.efi" "/cleanup/update-images/shards_${image_version}.efi"
   - xz -T$(nproc) "/cleanup/update-images/shards_${image_version}.efi"
 
+sources:
+  - type: local
+    url: files/signing-keys
 
+modules:
+  - name: kernel-image-deps
+    type: includes
+    includes:
+      - modules/efitools.yml
+      - modules/shim.yml
