@@ -1,0 +1,148 @@
+name: systemd
+type: shell
+commands:
+  - cd /sources/systemd/systemd/
+  - meson_options=(-Dversion-tag=256.8-shards)
+  - meson_options+=(-Dmode=release)
+  - meson_options+=(-Daudit=enabled)
+  - meson_options+=(-Dseccomp=enabled)
+  - meson_options+=(-Dsystem-uid-max=999)
+  - meson_options+=(-Dsystem-gid-max=999)
+  - meson_options+=(-Dusers-gid=100)
+  - meson_options+=(-Dopenssl=enabled)
+  - meson_options+=(-Dpam=enabled)
+  - meson_options+=(-Dbootloader=enabled)
+  - meson_options+=(-Defi=true)
+  - meson_options+=(-Dfirstboot=true)
+  - meson_options+=(-Dzlib=enabled)
+  - meson_options+=(-Dzstd=enabled)
+  - meson_options+=(-Dbzip2=enabled)
+  - meson_options+=(-Dxz=enabled)
+  - meson_options+=(-Dlz4=enabled)
+  - meson_options+=(-Ddefault-dnssec=no)
+  - meson_options+=(-Didn=true)
+  - meson_options+=(-Drepart=enabled)
+  - meson_options+=(-Dman=enabled)
+  - meson_options+=(-Dhtml=enabled)
+  - meson_options+=(-Dlibcryptsetup=enabled)
+  - meson_options+=(-Dlibcryptsetup-plugins=enabled)
+  - meson_options+=(-Dp11kit=enabled)
+  - meson_options+=(-Dlibfido2=enabled)
+  - meson_options+=(-Dapparmor=enabled)
+  - meson_options+=(-Dselinux=disabled)
+  - meson_options+=(-Dtpm=true)
+  - meson_options+=(-Dtpm2=enabled)
+  - meson_options+=(-Dsbat-distro=project-shards)
+  - meson_options+=(-Dsbat-distro-generation=1)
+  - meson_options+=(-Dsbat-distro-summary="Project Shards")
+  - meson_options+=(-Dsbat-distro-url=https://repo.shards.blahaj.land)
+  - meson_options+=(-Dqrencode=enabled)
+  - meson_options+=(-Dxkbcommon=enabled)
+  - meson_options+=(-Dlibidn2=enabled)
+  - meson_options+=(-Dlibiptc=enabled)
+  - meson_options+=(-Dxenctrl=enabled)
+  - meson_options+=(-Dbpf-framework=disabled)
+  - meson_options+=(-Dglib=disabled)
+  - meson_options+=(-Ddbus=disabled)
+  - meson_options+=(-Dukify=enabled)
+  - meson_options+=(-Dkernel-install=true)
+  - meson_options+=(-Dxenctrl=disabled)
+  - meson_options+=(-Dsysupdate=enabled)
+  - meson_options+=(-Dsysupdated=enabled)
+
+  - meson setup _build "${meson_options[@]}"
+  - meson compile -C _build
+  - meson install -C _build --no-rebuild --destdir="/sysroot"
+sources:
+  - type: git
+    url: https://github.com/systemd/systemd
+    branch: main
+#    commit: a2240d1cf9f3515728186c2c98a6f4b64a40e4da
+
+modules:
+  - name: systemd-makedeps
+    type: pacman
+    packages:
+      - 'acl'
+      - 'cryptsetup'
+      - 'docbook-xsl'
+      - 'gperf'
+      - 'lz4'
+      - 'xz'
+      - 'pam'
+      - 'libelf'
+      - 'intltool'
+      - 'iptables'
+      - 'kmod'
+      - 'libarchive'
+      - 'libcap'
+      - 'libidn2'
+      - 'libgcrypt'
+      - 'libmicrohttpd'
+      - 'libxcrypt'
+      - 'libxslt'
+      - 'util-linux'
+      - 'linux-api-headers'
+      - 'python-jinja'
+      - 'python-lxml'
+      - 'quota-tools'
+      - 'shadow'
+      - 'git'
+      - 'meson'
+      - 'libseccomp'
+      - 'pcre2'
+      - 'audit'
+      - 'kexec-tools'
+      - 'libxkbcommon'
+      - 'bash-completion'
+      - 'p11-kit'
+      - 'systemd'
+      - 'libfido2'
+      - 'tpm2-tss'
+      - 'rsync'
+      - 'bpf'
+      - 'libbpf'
+      - 'clang'
+      - 'llvm'
+      - 'curl'
+      - 'gnutls'
+      - 'python-pyelftools'
+      - 'libpwquality'
+      - 'qrencode'
+      - 'lib32-gcc-libs'
+      - 'python-pefile'
+      - 'linux-headers'
+      - 'apparmor'
+  - name: systemd-runtime-deps
+    type: pacman
+    ExtraFlags:
+      - "--sysroot=/sysroot"
+    packages:
+      - 'acl'
+      - 'bash'
+      - 'cryptsetup'
+      - 'dbus'
+      - 'dbus-units'
+      - 'kbd'
+      - 'kmod'
+      - 'hwdata'
+      - 'libcap'
+      - 'libgcrypt'
+      - 'libxcrypt'
+      - 'libidn2'
+      - 'lz4'
+      - 'pam'
+      - 'libelf'
+      - 'libseccomp'
+      - 'util-linux'
+      - 'util-linux-libs'
+      - 'xz'
+      - 'pcre2'
+      - 'audit'
+      - 'openssl'
+      - 'apparmor'
+  - name: remove-arch-systemd
+    type: shell
+    commands:
+      - pacman -Rdd --sysroot='/sysroot' --noconfirm systemd systemd-libs
+
