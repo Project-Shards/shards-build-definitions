@@ -21,6 +21,10 @@ packages:
   - "gnome-initial-setup"
   - "networkmanager"
   - "avahi"
+  - "podman"
+  - "toolbox"
+  - "vim"
+
 modules:
   - name: bootstrap-sysroot-deps
     type: includes

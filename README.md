@@ -5,6 +5,8 @@ All build definitions for project shards.
 This is still a wip, and currently only boots a generic arch linux installation.
 
 # building
+A prebuilt installation iso can be found https://repo.shards.blahaj.land
+
 Build [vib](https://github.com/vanilla-os/vib) from the main branch (the current vib release is not guaranteed to work)
 
 Get podman, systemd-repart, erofs-utils and jq

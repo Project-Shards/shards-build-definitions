@@ -49,14 +49,6 @@ stages:
         - modules/update-images.yml
         - modules/kernel-image.yml
 
-    - name: import-pubring
-      type: shell
-      commands:
-        - cp /sources/import-pubring/signing-keys/import-pubring.gpg /sysroot/usr/lib/systemd/import-pubring.gpg
-      sources:
-        - type: local
-          url: files/signing-keys
-
     - name: update-repo
       type: shell
       commands:

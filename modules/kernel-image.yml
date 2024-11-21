@@ -6,6 +6,9 @@ commands:
   - VERSION=$(ls -1 /sysroot/lib/modules | head -n1)
   - ROOTHASH=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
   - CMDLINE="${CMDLINE} usrhash=${ROOTHASH}"
+  - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
+  - image_version="${label##shards_usr_v_}"
+  
   - mkdir -p /efi/EFI/Linux
   - cp -r /sysroot/usr/lib/tmpfiles.d/20-systemd-stub.conf /usr/lib/tmpfiles.d/20-systemd-stub.conf
   - cp -r /sysroot/usr/lib/repart.d /usr/lib/repart.d
@@ -18,7 +21,7 @@ commands:
 
   - cd /sources/kernel-image/signing-keys
 
-  - ukify build --pcr-private-key=tpm2-pcr-private.pem --pcr-public-key=tpm2-pcr-public.pem --phases="enter-initrd,enter-initrd:leave-initrd,enter-initrd:leave-initrd:sysinit" --secureboot-private-key=VENDOR.key --secureboot-certificate=VENDOR.crt --linux=/sysroot/usr/lib/modules/${VERSION}/vmlinuz --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/linux.efi
+  - ukify build --pcr-private-key=tpm2-pcr-private.pem --pcr-public-key=tpm2-pcr-public.pem --phases="enter-initrd,enter-initrd:leave-initrd,enter-initrd:leave-initrd:sysinit" --secureboot-private-key=VENDOR.key --secureboot-certificate=VENDOR.crt --linux=/sysroot/usr/lib/modules/${VERSION}/vmlinuz --initrd=/initramfs.img --cmdline="${CMDLINE}" --output=/efi/EFI/Linux/shards_${image_version}.efi
 
   - mkdir -p /efi/loader/keys/auto
   - mkdir -p /efi/loader/keys/private
@@ -30,9 +33,7 @@ commands:
   - cp /sysroot/usr/share/efitools/efi/DB-mic.auth /efi/loader/keys/auto/DB.auth
   - SYSTEMD_ESP_PATH=/efi bootctl install --no-variables
 
-  - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
-  - image_version="${label##shards_usr_v_}"
-  - cp "/efi/EFI/Linux/linux.efi" "/cleanup/update-images/shards_${image_version}.efi"
+  - cp "/efi/EFI/Linux/shards_${image_version}.efi" "/cleanup/update-images/shards_${image_version}.efi"
   - xz -T$(nproc) "/cleanup/update-images/shards_${image_version}.efi"
 
 sources:

@@ -10,3 +10,8 @@ commands:
   - cd /sysroot/usr/lib/systemd/system/multi-user.target.wants
   - ln -s ../global-preset-all.service global-preset-all.service
   - rm /sysroot/usr/lib/systemd/system-preset/99-*
+  - cp /sources/prepare-sysroot/signing-keys/import-pubring.gpg /sysroot/usr/lib/systemd/import-pubring.gpg
+sources:
+  - type: local
+    url: files/signing-keys
+
