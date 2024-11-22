@@ -2,7 +2,7 @@
 
 set -eu
 
-OVMF_DIR=/usr/share/ovmf/x64
+OVMF_DIR=/usr/share/edk2-ovmf
 VIB="run0 vib"
 
 SWTPM_STATE=${PWD}/vm/swtpm-state
@@ -23,7 +23,7 @@ TPM_SOCK_DIR="$(dirname "${TPM_SOCK}")"
 systemd-run --user --service-type=simple --unit="${SWTPM_UNIT}" -- swtpm socket --tpm2 --tpmstate dir="${SWTPM_STATE}" --ctrl type=unixio,path="${TPM_SOCK}"
 
 if ! [ -f "vm/OVMF_VARS.fd" ]; then
-    cp "${OVMF_DIR}/OVMF_VARS.4m.fd" "vm/OVMF_VARS.fd"
+    cp "${OVMF_DIR}/OVMF_VARS.secboot.fd" "vm/OVMF_VARS.fd"
 fi
 
 if ! [ -f "vm/disk-repart.raw" ]; then
@@ -39,7 +39,7 @@ QEMU_ARGS+=(-M q35,accel=kvm)
 QEMU_ARGS+=(-smp 4)
 QEMU_ARGS+=(-net nic,model=virtio)
 QEMU_ARGS+=(-net user)
-QEMU_ARGS+=(-drive "if=pflash,file=${OVMF_DIR}/OVMF_CODE.4m.fd,readonly=on,format=raw")
+QEMU_ARGS+=(-drive "if=pflash,file=vm/edk2/x64/OVMF_CODE.secboot.4m.fd,readonly=on,format=raw")
 QEMU_ARGS+=(-drive "if=pflash,file=vm/OVMF_VARS.fd,format=raw")
 if ! [ "${no_tpm+set}" = set ]; then
     QEMU_ARGS+=(-chardev "socket,id=chrtpm,path=${TPM_SOCK}")
@@ -47,6 +47,8 @@ if ! [ "${no_tpm+set}" = set ]; then
     QEMU_ARGS+=(-device tpm-tis,tpmdev=tpm0)
 fi
 QEMU_ARGS+=(-drive "if=virtio,file=vm/disk-repart.raw,media=disk,format=raw")
+#QEMU_ARGS+=(-drive "if=virtio,file=vm/gnomeos.raw,media=disk,format=raw")
+QEMU_ARGS+=(-cdrom "/home/lain/Downloads/gnomeos.iso")
 QEMU_ARGS+=(-vga virtio -display gtk,gl=on)
 #QEMU_ARGS+=(-full-screen)
 QEMU_ARGS+=(-device ich9-intel-hda)

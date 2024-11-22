@@ -7,40 +7,13 @@ stages:
   base: docker.io/library/archlinux:latest
   singlelayer: false
   labels:
-    maintainer: hello
+    maintainer: Rose <axtlos@disroot.org>
   modules:
-    - name: init
-      type: shell
-      commands:
-        - pacman -Syu --noconfirm
-        - mkdir -p /sysroot
-
-    - name: build-depends
-      type: pacman
-      packages:
-        - "linux"
-        - "systemd"
-        - "systemd-ukify"
-        - "python-pyelftools"
-        - "base-devel"
-        - "cryptsetup"
-        - "btrfs-progs"
-        - "cpio"
-        - "util-linux-libs"
-        - "erofs-utils"
-        - "jq"
-        - "glibc-locales"
-        - "tree"
-        - "help2man"
-        - "perl-file-slurp"
-        - "sbsigntools"
-        - "git"
-        - "gnu-efi-libs"
-        - "efivar"
 
     - name: modules
       type: includes
       includes:
+        - modules/build-setup.yml
         - modules/bootstrap-sysroot.yml
         - modules/systemd.yml
         - modules/os-release.yml

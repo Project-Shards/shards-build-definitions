@@ -1,0 +1,37 @@
+name: build-depends
+type: pacman
+packages:
+  - "linux"
+  - "linux-headers"
+  - "systemd"
+  - "systemd-ukify"
+  - "python-pyelftools"
+  - "base-devel"
+  - "cryptsetup"
+  - "btrfs-progs"
+  - "cpio"
+  - "util-linux-libs"
+  - "erofs-utils"
+  - "jq"
+  - "glibc-locales"
+  - "tree"
+  - "help2man"
+  - "perl-file-slurp"
+  - "sbsigntools"
+  - "git"
+  - "gnu-efi-libs"
+  - "efivar"
+modules:
+  - name: build-pacman-setup
+    type: shell
+    commands:
+      - cp -r /sources/build-pacman-setup/pacmanconf/* /etc/
+    sources:
+      - type: local
+        url: files/pacmanconf
+  - name: init
+    type: shell
+    commands:
+      - pacman -Syy --noconfirm
+      - pacman -Suu --noconfirm
+

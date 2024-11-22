@@ -1,0 +1,4 @@
+ID=project.shards
+VERSION_ID=%pretty_version%
+SYSEXT_LEVEL=%version%
+SYSEXT_SCOPE=initrd system

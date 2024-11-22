@@ -1,14 +1,14 @@
 name: kernel-image
 type: shell
 commands:
-  - CMDLINE="rw systemd.debug-shell=1 mount.usrflags=ro mount.usrfstype=erofs systemd.firstboot=no"
+  - CMDLINE="rw mount.usrflags=ro mount.usrfstype=erofs systemd.firstboot=no intel_iommu=on systemd.verity=1"
 
   - VERSION=$(ls -1 /sysroot/lib/modules | head -n1)
   - ROOTHASH=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).roothash' /cleanup/usrimage/repart.json)
   - CMDLINE="${CMDLINE} usrhash=${ROOTHASH}"
   - label=$(jq -r '(.[] | select(.type | match("^usr-.*-verity$"))).label' /cleanup/usrimage/repart.json)
   - image_version="${label##shards_usr_v_}"
-  
+
   - mkdir -p /efi/EFI/Linux
   - cp -r /sysroot/usr/lib/tmpfiles.d/20-systemd-stub.conf /usr/lib/tmpfiles.d/20-systemd-stub.conf
   - cp -r /sysroot/usr/lib/repart.d /usr/lib/repart.d

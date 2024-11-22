@@ -49,6 +49,7 @@ commands:
   - meson_options+=(-Dxenctrl=disabled)
   - meson_options+=(-Dsysupdate=enabled)
   - meson_options+=(-Dsysupdated=enabled)
+  - meson_options+=(-Dfallback-hostname='shards')
 
   - meson setup _build "${meson_options[@]}"
   - meson compile -C _build

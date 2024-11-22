@@ -1,0 +1,16 @@
+[Transfer]
+ProtectVersion=%A
+Features=nvidia-drivers
+
+[Source]
+Type=url-file
+Path=https://repo.shards.blahaj.land/usr-images/
+MatchPattern=nvidia-modules_@v.raw.xz
+
+[Target]
+Type=regular-file
+Path=/EFI/Linux
+PathRelativeTo=boot
+MatchPattern=shards_@v.efi.extra.d/nvidia-modules.rawx
+Mode=0444
+InstancesMax=2

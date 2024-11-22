@@ -31,6 +31,7 @@ FILES=(
     /usr/lib/systemd/systemd-integritysetup
     /usr/lib/systemd/systemd-cryptsetup
     /usr/lib/systemd/systemd-shutdown
+    /usr/lib/systemd/system/-.mount.d/90-compress-zstd.conf
 )
 
 UNITS=(

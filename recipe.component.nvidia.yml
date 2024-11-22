@@ -1,0 +1,139 @@
+name: Shards nvidia component Image
+id: shards.component.nvidia
+includespath: includes.component.nvidia
+
+stages:
+- id: build
+  base: docker.io/library/archlinux:latest
+  singlelayer: false
+  labels:
+    maintainer: Rose <axtlos@disroot.org>
+  modules:
+    - name: copy-version
+      type: shell
+      commands:
+        - mv /sources/copy-version/version.json/version.json /version.json
+        - mkdir -p /sysroot/usr/lib/extension-release.d
+        - mkdir -p /sysroot/etc/
+      sources:
+        - type: local
+          url: includes.sysupdate/version.json
+
+    - name: modules
+      type: includes
+      includes:
+        - modules/build-setup.yml
+        - modules/os-release.yml
+        - modules/setup-pacman.yml
+        - modules/nvidia-modules.yml
+        - modules/nvidia-runtime.yml
+
+    - name: nvidia-modules
+      type: shell
+      commands:
+        - mkdir -p /cleanup/nvidia-images
+        - chmod 0600 /sources/nvidia-modules/signing-keys/SYSEXT.key
+
+        - rm /sources/nvidia-modules/definitions-modules/*verity* # figure out why verity isnt working
+
+        - PRETTY_VERSION=$(cat /version.json | jq -r ".version_id")
+        - TAG=$(cat /version.json | jq -r ".tag")
+        - IMAGE_ID=$(cat /version.json | jq -r ".image_id")
+        - VERSION=${TAG}.${IMAGE_ID}
+
+        - rm /sysroot-modules/etc/os-release
+        - rm /sysroot-modules/usr/lib/os-release
+
+        - mkdir -p /sysroot-modules/usr/lib/extension-release.d/
+        - sed "s|%pretty_version%|${PRETTY_VERSION}|g" /sources/nvidia-modules/extension-release.in/extension-release.in > /sysroot-modules/usr/lib/extension-release.d/extension-release.nvidia-modules_${VERSION}
+        - sed -i "s|%version%|${VERSION}|g" /sysroot-modules/usr/lib/extension-release.d/extension-release.nvidia-modules_${VERSION}
+
+#        - KVERSION=$(ls -1 /sysroot-modules/usr/lib/modules/)
+#        - mkdir -p /sysroot-modules/usr/lib/modules/${KVERSION}/kernel/drivers/video/
+#        - mv /sysroot-modules/usr/lib/modules/${KVERSION}/extramodules/* /sysroot-modules/usr/lib/modules/${KVERSION}/kernel/drivers/video/.
+
+        - echo "blacklist nouveau" > /sysroot-runtime/usr/lib/modprobe.d/nvidia.conf
+        - echo "options nvidia_drm 1" >> /sysroot-runtime/usr/lib/modprobe.d/nvidia.conf
+        - echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" >> /sysroot-runtime/usr/lib/modprobe.d/nvidia.conf
+        - echo "nvidia_drm" >> /sysroot-runtime/usr/lib/modules-load.d/nvidia.conf
+
+        - systemd-repart --definitions=/sources/nvidia-modules/definitions-modules --root=/sysroot-modules --empty=create --size=auto --dry-run=no --discard=no --offline=true --no-pager --private-key=/sources/nvidia-modules/signing-keys/SYSEXT.key --certificate=/sources/nvidia-modules/signing-keys/SYSEXT.crt --seed="866be9d0-9a24-4be7-97d7-197cc40ea4d6" nvidia-modules.raw --json=pretty > /cleanup/nvidia-mods-repart.json
+        - xz -T$(nproc) nvidia-modules.raw
+
+        - cp nvidia-modules.raw.xz /cleanup/nvidia-images/nvidia-modules_${VERSION}.raw.xz
+        - rm -rf /definitions
+      sources:
+        - type: local
+          url: files/nvidia-sysext/definitions-modules
+        - type: local
+          url: files/nvidia-sysext/extension-release.in
+        - type: local
+          url: files/signing-keys
+
+    - name: nvidia-runtime
+      type: shell
+      commands:
+        - chmod 0600 /sources/nvidia-runtime/signing-keys/SYSEXT.key
+
+        - rm /sources/nvidia-runtime/definitions-runtime/*verity* # figure out why verity isnt working
+
+        - PRETTY_VERSION=$(cat /version.json | jq -r ".version_id")
+        - TAG=$(cat /version.json | jq -r ".tag")
+        - IMAGE_ID=$(cat /version.json | jq -r ".image_id")
+        - VERSION=${TAG}.${IMAGE_ID}
+
+        - rm /sysroot-runtime/etc/os-release
+        - rm /sysroot-runtime/usr/lib/os-release
+
+        - mkdir -p /sysroot-runtime/usr/lib/extension-release.d/
+        - sed "s|%pretty_version%|${PRETTY_VERSION}|g" /sources/nvidia-runtime/extension-release.in/extension-release.in > /sysroot-runtime/usr/lib/extension-release.d/extension-release.nvidia-runtime_${VERSION}
+        - sed -i "s|%version%|${VERSION}|g" /sysroot-runtime/usr/lib/extension-release.d/extension-release.nvidia-runtime_${VERSION}
+
+        - cat /sysroot-runtime/usr/lib/extension-release.d/extension-release.nvidia-runtime_${VERSION}
+
+        - systemd-repart --definitions=/sources/nvidia-runtime/definitions-runtime --root=/sysroot-runtime --empty=create --size=auto --dry-run=no --discard=no --offline=true --no-pager --private-key=/sources/nvidia-runtime/signing-keys/SYSEXT.key --certificate=/sources/nvidia-runtime/signing-keys/SYSEXT.crt --seed="866be9d0-9a24-4be7-97d7-197cc40ea4d6" nvidia-runtime.raw --json=pretty > /cleanup/nvidia-rntm-repart.json
+        - xz -T$(nproc) nvidia-runtime.raw
+
+        - cp nvidia-runtime.raw.xz /cleanup/nvidia-images/nvidia-runtime_${VERSION}.raw.xz
+      sources:
+        - type: local
+          url: files/nvidia-sysext/definitions-runtime
+        - type: local
+          url: files/nvidia-sysext/extension-release.in
+        - type: local
+          url: files/signing-keys
+
+    - name: nvidia-uki-addon
+      type: shell
+      commands:
+        - PRETTY_VERSION=$(cat /version.json | jq -r ".version_id")
+        - TAG=$(cat /version.json | jq -r ".tag")
+        - IMAGE_ID=$(cat /version.json | jq -r ".image_id")
+        - VERSION=${TAG}.${IMAGE_ID}
+        - ukify build --secureboot-private-key=/sources/nvidia-uki-addon/signing-keys/VENDOR.key --secureboot-certificate=/sources/nvidia-uki-addon/signing-keys/VENDOR.crt --sbat=@/sources/nvidia-uki-addon/signing-keys/sbat.txt --cmdline='module_blacklist=nouveau nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1' --output nvidia-modules.addon.efi
+        - xz -T$(nproc) nvidia-modules.addon.efi
+        - cp nvidia-modules.addon.efi.xz /cleanup/nvidia-images/nvidia-modules_${VERSION}.addon.efi.xz
+      sources:
+        - type: local
+          url: files/signing-keys
+    - name: update-repo
+      type: shell
+      commands:
+        - cd /cleanup/nvidia-images
+        - sha256sum *.xz | tee SHA256SUMS
+
+finalize:
+  - name: checkout-files
+    type: shell-final
+    commands:
+      - mkdir -p $PROJROOT/update-images
+      - touch $PROJROOT/update-images/SHA256SUMS
+      - touch $FSROOT/cleanup/nvidia-images/SHA256SUMS
+      - ls $FSROOT/cleanup/
+      - ls $FSROOT/cleanup/nvidia-images
+      - cat $FSROOT/cleanup/nvidia-images/SHA256SUMS >> $PROJROOT/update-images/SHA256SUMS
+      - rm $FSROOT/cleanup/nvidia-images/SHA256SUMS
+      - cp -r $FSROOT/cleanup/nvidia-images/*.xz $PROJROOT/update-images/.
+      - cp $FSROOT/cleanup/nvidia-rntm-repart.json $PROJROOT/nvidia-rntmp.json
+      - cp $FSROOT/cleanup/nvidia-mods-repart.json $PROJROOT/nvidia-mods.json
+
