@@ -1,6 +1,7 @@
 [Unit]
 Description=Enable encryption
 AssertPathExists=/etc/initrd-release
+ConditionSecurity=tpm2
 DefaultDependencies=no
 Conflicts=shutdown.target
 After=initrd-usr-fs.target
@@ -10,9 +11,8 @@ Before=shutdown.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=rm -rf /run/repart.d
 ExecStart=/usr/bin/cp -rT /sysusr/usr/lib/repart.d /run/repart.d
-ExecStart=/usr/bin/gen-recovery-key
+ExecStart=/usr/bin/gen-recovery-key /run/recovery-password
 
 [Install]
 WantedBy=initrd.target

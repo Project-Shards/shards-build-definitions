@@ -40,8 +40,6 @@ BINARIES=(
 )
 
 install() {
-    install_file /etc/shadow
-    install_file /etc/passwd
     for b in "${BINARIES[@]}"; do
         install_file "/usr/bin/${b}"
     done

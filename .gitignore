@@ -1,12 +1,5 @@
+.bst
+__pycache__
+*~*
 *~
-.*~
-*.raw
-*#
-.#*
-Containerfile
-sources
-dbg
-images
-genimg/build
-genimg/stage2/efi.img
-genimg/stage2/LiveOS/squashfs.img
+files/signing-keys

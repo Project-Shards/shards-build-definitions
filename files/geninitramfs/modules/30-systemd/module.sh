@@ -31,7 +31,6 @@ FILES=(
     /usr/lib/systemd/systemd-integritysetup
     /usr/lib/systemd/systemd-cryptsetup
     /usr/lib/systemd/systemd-shutdown
-    /usr/lib/systemd/system/-.mount.d/90-compress-zstd.conf
 )
 
 UNITS=(
@@ -157,6 +156,7 @@ install() {
     done
 
     install_file /usr/lib/cryptsetup/libcryptsetup-token-systemd-tpm2.so
+    install_file /usr/lib/libapparmor.so
 
     install_file /usr/share/kbd/keymaps/i386/qwerty/us.map.gz
     install_file /usr/share/kbd/keymaps/i386/include/qwerty-layout.inc

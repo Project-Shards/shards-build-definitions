@@ -1,0 +1,129 @@
+diff --git a/src/pacman_fix_permissions/__init__.py b/src/pacman_fix_permissions/__init__.py
+index 0389a9f..fe193c5 100644
+--- a/src/pacman_fix_permissions/__init__.py
++++ b/src/pacman_fix_permissions/__init__.py
+@@ -21,7 +21,6 @@ from typing import Tuple
+ import zstandard as zstd
+ 
+ ARCHITECTURE_REGEX = r"Architecture = (.*)"
+-PACKAGE_PATH_TEMPLATE = "/var/cache/pacman/pkg/{name}-{version}-{arch}.pkg.{format}"
+ PACKAGE_IGNORE = [
+     ".PKGINFO",
+     ".BUILDINFO",
+@@ -66,18 +65,22 @@ parser.add_argument(
+ parser.add_argument(
+     "-v", "--version", action="version", version=f"%(prog)s {__version__}"
+ )
++
+ cli_args = parser.parse_args()
+ 
++
+ if getattr(cli_args, "packages", None) == []:
+     parser.error("You must pass at least one package name when using -p switch")
+ if getattr(cli_args, "filesystem-paths", None) == []:
+     parser.error("You must pass at least one filesystem path when using -f switch")
+ 
++prefix = "/sysroot"
++PACKAGE_PATH_TEMPLATE = prefix+"/var/cache/pacman/pkg/{name}-{version}-{arch}.pkg.{format}"
+ 
+ def _get_arch() -> str:
+     """Get system architecture from pacman.conf or from uname if not set explicitly."""
+     arch = "auto"
+-    with open("/etc/pacman.conf", "r") as file:
++    with open(prefix+"/etc/pacman.conf", "r") as file:
+         for line in file:
+             match = re.match(ARCHITECTURE_REGEX, line)
+             if match:
+@@ -111,21 +114,11 @@ def get_package(
+ ) -> Iterator[tarfile.TarFile]:
+     """Open package from pacman cache, download it if missing."""
+ 
+-    downloaded = False
+     path = _get_package_path(name, version, arch)
+-    if path is None:
+-        logger.info("=> %s package is missing, downloading", name)
+-        run(
+-            ("pacman", "-Swq", "--noconfirm", name),
+-            check=True,
+-        )
+-        downloaded = True
+ 
+-    path = _get_package_path(name, version, arch)
+     if path is None:
+-        raise Exception
+-
+-    if path.endswith("xz"):
++        yield None
++    elif path.endswith("xz"):
+         with tarfile.open(path) as package:
+             yield package
+     elif path.endswith("zst"):
+@@ -137,18 +130,9 @@ def get_package(
+     else:
+         raise Exception("Unknown package format")
+ 
+-    if downloaded and clean:
+-        logger.info("=> %s package downloaded, cleaning up", name)
+-        Path(path).unlink()
+-
+ 
+ def __main__():
+     arch = _get_arch()
+-    logger.info("==> Upgrading packages that are out-of-date")
+-    run(
+-        ("pacman", "-Syu", "--noconfirm"),
+-        check=True,
+-    )
+ 
+     logger.info("==> Parsing installed packages list")
+     selected_packages = getattr(cli_args, "packages", [])
+@@ -166,7 +150,7 @@ def __main__():
+         package_ids = [" ".join(line.split()[-2:]) for line in output]
+     else:
+         result = run(
+-            ("pacman", "-Qn"),
++            ("cat", prefix+"/packagevers"),
+             check=True,
+             stdout=PIPE,
+         )
+@@ -184,12 +168,19 @@ def __main__():
+         logger.info("(%i/%i) %s", i + 1, package_ids_total, package_id)
+         name, version = package_id.split()
+ 
+-        with get_package(name, version, arch, cli_args.clean) as package:
++        packages = get_package(name, version, arch, cli_args.clean)
++        if packages is None:
++            continue
++        with packages as package:
++            if package is None:
++                continue
+             for file in package.getmembers():
++                if file is None:
++                    continue
+                 if file.name in PACKAGE_IGNORE:
+                     continue
+ 
+-                path = "/" + file.name
++                path = prefix + "/" + file.name
+                 if path in broken_paths:
+                     continue
+ 
+@@ -200,7 +191,6 @@ def __main__():
+                         broken_paths[path] = (old_mode, new_mode)
+                 except FileNotFoundError:
+                     logger.error("File not found: %s", path)
+-                    # TODO: Suggest to reinstall package
+ 
+     if not broken_paths:
+         logger.info("==> Your filesystem is fine, no action required")
+@@ -210,10 +200,6 @@ def __main__():
+     for path, modes in broken_paths.items():
+         old_mode, new_mode = modes
+         logging.info("%s: %s => %s", path, oct(old_mode), oct(new_mode))
+-    logger.info("==> Apply? [Y/n]")
+-    if input().lower() in ["no", "n"]:
+-        logger.info("==> Done! (no actual changes were made)")
+-        return
+ 
+     for path, modes in broken_paths.items():
+         old_mode, new_mode = modes

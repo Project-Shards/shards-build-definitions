@@ -1,9 +1,0 @@
-name: gnu-efi
-type: make
-buildcommand: make INSTALLROOT='/' LIBDIR='/usr/lib' PREFIX='/usr' #LDFLAGS="-z relro -z now --as-needed"
-installcommand: make INSTALLROOT='/' LIBDIR='/usr/lib' PREFIX='/usr' install
-sources:
-  - type: git
-    url: https://github.com/ncroxon/gnu-efi
-    branch: master
-    commit: 4dc70fdf45a19d2492ca958675ec2854a54c9243

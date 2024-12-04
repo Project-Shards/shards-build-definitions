@@ -10,3 +10,4 @@ VARIANT="Project Shards GNOME"
 VARIANT_ID=shards-gnome
 IMAGE_ID=shards-gnome
 DEFAULT_HOSTNAME=shards
+LOGO=shards-logo

@@ -1,0 +1,16 @@
+variables:
+  extraflags: ""
+
+config:
+  install-commands:
+    - |
+      mkdir pacmancache
+      mkdir -p %{install-root}/var/lib/pacman
+      mkdir -p %{install-root}/etc/
+      cp /etc/pacman.conf %{install-root}/etc/pacman.conf
+      pacman -Udd %{extraflags} *pkg.tar.zst --logfile='./log' --noconfirm --sysroot='%{install-root}'
+      cp *pkg.tar.zst %{install-root}/var/cache/pacman/pkg/
+      rm %{install-root}/var/lib/pacman/local/ALPM_DB_VERSION
+      rm %{install-root}/log
+      rm %{install-root}/etc/pacman.conf
+

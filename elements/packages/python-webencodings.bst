@@ -1,0 +1,11 @@
+kind: pacman
+sources:
+- kind: remote
+  url: arch_archive:extra/os/x86_64/python-webencodings-0.5.1-11-any.pkg.tar.zst
+  ref: 50da370cfdefdea70571fd27adcf2d3ba3411c8a4cc7d8c8884d8a04e816ac83
+
+runtime-depends:
+- packages/python.bst
+
+build-depends:
+- arch-bootstrap.bst

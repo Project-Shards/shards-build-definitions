@@ -1,0 +1,80 @@
+kind: make
+
+depends:
+  - packages/openssl.bst
+  - packages/sbsigntools.bst
+
+build-depends:
+  - build-bootstrap.bst
+  - packages/gnu-efi.bst
+  - packages/perl-file-slurp.bst
+  - packages/help2man.bst
+
+sources:
+- kind: git_repo
+  url: kernel_git:jejb/efitools.git
+  track: master
+  ref: 392836a46ce3c92b55dc88a1aebbcfdfc5dcddce
+- kind: local
+  path: files/signing-keys/PK.key
+- kind: local
+  path: files/signing-keys/PK.crt
+- kind: local
+  path: files/signing-keys/PK_MIC.key
+- kind: local
+  path: files/signing-keys/PK_MIC.crt
+- kind: local
+  path: files/signing-keys/KEK.key
+- kind: local
+  path: files/signing-keys/KEK.crt
+- kind: local
+  path: files/signing-keys/KEK_MIC.key
+- kind: local
+  path: files/signing-keys/KEK_MIC.crt
+- kind: local
+  path: files/signing-keys/DB.key
+- kind: local
+  path: files/signing-keys/DB.crt
+- kind: local
+  path: files/signing-keys/extra-kek
+  directory: extra-kek
+- kind: local
+  path: files/signing-keys/extra-db
+  directory: extra-db
+- kind: local
+  path: files/signing-keys/extra-kek-mic
+  directory: extra-kek-mic
+- kind: local
+  path: files/signing-keys/extra-db-mic
+  directory: extra-db-mic
+- kind: local
+  path: files/efitools-extra
+- kind: patch
+  path: patches/efitools/Add-static-keyword-for-IsValidVariableHeader.patch
+
+variables:
+  keys_uuid: de24fbbf-d47f-401a-98b0-116ce8a27458
+  notparallel: true
+  make-args: >-
+    PREFIX="/usr"
+    CRTPATHS="/usr/lib"
+    MYGUID="%{keys_uuid}"
+    CFLAGS+=-Wno-error=implicit-function-declaration
+    CFLAGS+=-fno-stack-protector
+
+config:
+  build-commands:
+    (>):
+      - |
+        ./cert-to-efi-sig-list -g '%{keys_uuid}' PK_MIC.crt PK-mic.esl
+        ./sign-efi-sig-list -k PK_MIC.key -c PK_MIC.crt PK PK-mic.esl PK-mic.auth
+        ./cert-to-efi-sig-list -g '%{keys_uuid}' KEK.crt KEK-mic.esl
+        ./cert-to-efi-sig-list -g '%{keys_uuid}' DB.crt DB-mic.esl
+        bash extra-keys.sh %{keys_uuid}
+        %{make}
+
+  install-commands:
+    (>):
+      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' *-signed.efi
+      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK,KEK,DB}.auth
+      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK-mic,KEK-mic,DB-mic}.auth

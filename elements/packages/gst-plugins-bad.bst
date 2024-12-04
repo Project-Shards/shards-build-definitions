@@ -1,0 +1,78 @@
+kind: pacman
+sources:
+- kind: remote
+  url: arch_archive:extra/os/x86_64/gst-plugins-bad-1.24.9-3-x86_64.pkg.tar.zst
+  ref: 1ccccc6d5387c02e918b729f7f7bcbdc026e07670ac66907b625487da7935a24
+
+runtime-depends:
+- packages/gst-plugins-bad-libs.bst
+- packages/gst-plugins-base-libs.bst
+- packages/gstreamer.bst
+- packages/aom.bst
+- packages/bzip2.bst
+- packages/cairo.bst
+- packages/chromaprint.bst
+- packages/curl.bst
+- packages/faac.bst
+- packages/faad2.bst
+- packages/fluidsynth.bst
+- packages/gcc-libs.bst
+- packages/glib2.bst
+- packages/glibc.bst
+- packages/gsm.bst
+- packages/imath.bst
+- packages/json-glib.bst
+- packages/lcms2.bst
+- packages/libass.bst
+- packages/libavtp.bst
+- packages/libbs2b.bst
+- packages/libdc1394.bst
+- packages/libdca.bst
+- packages/libde265.bst
+- packages/libdvdnav.bst
+- packages/libdvdread.bst
+- packages/libfdk-aac.bst
+- packages/libfreeaptx.bst
+- packages/libgme.bst
+- packages/liblc3.bst
+- packages/libldac.bst
+- packages/liblrdf.bst
+- packages/libltc.bst
+- packages/libmicrodns.bst
+- packages/libmodplug.bst
+- packages/libmpcdec.bst
+- packages/libopenmpt.bst
+- packages/librsvg.bst
+- packages/libsndfile.bst
+- packages/libsrtp.bst
+- packages/libwebp.bst
+- packages/libxml2.bst
+- packages/lilv.bst
+- packages/mjpegtools.bst
+- packages/neon.bst
+- packages/nettle.bst
+- packages/openal.bst
+- packages/openexr.bst
+- packages/openh264.bst
+- packages/openjpeg2.bst
+- packages/openssl.bst
+- packages/opus.bst
+- packages/orc.bst
+- packages/pango.bst
+- packages/qrencode.bst
+- packages/rtmpdump.bst
+- packages/sbc.bst
+- packages/soundtouch.bst
+- packages/spandsp.bst
+- packages/srt.bst
+- packages/svt-av1.bst
+- packages/svt-hevc.bst
+- packages/webrtc-audio-processing-1.bst
+- packages/wildmidi.bst
+- packages/x265.bst
+- packages/zbar.bst
+- packages/zvbi.bst
+- packages/zxing-cpp.bst
+
+build-depends:
+- arch-bootstrap.bst

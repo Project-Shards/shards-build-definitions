@@ -220,8 +220,8 @@ def copy(source, target, targetroot):
     #os.makedirs(os.path.dirname(dest), exist_ok=True)
 
 #    if source is not None:
-#        if not "/sysroot" in source and os.path.lexists("/sysroot/"+source):
-#            source = "/sysroot/"+source
+#        if not "${sysroot}" in source and os.path.lexists("${sysroot}/"+source):
+#            source = "${sysroot}/"+source
 
     if source is None:
         os.mkdir(dest)

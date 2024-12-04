@@ -1,0 +1,11 @@
+kind: pacman
+sources:
+- kind: remote
+  url: arch_archive:extra/os/x86_64/libxcvt-0.1.2-2-x86_64.pkg.tar.zst
+  ref: c8bfa715fe544499e0b1d28ef3a6f493bb4cac6495d42490391f04dd9a40d5a8
+
+runtime-depends:
+- packages/glibc.bst
+
+build-depends:
+- arch-bootstrap.bst

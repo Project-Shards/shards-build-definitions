@@ -6,12 +6,32 @@ BINARIES=(
     modinfo
     modprobe
     rmmod
-    lsblk
-    blkid
+)
+
+MODULES=(
+    drivers/hid
+    drivers/input/keyboard
+    drivers/nvdimm
+    drivers/gpu/drm
+    drivers/md
+    drivers/mmc
+    fs/squashfs
+    fs/overlayfs
+    fs/erofs
+    fs/exfat
+    fs/btrfs
+    drivers/nvme
+    drivers/scsi
+)
+
+MODULES_BY_NAME=(
+    crypto-sha256
+    crypto-hmac
+    crypto-xts
 )
 
 FILES=(
-   /usr/lib/${multiarch}/libkmod.so.2
+    /usr/lib/${multiarch}/libkmod.so.2
 )
 
 install() {
@@ -22,14 +42,31 @@ install() {
         install_file "${f}"
     done
 
+#    for name in ${MODULES_BY_NAME[@]}; do
+#        for path in $(modinfo -k "${kernelver}" -b /usr -n "${name}"); do
+#            case "${path}" in
+#                /*)
+#                    install_file "${path}"
+#                    ;;
+#            esac
+#        done
+
     mkdir -p /initramfs-root/usr/lib/modules
-    cp -r /sysroot/usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}
+    cp -r /usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}
+
+    for mod in "${MODULES[@]}"; do
+        if [ -d "/usr/lib/modules/${kernelver}/kernel/${mod}" ]; then
+            while IFS= read -r -d '' file; do
+                install_file "${file}"
+            done < <(find "/usr/lib/modules/${kernelver}/kernel/${mod}" -type f -print0)
+        fi
+    done
 
     while IFS= read -r -d '' line; do
         case "${line}" in
             *.firmware=*)
                 firmware="${line##*.firmware=}"
-                path="/sysroot/usr/lib/firmware/${firmware}.xz"
+                path="/usr/lib/firmware/${firmware}.xz"
                 if [ -f "${path}" ]; then
                     install_file "${path}"
                 else
@@ -37,5 +74,7 @@ install() {
                 fi
                 ;;
         esac
-    done <"/sysroot/usr/lib/modules/${kernelver}/modules.builtin.modinfo"
+    done <"/usr/lib/modules/${kernelver}/modules.builtin.modinfo"
+
+    install_files "/usr/lib/modules/${kernelver}"/modules.{builtin{,.bin,.alias.bin,.modinfo},order}
 }

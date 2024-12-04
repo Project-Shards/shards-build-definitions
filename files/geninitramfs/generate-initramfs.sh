@@ -3,12 +3,13 @@
 set -eu
 
 root="$1"
-kernelver="$2"
-shift 2
+sysroot="$2"
+kernelver="$3"
+shift 3
 libdirs=("$@")
 
 for mod in /usr/share/generate-initramfs/modules/*; do
-    /usr/libexec/generate-initramfs/run-module.sh "${root}" "${kernelver}" "${mod}" "${libdirs[@]}"
+    /usr/libexec/generate-initramfs/run-module.sh "${root}" "${sysroot}" "${kernelver}" "${mod}" "${libdirs[@]}"
 done
 
 ldconfig -r "${root}"
