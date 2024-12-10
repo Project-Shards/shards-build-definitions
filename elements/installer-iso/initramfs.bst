@@ -4,7 +4,7 @@ build-depends:
   - build-bootstrap.bst
   - custom-packages/linux.bst
   - packages/dracut.bst
-  - packages/plymouth.bst
+  - custom-packages/plymouth.bst
 #  - packages/isomd5sum.bst
 
 config:

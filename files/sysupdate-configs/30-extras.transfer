@@ -1,0 +1,14 @@
+[Transfer]
+ProtectVersion=%A
+Features=extras
+
+[Source]
+Type=url-file
+Path=https://repo.shards.blahaj.land/usr-images/
+MatchPattern=extras_@v.raw.xz
+
+[Target]
+Type=regular-file
+Path=/var/lib/extensions/
+MatchPattern=extras_@v.raw
+InstancesMax=2

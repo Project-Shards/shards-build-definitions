@@ -3,20 +3,10 @@ kind: manual
 build-depends:
   - sysroot-bootstrap.bst
   - packages/pacman.bst
-  - packages/librsvg.bst
   - common-deps/pacman-config.bst
   - common-deps/pacman-repo-db.bst
   - common-deps/efitools.bst
-  - filename: common-deps/efitools.bst
-    config:
-      location: '%{install-root}'
-  - filename: common-deps/signed-modules.bst
-    config:
-      location: '%{install-root}'
-  - filename: custom-packages/filesystem.bst
-    config:
-      location: '%{install-root}'
-  - filename: custom-packages/systemd.bst
+  - filename: component.extras/extras-bootstrap.bst
     config:
       location: '%{install-root}'
 

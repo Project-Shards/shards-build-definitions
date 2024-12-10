@@ -3,28 +3,29 @@ kind: script
 build-depends:
   - build-bootstrap.bst
   - packages/erofs-utils.bst
+  - common-deps/os-release.bst
   - common-deps/make-layer.bst
-  - filename: component.nvidia/nvidia-drivers.bst
+  - filename: component.extras/filesystem-base.bst
     config:
-      location: '/sysroot-nvidia'
+      location: '/sysroot-extras'
   - filename: sysupdate/filesystem.bst
     config:
       location: '/sysroot-base'
 
 config:
   commands:
-    - mkdir -p /sysroot-nvidia/usr/lib/extension-release.d/
+    - mkdir -p /sysroot-extras/usr/lib/extension-release.d/
     - |
-      cat << EOF > /sysroot-nvidia/usr/lib/extension-release.d/extension-release.nvidia-runtime_%{tag}.%{image_id}
+      cat << EOF > /sysroot-extras/usr/lib/extension-release.d/extension-release.extras_%{tag}.%{image_id}
       ID=project.shards
       VERSION_ID=%{version_id}
       SYSEXT_LEVEL=%{tag}.%{image_id}
       EOF
-    - cp /sysroot-nvidia/usr/lib/extension-release.d/extension-release.nvidia-runtime_%{tag}.%{image_id} /sysroot-nvidia/usr/lib/extension-release.d/extension-release.nvidia-runtime
+    - cp /sysroot-extras/usr/lib/extension-release.d/extension-release.extras_%{tag}.%{image_id} /sysroot-extras/usr/lib/extension-release.d/extension-release.extras
 
     - |
       mkdir -p /output
-      make-layer /sysroot/usr /sysroot-nvidia/usr /output/usr
+      make-layer /sysroot/usr /sysroot-extras/usr /output/usr
 
     - |
       mkdir -p /output/etc
@@ -32,10 +33,10 @@ config:
 
     - |
       mkdir -p /definitions
-      cat <<EOF >definitions/10-nvidia-modules.conf
+      cat <<EOF >definitions/10-extras.conf
       [Partition]
       Type=root
-      Label=shards_nvidia_rntm_%A
+      Label=shards_extras_%A
       CopyFiles=/usr
       Minimize=best
       Format=erofs
@@ -55,8 +56,10 @@ config:
       --split=true \
       --no-pager \
       --seed="a293eeef-ac57-4525-86b8-595997d6ab1a" \
-      nvidia-drivers.raw \
-      --json=pretty > %{install-root}/nvidia-drivers-repart.json
-    - install -Dm644 -t '%{install-root}' "nvidia-drivers.usr.raw"
+      extras.raw \
+      --json=pretty > %{install-root}/extras-repart.json
+    - install -Dm644 -t '%{install-root}' "extras.usr.raw"
+
+
 
 

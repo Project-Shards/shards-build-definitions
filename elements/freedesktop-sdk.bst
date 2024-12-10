@@ -9,3 +9,5 @@ sources:
 config:
   overrides:
     components/gcc.bst: packages/gcc.bst
+    components/python3.bst: packages/python.bst
+    snap-images/squashfs-tools.bst: packages/squashfs-tools.bst

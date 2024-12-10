@@ -7,7 +7,7 @@ depends:
   - packages/linux-firmware.bst
 #  - packages/cryptsetup.bst
 #  - packages/btrfs-progs.bst
-#  - packages/plymouth.bst
+#  - custom-packages/plymouth.bst
   - packages/util-linux-libs.bst
   - packages/glibc-locales.bst
   - packages/gnome.bst

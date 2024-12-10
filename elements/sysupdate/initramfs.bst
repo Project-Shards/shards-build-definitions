@@ -18,7 +18,7 @@ build-depends:
   - packages/tzdata.bst
   - packages/util-linux.bst
   - common-deps/signed-modules.bst
-  - packages/plymouth.bst
+  - custom-packages/plymouth.bst
   - filename: sysupdate/usr-image.bst
     config:
       location: /usr-image

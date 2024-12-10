@@ -31,15 +31,7 @@ config:
         cp import-pubring.gpg '%{install-root}/usr/lib/systemd/import-pubring.gpg'
 
       - |
-        mkdir -p %{install-root}/usr/lib/repart.d
-        cp -r repart-configs/*.conf %{install-root}/usr/lib/repart.d/
-
-      - |
         install -Dm644 systemd-preset '%{install-root}/usr/lib/systemd/system-preset/50-shards.conf'
-
-      - |
-        cd sysupdate-configs
-        install -Dm644 -t '%{install-root}/usr/lib/sysupdate.d/' *.transfer *.feature
 
       - |
         install -Dm644 -t '%{install-root}/usr/lib/systemd/system/' global-preset-all.service
