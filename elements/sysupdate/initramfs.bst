@@ -41,6 +41,11 @@ config:
       version="$(ls -1 /usr/lib/modules | head -n1)"
       generate-initramfs /initramfs-root / ${version} /usr/lib /usr/lib/systemd
       depmod -a -b /initramfs-root/usr "${version}"
+      echo "root:root" | chpasswd
+      cp /etc/shadow* /initramfs-root/etc/
+      cp /etc/passwd* /initramfs-root/etc/
+      cp /etc/gshadow* /initramfs-root/etc/
+      cp /etc/group* /initramfs-root/etc/
       cd /initramfs-root
       find . -print0 | sort -z | cpio --reproducible --null -H newc -o --quiet | xz --check=crc32 --lzma2=dict=1MiB -T0 >/initramfs.img
 

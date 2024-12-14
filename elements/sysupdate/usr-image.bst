@@ -39,6 +39,10 @@ config:
       pacman-fix-permissions -a
       rm -rf /sysroot/etc
 
+      # buildstream doesn't support capabilities yet
+      chmod 4755 /sysroot/usr/bin/newuidmap
+      chmod 4755 /sysroot/usr/bin/newgidmap
+
     - |
       mkdir definitions
       cp /sysroot/usr/lib/repart.d/10-efi.conf definitions/

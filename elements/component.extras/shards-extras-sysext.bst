@@ -5,12 +5,14 @@ build-depends:
   - packages/erofs-utils.bst
   - common-deps/os-release.bst
   - common-deps/make-layer.bst
+  - common-deps/pacman-config.bst
+  - common-deps/pacman-fix-permissions.bst
   - filename: component.extras/filesystem-base.bst
     config:
       location: '/sysroot-extras'
   - filename: sysupdate/filesystem.bst
     config:
-      location: '/sysroot-base'
+      location: '/sysroot'
 
 config:
   commands:
@@ -24,12 +26,23 @@ config:
     - cp /sysroot-extras/usr/lib/extension-release.d/extension-release.extras_%{tag}.%{image_id} /sysroot-extras/usr/lib/extension-release.d/extension-release.extras
 
     - |
-      mkdir -p /output
-      make-layer /sysroot/usr /sysroot-extras/usr /output/usr
+      mkdir -p /sysroot-extras/usr/share/factory
+      mv -T /sysroot-extras/etc /sysroot-extras/usr/share/factory/etc
 
     - |
-      mkdir -p /output/etc
-      cp -T /etc/os-release /output/etc/os-release
+      mkdir -p /sysroot-extras/etc /sysroot/etc
+      cp /etc/pacman.conf /sysroot/etc/pacman.conf
+      cp /etc/pacman.conf /sysroot-extras/etc/pacman.conf
+      PFP_SYSROOT="/sysroot" pacman-fix-permissions -a
+      PFP_SYSROOT="/sysroot-extras" pacman-fix-permissions -a
+
+    - |
+      mkdir -p /tmp/output/usr
+      make-layer /sysroot/usr /sysroot-extras/usr /tmp/output/usr
+
+    - |
+      mkdir -p /tmp/output/etc
+      cp -T /etc/os-release /tmp/output/etc/os-release
 
     - |
       mkdir -p /definitions
@@ -47,7 +60,7 @@ config:
       SYSTEMD_LOG_LEVEl=debug \
       systemd-repart \
       --definitions=definitions \
-      --root=/output \
+      --root=/tmp/output \
       --empty=create \
       --size=auto \
       --dry-run=no \

@@ -79,4 +79,4 @@ config:
   - |
     label="$(jq -r '(.[] | select(.type | match("^root-.*-verity$"))).label' repart.json)"
     image_version="${label##shards_nvidia_rntm_v_}"
-    install -Dm644 nvidia-runtime.raw.xz "%{install-root}/nvidia-drivers_${image_version}.raw.xz"
+    install -Dm644 nvidia-runtime.raw.xz "%{install-root}/nvidia-runtime_${image_version}.raw.xz"

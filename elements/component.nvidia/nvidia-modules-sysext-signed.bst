@@ -3,6 +3,7 @@ kind: manual
 build-depends:
   - build-bootstrap.bst
   - packages/jq.bst
+  - packages/sbsigntools.bst
   - filename: component.nvidia/nvidia-modules-sysext.bst
     strict: true
     config:
@@ -13,6 +14,12 @@ sources:
   path: files/signing-keys/SYSEXT.key
 - kind: local
   path: files/signing-keys/SYSEXT.crt
+- kind: local
+  path: files/signing-keys/VENDOR.key
+- kind: local
+  path: files/signing-keys/VENDOR.crt
+- kind: local
+  path: files/signing-keys/sbat.txt
 
 config:
   build-commands:
@@ -73,10 +80,20 @@ config:
         >%{install-root}/repart.json
 
   - |
-    xz ${XZFLAGS} nvidia-modules.raw
+    ukify build \
+      --secureboot-private-key=VENDOR.key \
+      --secureboot-certificate=VENDOR.crt \
+      --sbat=@sbat.txt \
+      --cmdline='module_blacklist=nouveau nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1' \
+      --output nvidia-modules.addon.efi
+
+  - |
+    xz nvidia-modules.raw
+    xz nvidia-modules.addon.efi
 
   install-commands:
   - |
     label="$(jq -r '(.[] | select(.type | match("^root-.*-verity$"))).label' %{install-root}/repart.json)"
     image_version="${label##shards_nvidia_mods_v_}"
     install -Dm644 nvidia-modules.raw.xz "%{install-root}/nvidia-modules_${image_version}.raw.xz"
+    install -Dm644 nvidia-modules.addon.efi.xz "%{install-root}/nvidia-modules_${image_version}.addon.efi.xz"

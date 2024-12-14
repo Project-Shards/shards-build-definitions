@@ -9,19 +9,19 @@ BINARIES=(
 )
 
 MODULES=(
-    drivers/hid
-    drivers/input/keyboard
-    drivers/nvdimm
-    drivers/gpu/drm
-    drivers/md
-    drivers/mmc
-    fs/squashfs
-    fs/overlayfs
-    fs/erofs
-    fs/exfat
-    fs/btrfs
-    drivers/nvme
-    drivers/scsi
+#    drivers/hid
+#    drivers/input/keyboard
+#    drivers/nvdimm
+#    drivers/gpu/drm
+#    drivers/md
+#    drivers/mmc
+#    fs/squashfs
+#    fs/overlayfs
+#    fs/erofs
+#    fs/exfat
+#    fs/btrfs
+#    drivers/nvme
+#    drivers/scsi
 )
 
 MODULES_BY_NAME=(
@@ -42,25 +42,46 @@ install() {
         install_file "${f}"
     done
 
-#    for name in ${MODULES_BY_NAME[@]}; do
-#        for path in $(modinfo -k "${kernelver}" -b /usr -n "${name}"); do
-#            case "${path}" in
-#                /*)
-#                    install_file "${path}"
-#                    ;;
-#            esac
-#        done
-
-    mkdir -p /initramfs-root/usr/lib/modules
-    cp -r /usr/lib/modules/${kernelver} /initramfs-root/usr/lib/modules/${kernelver}
-
-    for mod in "${MODULES[@]}"; do
-        if [ -d "/usr/lib/modules/${kernelver}/kernel/${mod}" ]; then
-            while IFS= read -r -d '' file; do
-                install_file "${file}"
-            done < <(find "/usr/lib/modules/${kernelver}/kernel/${mod}" -type f -print0)
-        fi
+    for name in ${MODULES_BY_NAME[@]}; do
+        for path in $(modinfo -k "${kernelver}" -b /usr -n "${name}"); do
+            case "${path}" in
+                /*)
+                    install_file "${path}"
+                    ;;
+            esac
+        done
     done
+
+#    mkdir -p /initramfs-root/usr/lib/modules
+#    cp -r /usr/lib/modules/${kernelver}/kernel/drivers /initramfs-root/usr/lib/modules/${kernelver}/kernel/
+
+#    for mod in "${MODULES[@]}"; do
+#        if [ -d "/usr/lib/modules/${kernelver}/kernel/${mod}" ]; then
+#            while IFS= read -r -d '' file; do
+#                install_file "${file}"                 
+#            done < <(find "/usr/lib/modules/${kernelver}/kernel/${mod}" -type f -print0)
+#        fi
+#    done
+
+    while IFS= read -r -d '' file; do
+        install_file "${file}"
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/drivers" -type f -print0)
+
+    while IFS= read -r -d '' file; do
+        install_file "${file}"
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/lib" -type f -print0)
+
+    while IFS= read -r -d '' file; do
+        install_file "${file}"
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/fs" -type f -print0)
+
+    while IFS= read -r -d '' file; do
+        install_file "${file}"
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/crypto" -type f -print0)
+
+    while IFS= read -r -d '' file; do
+        install_file "${file}"
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/security" -type f -print0)
 
     while IFS= read -r -d '' line; do
         case "${line}" in

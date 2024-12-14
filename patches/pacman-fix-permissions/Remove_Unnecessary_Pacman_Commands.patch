@@ -1,8 +1,16 @@
 diff --git a/src/pacman_fix_permissions/__init__.py b/src/pacman_fix_permissions/__init__.py
-index 0389a9f..fe193c5 100644
+index 0389a9f..31e5158 100644
 --- a/src/pacman_fix_permissions/__init__.py
 +++ b/src/pacman_fix_permissions/__init__.py
-@@ -21,7 +21,6 @@ from typing import Tuple
+@@ -7,6 +7,7 @@ import re
+ import sys
+ import tarfile
+ from contextlib import contextmanager
++from os import getenv
+ from os import chmod
+ from os import getuid
+ from os import lstat
+@@ -21,7 +22,6 @@ from typing import Tuple
  import zstandard as zstd
  
  ARCHITECTURE_REGEX = r"Architecture = (.*)"
@@ -10,7 +18,7 @@ index 0389a9f..fe193c5 100644
  PACKAGE_IGNORE = [
      ".PKGINFO",
      ".BUILDINFO",
-@@ -66,18 +65,22 @@ parser.add_argument(
+@@ -66,18 +66,22 @@ parser.add_argument(
  parser.add_argument(
      "-v", "--version", action="version", version=f"%(prog)s {__version__}"
  )
@@ -23,7 +31,7 @@ index 0389a9f..fe193c5 100644
  if getattr(cli_args, "filesystem-paths", None) == []:
      parser.error("You must pass at least one filesystem path when using -f switch")
  
-+prefix = "/sysroot"
++prefix = getenv("PFP_SYSROOT", "/sysroot")
 +PACKAGE_PATH_TEMPLATE = prefix+"/var/cache/pacman/pkg/{name}-{version}-{arch}.pkg.{format}"
  
  def _get_arch() -> str:
@@ -34,7 +42,7 @@ index 0389a9f..fe193c5 100644
          for line in file:
              match = re.match(ARCHITECTURE_REGEX, line)
              if match:
-@@ -111,21 +114,11 @@ def get_package(
+@@ -111,21 +115,11 @@ def get_package(
  ) -> Iterator[tarfile.TarFile]:
      """Open package from pacman cache, download it if missing."""
  
@@ -58,7 +66,7 @@ index 0389a9f..fe193c5 100644
          with tarfile.open(path) as package:
              yield package
      elif path.endswith("zst"):
-@@ -137,18 +130,9 @@ def get_package(
+@@ -137,18 +131,9 @@ def get_package(
      else:
          raise Exception("Unknown package format")
  
@@ -77,7 +85,7 @@ index 0389a9f..fe193c5 100644
  
      logger.info("==> Parsing installed packages list")
      selected_packages = getattr(cli_args, "packages", [])
-@@ -166,7 +150,7 @@ def __main__():
+@@ -166,7 +151,7 @@ def __main__():
          package_ids = [" ".join(line.split()[-2:]) for line in output]
      else:
          result = run(
@@ -86,7 +94,7 @@ index 0389a9f..fe193c5 100644
              check=True,
              stdout=PIPE,
          )
-@@ -184,12 +168,19 @@ def __main__():
+@@ -184,12 +169,19 @@ def __main__():
          logger.info("(%i/%i) %s", i + 1, package_ids_total, package_id)
          name, version = package_id.split()
  
@@ -108,7 +116,7 @@ index 0389a9f..fe193c5 100644
                  if path in broken_paths:
                      continue
  
-@@ -200,7 +191,6 @@ def __main__():
+@@ -200,7 +192,6 @@ def __main__():
                          broken_paths[path] = (old_mode, new_mode)
                  except FileNotFoundError:
                      logger.error("File not found: %s", path)
@@ -116,7 +124,7 @@ index 0389a9f..fe193c5 100644
  
      if not broken_paths:
          logger.info("==> Your filesystem is fine, no action required")
-@@ -210,10 +200,6 @@ def __main__():
+@@ -210,10 +201,6 @@ def __main__():
      for path, modes in broken_paths.items():
          old_mode, new_mode = modes
          logging.info("%s: %s => %s", path, oct(old_mode), oct(new_mode))

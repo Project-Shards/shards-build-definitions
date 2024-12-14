@@ -4,6 +4,8 @@ build-depends:
   - build-bootstrap.bst
   - packages/erofs-utils.bst
   - common-deps/make-layer.bst
+  - common-deps/pacman-config.bst
+  - common-deps/pacman-fix-permissions.bst
   - filename: component.nvidia/nvidia-drivers.bst
     config:
       location: '/sysroot-nvidia'
@@ -23,12 +25,22 @@ config:
     - cp /sysroot-nvidia/usr/lib/extension-release.d/extension-release.nvidia-runtime_%{tag}.%{image_id} /sysroot-nvidia/usr/lib/extension-release.d/extension-release.nvidia-runtime
 
     - |
-      mkdir -p /output
-      make-layer /sysroot/usr /sysroot-nvidia/usr /output/usr
+      mkdir -p /tmp/output
+      make-layer /sysroot-base/usr /sysroot-nvidia/usr /tmp/output/usr
 
     - |
-      mkdir -p /output/etc
-      cp -T /etc/os-release /output/etc/os-release
+      mkdir -p /tmp/output/etc
+      cp /etc/pacman.conf /tmp/output/etc/pacman.conf
+      cp -r /sysroot-base/var /tmp/output/var
+      cp /sysroot-nvidia/packagevers /tmp/output/packagevers
+      cat /sysroot-base/packagevers >> /tmp/output/packagevers
+      PFP_SYSROOT="/tmp/output" pacman-fix-permissions -a
+      rm -rf /tmp/output/etc
+
+
+    - |
+      mkdir -p /tmp/output/etc
+      cp -T /etc/os-release /tmp/output/etc/os-release
 
     - |
       mkdir -p /definitions
@@ -46,7 +58,7 @@ config:
       SYSTEMD_LOG_LEVEl=debug \
       systemd-repart \
       --definitions=definitions \
-      --root=/output \
+      --root=/tmp/output \
       --empty=create \
       --size=auto \
       --dry-run=no \
