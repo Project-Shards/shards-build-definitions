@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libshumate-1.3.0-1-x86_64.pkg.tar.zst
-  ref: 16777713c2f87080b0c0a5f8ea24a48bf1e5c52f2ff9461df76fc50cdb12f440
+  url: arch_archive:extra/os/x86_64/libshumate-1.3.1-1-x86_64.pkg.tar.zst
+  ref: 9b5dd2e1a1bc8b45cc2cdd1431503d0ae0efecb30a8116ad8d33ca8ee42be3e1
 
 runtime-depends:
 - packages/cairo.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/orca-47.2-1-any.pkg.tar.zst
-  ref: 2d33a14e2ffa5cd3e6554e199315727e009d809d3238d02a294d938d3b854860
+  url: arch_archive:extra/os/x86_64/orca-47.3-1-any.pkg.tar.zst
+  ref: c4b7ed5e85a7c1befc811e66bcb46b7868654f7cfc87ad3b13c4e0986eef3008
 
 runtime-depends:
 - packages/at-spi2-core.bst

@@ -8,31 +8,18 @@ BINARIES=(
     rmmod
 )
 
-MODULES=(
-#    drivers/hid
-#    drivers/input/keyboard
-#    drivers/nvdimm
-#    drivers/gpu/drm
-#    drivers/md
-#    drivers/mmc
-#    fs/squashfs
-#    fs/overlayfs
-#    fs/erofs
-#    fs/exfat
-#    fs/btrfs
-#    drivers/nvme
-#    drivers/scsi
-)
-
-MODULES_BY_NAME=(
-    crypto-sha256
-    crypto-hmac
-    crypto-xts
-)
-
 FILES=(
     /usr/lib/${multiarch}/libkmod.so.2
 )
+
+install_module() {
+    install_file "${1}"
+    while IFS= read -r -d '' file; do
+	if [ -f "/usr/lib/firmware/${file}.zst" ]; then
+	    install_file "/usr/lib/firmware/${file}.zst"
+	fi
+    done < <(modinfo -0 -F firmware "${1}")
+}
 
 install() {
     for b in "${BINARIES[@]}"; do
@@ -42,60 +29,13 @@ install() {
         install_file "${f}"
     done
 
-    for name in ${MODULES_BY_NAME[@]}; do
-        for path in $(modinfo -k "${kernelver}" -b /usr -n "${name}"); do
-            case "${path}" in
-                /*)
-                    install_file "${path}"
-                    ;;
-            esac
-        done
-    done
-
-#    mkdir -p /initramfs-root/usr/lib/modules
-#    cp -r /usr/lib/modules/${kernelver}/kernel/drivers /initramfs-root/usr/lib/modules/${kernelver}/kernel/
-
-#    for mod in "${MODULES[@]}"; do
-#        if [ -d "/usr/lib/modules/${kernelver}/kernel/${mod}" ]; then
-#            while IFS= read -r -d '' file; do
-#                install_file "${file}"                 
-#            done < <(find "/usr/lib/modules/${kernelver}/kernel/${mod}" -type f -print0)
-#        fi
-#    done
-
     while IFS= read -r -d '' file; do
-        install_file "${file}"
-    done < <(find "/usr/lib/modules/${kernelver}/kernel/drivers" -type f -print0)
-
-    while IFS= read -r -d '' file; do
-        install_file "${file}"
-    done < <(find "/usr/lib/modules/${kernelver}/kernel/lib" -type f -print0)
-
-    while IFS= read -r -d '' file; do
-        install_file "${file}"
-    done < <(find "/usr/lib/modules/${kernelver}/kernel/fs" -type f -print0)
-
-    while IFS= read -r -d '' file; do
-        install_file "${file}"
-    done < <(find "/usr/lib/modules/${kernelver}/kernel/crypto" -type f -print0)
-
-    while IFS= read -r -d '' file; do
-        install_file "${file}"
-    done < <(find "/usr/lib/modules/${kernelver}/kernel/security" -type f -print0)
-
-    while IFS= read -r -d '' line; do
-        case "${line}" in
-            *.firmware=*)
-                firmware="${line##*.firmware=}"
-                path="/usr/lib/firmware/${firmware}.xz"
-                if [ -f "${path}" ]; then
-                    install_file "${path}"
-                else
-                    echo "Ignoring missing ${path}"
-                fi
-                ;;
-        esac
-    done <"/usr/lib/modules/${kernelver}/modules.builtin.modinfo"
+        install_module "${file}" > /dev/null
+    done < <(find "/usr/lib/modules/${kernelver}/kernel/" -type f -not -wholename "*net/wireless*" -not -wholename "*firewire*" -print0)
 
     install_files "/usr/lib/modules/${kernelver}"/modules.{builtin{,.bin,.alias.bin,.modinfo},order}
 }
+
+kernelver="$(ls -1 /usr/lib/modules)"
+
+install

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/poppler-glib-24.11.0-2-x86_64.pkg.tar.zst
-  ref: 97d5133f817756f0e33bfa73b68bd5980dc870997d1d7633bc23a211f4be2257
+  url: arch_archive:extra/os/x86_64/poppler-glib-24.12.0-1-x86_64.pkg.tar.zst
+  ref: 263d2659bdbe3f8079ebaa2d384d38ad0c192a82b6979f0ab8390392b290c450
 
 runtime-depends:
 - packages/poppler.bst

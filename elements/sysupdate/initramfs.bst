@@ -17,8 +17,11 @@ build-depends:
   - packages/tpm2-tools.bst
   - packages/tzdata.bst
   - packages/util-linux.bst
+  - packages/nvidia-utils.bst
+  - packages/linux-firmware.bst
   - common-deps/signed-modules.bst
   - custom-packages/plymouth.bst
+  - component.nvidia/nvidia-modules.bst
   - filename: sysupdate/usr-image.bst
     config:
       location: /usr-image
@@ -40,8 +43,11 @@ config:
     - |
       version="$(ls -1 /usr/lib/modules | head -n1)"
       generate-initramfs /initramfs-root / ${version} /usr/lib /usr/lib/systemd
+      cp /usr/lib/modules/"${version}"/kernel/drivers/video/nvidia*.ko* /initramfs-root/usr/lib/modules/"${version}"/kernel/drivers/video/
+      cp -r /usr/lib/firmware/nvidia /initramfs-root/usr/lib/firmware/
       depmod -a -b /initramfs-root/usr "${version}"
-      echo "root:root" | chpasswd
+      rm -rf /initramfs-root/usr/lib/modules/"${version}"/kernel/drivers/video/nvidia*.ko*
+      #echo "root:root" | chpasswd
       cp /etc/shadow* /initramfs-root/etc/
       cp /etc/passwd* /initramfs-root/etc/
       cp /etc/gshadow* /initramfs-root/etc/

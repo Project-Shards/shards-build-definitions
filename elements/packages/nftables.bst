@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/nftables-1:1.1.1-1-x86_64.pkg.tar.zst
-  ref: faefc6d5467bdd863f6c0056849c6eb7d3adfa1e7b3bbf9d5ac2dc7a9503bd74
+  url: arch_archive:extra/os/x86_64/nftables-1:1.1.1-2-x86_64.pkg.tar.zst
+  ref: ed7d3e32231f4d68a4ef4b07131fdbd93d2930e3158f79614b3e1060cec41ea6
 
 runtime-depends:
 - packages/libmnl.bst

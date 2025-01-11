@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libxv-1.0.12-2-x86_64.pkg.tar.zst
-  ref: 7fdd35e72d9d14b20cb6cd1f1fca1afe869467a3d626696a1c7be44a19f98a2b
+  url: arch_archive:extra/os/x86_64/libxv-1.0.13-1-x86_64.pkg.tar.zst
+  ref: 9cae2311e50945fd5144575aa010da6009ca85d68a492f253920ac16c936e290
 
 runtime-depends:
 - packages/libxext.bst

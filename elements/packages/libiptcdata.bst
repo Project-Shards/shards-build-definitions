@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libiptcdata-1.0.5-3-x86_64.pkg.tar.zst
-  ref: d8bcc34bb1bab87a23fd0aeefc6f355fd10c8e4f9761014dd2a2a807278606ad
+  url: arch_archive:extra/os/x86_64/libiptcdata-1.0.5-4-x86_64.pkg.tar.zst
+  ref: c43c8262be6b84a4f3fbcb59f1fd9c6185763376f270315dd1b0f54c5398f949
 
 runtime-depends:
 - packages/glibc.bst

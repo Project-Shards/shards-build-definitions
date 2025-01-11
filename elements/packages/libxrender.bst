@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libxrender-0.9.11-2-x86_64.pkg.tar.zst
-  ref: c1471dc06c42802efb0f00f89f87eef10fd37b938bb8e51a5ccce8435440b01b
+  url: arch_archive:extra/os/x86_64/libxrender-0.9.12-1-x86_64.pkg.tar.zst
+  ref: fed0389073d5b107074eaab48cefcc2716e607865142cde5b579c8ceeefea142
 
 runtime-depends:
 - packages/libx11.bst

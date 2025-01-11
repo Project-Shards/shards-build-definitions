@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-charset-normalizer-3.4.0-1-any.pkg.tar.zst
-  ref: 5657bb5960ac8ee0d91a0ded2a1cb08be502b32ff3de2e529923fbfde5d9180c
+  url: arch_archive:extra/os/x86_64/python-charset-normalizer-3.4.1-1-any.pkg.tar.zst
+  ref: 2a9cbff2023649997c30ab40e63ddfca35f7c49ef3318a40a577b77538e61568
 
 runtime-depends:
 - packages/python.bst

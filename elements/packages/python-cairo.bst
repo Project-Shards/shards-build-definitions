@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-cairo-1.27.0-1-x86_64.pkg.tar.zst
-  ref: bd8ca4b89a9377a20c051565d3aa8ef2460e1529e1c35972354491d45f8cd80a
+  url: arch_archive:extra/os/x86_64/python-cairo-1.27.0-2-x86_64.pkg.tar.zst
+  ref: 244b1400815761faffa460a5fef6738c64b352c25c1d32af7668a84ec396df56
 
 runtime-depends:
 - packages/cairo.bst

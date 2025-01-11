@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-idna-3.10-1-any.pkg.tar.zst
-  ref: c7c1a23f63e3b9e5ff23c253b31e3cb8d8561226082de639a0f300c5cca9d6cd
+  url: arch_archive:extra/os/x86_64/python-idna-3.10-2-any.pkg.tar.zst
+  ref: 6e90854aa9a0c3240b9d3f16a47e7c73a0e00b3d4df445b9de52e6e253810e46
 
 runtime-depends:
 - packages/python.bst

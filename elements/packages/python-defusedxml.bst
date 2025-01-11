@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-defusedxml-0.7.1-6-any.pkg.tar.zst
-  ref: 0627526fda99875a5b1075fb5901d4b09f776ad5421bb46e61f3736d9fdfd4d7
+  url: arch_archive:extra/os/x86_64/python-defusedxml-0.7.1-7-any.pkg.tar.zst
+  ref: 06c5361ce5b1b25f294754783d9fc28fd06003a59fff21264c28744bed8e3c1b
 
 runtime-depends:
 - packages/python.bst

@@ -5,6 +5,9 @@ build-depends:
   - packages/pacman.bst
   - common-deps/pacman-config.bst
   - common-deps/pacman-repo-db.bst
+  - filename: installer-iso/gdm-config.bst
+    config:
+      location: '/tmp/gdm' # need to do this because of a file overlap with gdm
   - filename: common-deps/efitools.bst
     config:
       location: '%{install-root}'
@@ -50,9 +53,9 @@ config:
       sed -i '/^pacman$/d' %{install-root}/packages
       sed -i '/^mkinitcpio$/d' %{install-root}/packages
       pacman -Sydd --noconfirm --sysroot=%{install-root} $(cat %{install-root}/packages)
+      chmod 775 %{install-root}/usr/lib/dbus-daemon-launch-helper
 
     - |
-      systemctl --root=%{install-root} disable gdm.service
       mkdir -p %{install-root}/etc/polkit-1/rules.d/
       cat << EOF > %{install-root}/etc/polkit-1/rules.d/installer.rules
       polkit.addRule(function(action, subject) {
@@ -73,9 +76,18 @@ config:
       EOF
 
     - |
+      cat << EOF > %{install-root}/usr/lib/tmpfiles.d/gdm-home.conf
+      Z /var/lib/gdm/ 754 gdm gdm -
+      EOF
+
+    - |
+      cp /tmp/gdm/etc/gdm/custom.conf %{install-root}/etc/gdm/custom.conf
+
+    - |
       rm -rf %{install-root}/usr/share/man
       rm -rf %{install-root}/usr/share/help
       rm -rf %{install-root}/usr/share/doc
+      rm -rf %{install-root}/var/lib/pacman
 
 public:
   bst:

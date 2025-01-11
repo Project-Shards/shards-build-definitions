@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/ffmpeg-2:7.1-2-x86_64.pkg.tar.zst
-  ref: d02a9badfb82e8846ea3263d415c4b6eb7eb83a28ea9d86e60a0729bfb59b633
+  url: arch_archive:extra/os/x86_64/ffmpeg-2:7.1-5-x86_64.pkg.tar.zst
+  ref: 0f1490612343aeb822988d66431c09fd30ff1997d08d1c4d77d924248cec4b2a
 
 runtime-depends:
 - packages/alsa-lib.bst

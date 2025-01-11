@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/fwupd-2.0.1-2-x86_64.pkg.tar.zst
-  ref: a99f0e1a971793c4f03bc78382060e98db3c1b44fcfaea0c238a5d94db714bb5
+  url: arch_archive:extra/os/x86_64/fwupd-2.0.3-2-x86_64.pkg.tar.zst
+  ref: c96495f13bbc56df942629b1c664cb86be219c5b7d55d63e288f449be6984c6a
 
 runtime-depends:
 - packages/bash.bst

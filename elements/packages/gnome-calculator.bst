@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-calculator-47.0-1-x86_64.pkg.tar.zst
-  ref: 8f66af38e950a114adc72448dbc5ee361989edeaaaba7cb55ca6d4dc94604a1c
+  url: arch_archive:extra/os/x86_64/gnome-calculator-47.1-1-x86_64.pkg.tar.zst
+  ref: 2aab38abd9a03aba2504fbd676407bc30e2802e1a392bbf0ce02e5165126708c
 
 runtime-depends:
 - packages/dconf.bst

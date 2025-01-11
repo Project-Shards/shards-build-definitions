@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/tinysparql-3.8.1-1-x86_64.pkg.tar.zst
-  ref: 47ab2180d09b55d44ab29ac175a5dbf89b691b6c6ea97ed686cdb638cca6b5ee
+  url: arch_archive:extra/os/x86_64/tinysparql-3.8.2-2-x86_64.pkg.tar.zst
+  ref: 1292c36cca8adedfcaed71cd13a3e39de0a6452d250345e365f543f8299f4f01
 
 runtime-depends:
 - packages/avahi.bst

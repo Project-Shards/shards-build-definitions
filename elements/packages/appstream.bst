@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/appstream-1.0.3-1-x86_64.pkg.tar.zst
-  ref: ff2d660f27d9239f7beba83d9e6da95b845766a037a209ffbde033b65b6328cd
+  url: arch_archive:extra/os/x86_64/appstream-1.0.4-1-x86_64.pkg.tar.zst
+  ref: 9d11cb6f7df31396a88947091f0ee51245b859b6cbf0ed3c80fb9cbe3c59f82f
 
 runtime-depends:
 - packages/cairo.bst

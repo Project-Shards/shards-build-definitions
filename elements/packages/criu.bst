@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/criu-4.0-1-x86_64.pkg.tar.zst
-  ref: 329f7dc8bc885b736bca02f7ec91c74033555964285f2999d8180e02de714afd
+  url: arch_archive:extra/os/x86_64/criu-4.0-2-x86_64.pkg.tar.zst
+  ref: 92f1bef62021bf8ff16c98b6aaa0b6d5996e44fde20c747eaac04319f5d43edf
 
 runtime-depends:
 - packages/gcc-libs.bst

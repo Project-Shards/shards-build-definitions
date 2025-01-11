@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/gpgme-1.24.0-1-x86_64.pkg.tar.zst
-  ref: c2e3a6217069635531d650c9b2bd1a43bcf19dc5f5c5f5fd87307d5c34ca9e5a
+  url: arch_archive:core/os/x86_64/gpgme-1.24.1-3-x86_64.pkg.tar.zst
+  ref: aef3d64a58e1c8ae24611f1d2d25c279de6e5d3831acfdad327e420bc74f4deb
 
 runtime-depends:
 - packages/gcc-libs.bst

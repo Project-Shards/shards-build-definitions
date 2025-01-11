@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/perl-http-message-6.46-2-any.pkg.tar.zst
-  ref: 5e84d2db7a1429212d4077bdc07ad1fbd55afb131bf067adf24250b7245bbe5b
+  url: arch_archive:extra/os/x86_64/perl-http-message-7.00-1-any.pkg.tar.zst
+  ref: 430e17c5f49b8a1347f01f33e8446fb3b395299a9f2129e5cc9099340c6bc88e
 
 runtime-depends:
 - packages/perl.bst

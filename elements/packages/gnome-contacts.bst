@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-contacts-47.0-2-x86_64.pkg.tar.zst
-  ref: a4e4c2c441553a5bf46f5583913ea7528b22c57925981fd14c35d97dd1db41dc
+  url: arch_archive:extra/os/x86_64/gnome-contacts-47.1.1-1-x86_64.pkg.tar.zst
+  ref: ce9c7f2dc9d6c0c34f95101384b59e48854934a93469a90080b3905960811eb7
 
 runtime-depends:
 - packages/cairo.bst

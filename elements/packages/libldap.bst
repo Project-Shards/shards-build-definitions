@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/libldap-2.6.8-2-x86_64.pkg.tar.zst
-  ref: 02b2e76fc1322c2fc7e858ab305442ad0a1aa7e297cacc51c23ae9118749ab3d
+  url: arch_archive:core/os/x86_64/libldap-2.6.9-1-x86_64.pkg.tar.zst
+  ref: 4c02deec26c5293ef37af433f343fc7fe783f37b7ef42a1bd8f91f4b162c5bda
 
 runtime-depends:
 - packages/libsasl.bst

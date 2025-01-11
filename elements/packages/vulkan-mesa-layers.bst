@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vulkan-mesa-layers-1:24.2.7-1-x86_64.pkg.tar.zst
-  ref: feb33628eaf656e4a350d2ae701fe84d3a71c6328efc62ce4ad41668c5e30f5f
+  url: arch_archive:extra/os/x86_64/vulkan-mesa-layers-1:24.3.3-1-x86_64.pkg.tar.zst
+  ref: c1176ff0d4593d61917ff1fe488fb3bb65dd52ceb4c8ff47c441c12accd49843
 
 runtime-depends:
 - packages/gcc-libs.bst

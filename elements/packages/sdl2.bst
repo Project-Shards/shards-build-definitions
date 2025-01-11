@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/sdl2-2.30.9-1-x86_64.pkg.tar.zst
-  ref: d7ae299ea57d9712abfa4300ebc7cf5b0c9d5def84df738cd7c98faa4d6f0969
+  url: arch_archive:extra/os/x86_64/sdl2-2.30.11-1-x86_64.pkg.tar.zst
+  ref: 7f2b1abdd245c83585d2ccf69d86fc596b87c45c54d59984ab195c403d3ae41f
 
 runtime-depends:
 - packages/glibc.bst

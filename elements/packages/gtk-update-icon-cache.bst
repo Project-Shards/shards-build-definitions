@@ -1,8 +1,9 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gtk-update-icon-cache-1:4.16.7-1-x86_64.pkg.tar.zst
-  ref: 80b628816e24fd138f0510c494f8e820af595d2a1687e9ed769a7635bedf255c
+  url: 
+    arch_archive:extra/os/x86_64/gtk-update-icon-cache-1:4.16.12-1-x86_64.pkg.tar.zst
+  ref: d509600af33e1a3df04ce193242e2666251c2f23f8ff1c26ae3db7c314317e75
 
 runtime-depends:
 - packages/bash.bst

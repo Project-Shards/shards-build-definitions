@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-webencodings-0.5.1-11-any.pkg.tar.zst
-  ref: 50da370cfdefdea70571fd27adcf2d3ba3411c8a4cc7d8c8884d8a04e816ac83
+  url: arch_archive:extra/os/x86_64/python-webencodings-0.5.1-12-any.pkg.tar.zst
+  ref: 56fac787d9a3ec672c5a295509adbbfeeccbd09e7371a6a18175d37480de9d44
 
 runtime-depends:
 - packages/python.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libblockdev-loop-3.2.1-2-x86_64.pkg.tar.zst
-  ref: e59e0a40bb8151b75bc58bf30583cf23fcb6760a95497824fdf8db201ae1dd22
+  url: arch_archive:extra/os/x86_64/libblockdev-loop-3.2.1-3-x86_64.pkg.tar.zst
+  ref: a1a4c49291e35ec3ece976108a88e5b7c2ad04de5ba1f4c90282b0e4a3be8944
 
 runtime-depends:
 - packages/gcc-libs.bst

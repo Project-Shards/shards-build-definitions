@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/cni-plugins-1.6.0-1-x86_64.pkg.tar.zst
-  ref: 6d1e3690f6a1a8e40d3865dfa5bf0e8235d7b3de14d96fac02149159746d3f47
+  url: arch_archive:extra/os/x86_64/cni-plugins-1.6.1-1-x86_64.pkg.tar.zst
+  ref: 1c46d7e70d648ee3fa43e737537955bc06377ff8974a694697d09d5f3a577927
 
 runtime-depends:
 - packages/glibc.bst

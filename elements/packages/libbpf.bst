@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/libbpf-1.4.3-1-x86_64.pkg.tar.zst
-  ref: 5c265558f023b70a5bf91a18a8ef91ef997b76937aff1e02899e8a564ba9df43
+  url: arch_archive:core/os/x86_64/libbpf-1.5.0-1-x86_64.pkg.tar.zst
+  ref: c9400f61fac561b9b19346d4747f2157c8e204f2d6275b3ca6cca2276babd9f2
 
 runtime-depends:
 - packages/glibc.bst

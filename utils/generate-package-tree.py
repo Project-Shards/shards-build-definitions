@@ -1,9 +1,13 @@
 import subprocess
 import sys
 import os.path
+from os import getenv
 
 processed_deps = [ "" ]
 prefix = "packages"
+
+no_deps = False
+force_write = False
 
 blocked_pkgs = ["core/pacman", "core/archlinux-keyring"]
 
@@ -15,7 +19,8 @@ class Package():
 
     def __init__(self, name: str):
         pkgname = name.split("/")[-1].replace("-", "\\-")
-        print ("init fetching "+pkgname) # awk "NR % 2 == 1"
+        if not force_write:
+            print ("init fetching "+pkgname)
         cmd = f'bash -c "pacman -Ss \'^{pkgname}$\' | awk \'NR % 2 == 1\' | cut -d\' \' -f1"'
         results = subprocess.check_output(cmd, shell=True).decode("utf-8").strip()
         if results.strip() == "":
@@ -62,19 +67,24 @@ class Package():
         self.gen_bst()
 
     def gen_bst(self):
-        print("Generating bst for "+self.name)
+        if not force_write:
+            print("Generating bst for "+self.name)
 
         depends = ""
-        if len(self.dependencies) > 0:
+        if len(self.dependencies) > 0 and not no_deps:
             depends = "runtime-depends:\n"
             for dep in self.dependencies:
                 dep_name = dep.split("/")[-1]
                 depends += "  - "+prefix+"/"+dep_name+".bst\n"
-        if (os.path.isfile("elements/"+prefix+"/"+self.name+".bst")):
+
+        if os.path.isfile("elements/"+prefix+"/"+self.name+".bst") and not force_write:
             print("bst file for "+self.name+" exists")
             return
+        elif force_write:
+            print("arch_archive:"+self.repo+"/os/x86_64/"+self.packagefile)
+            return
 
-        if len(self.dependencies) > 0:
+        if len(self.dependencies) > 0 and not no_deps:
             for dep in self.dependencies:
                 if dep != 'None' and dep != '' and dep not in blocked_pkgs:
                     print ("handling dep "+dep+" caused by "+self.name)
@@ -100,11 +110,22 @@ def main():
         print(sys.argv[0]+" <package>")
         exit (1)
 
+    value = getenv("PACTREE_FORCE")
+    if value.strip() == "1":
+        global force_write
+        force_write = True
+
+    value = getenv("PACTREE_NODEPS")
+    if value.strip() == "1":
+        global no_deps
+        no_deps = True
+
     for pkg in sys.argv[1:]:
         base = Package(pkg)
         base.full_init()
         base.get_dependencies()
-    print("Processed "+str(len(processed_deps))+" packages")
+    if not force_write:
+        print("Processed "+str(len(processed_deps))+" packages")
 
 if __name__ == "__main__":
     main()

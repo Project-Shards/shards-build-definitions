@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/pipewire-audio-1:1.2.6-1-x86_64.pkg.tar.zst
-  ref: 7404192b03be6944bb4167fe5cadb7139d574f5a54331e4728ecf3f8ae87112e
+  url: arch_archive:extra/os/x86_64/pipewire-audio-1:1.2.7-1-x86_64.pkg.tar.zst
+  ref: e88d4af28372d5a0968da558083341fcf2c54eb3e02bf715be6ece39c864d482
 
 runtime-depends:
 - packages/alsa-card-profiles.bst

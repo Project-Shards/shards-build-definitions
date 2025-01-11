@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-jsonschema-4.23.0-1-any.pkg.tar.zst
-  ref: 72c21c68ac3a7fcd00e8f0df3382aae86f7fbf8b5b243e3e23d4812c695fb3f3
+  url: arch_archive:extra/os/x86_64/python-jsonschema-4.23.0-2-any.pkg.tar.zst
+  ref: 270bc2c307a693eb021ece24217dda238b43d124a049b6209f5c2aa5b60f1c3c
 
 runtime-depends:
 - packages/python.bst

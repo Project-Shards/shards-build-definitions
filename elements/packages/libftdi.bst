@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libftdi-1.5-6-x86_64.pkg.tar.zst
-  ref: 910f6f6705210382fe5eb609f0691713ff294638ff0585ce9bf764b544f55565
+  url: arch_archive:extra/os/x86_64/libftdi-1.5-7-x86_64.pkg.tar.zst
+  ref: 4c078a2600b5793aec52ba5cb67ea42797f4d65bf68aab5901be36cff5661df3
 
 runtime-depends:
 - packages/libusb.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/poppler-24.11.0-2-x86_64.pkg.tar.zst
-  ref: 908cd2eea520ca744584cb6001417a34aed69f1a7936f78384ff1556850b7826
+  url: arch_archive:extra/os/x86_64/poppler-24.12.0-1-x86_64.pkg.tar.zst
+  ref: 2f135a3be7a37521a78ebab1d5abb94c9a148eb4b3f833b68c38b3d560183ca6
 
 runtime-depends:
 - packages/libjpeg-turbo.bst

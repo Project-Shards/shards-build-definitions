@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/passt-2024_11_21.238c69f-1-x86_64.pkg.tar.zst
-  ref: 4c64dec458447ed0e77172ab72c40c0e14bc9b28ab9ed2dd9ff14a10bbc77761
+  url: arch_archive:extra/os/x86_64/passt-2024_12_11.09478d5-1-x86_64.pkg.tar.zst
+  ref: 706a39051c7b08721063879ac9bd7b227662e5b09e4df64741af4647db052bf2
 
 runtime-depends:
 - packages/glibc.bst

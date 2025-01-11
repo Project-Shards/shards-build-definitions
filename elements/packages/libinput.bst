@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libinput-1.27.0-1-x86_64.pkg.tar.zst
-  ref: 1cffe5e38ece65016f4e672cb4b549ef5760cf0a978b624ad26ccc0ce6dcdd48
+  url: arch_archive:extra/os/x86_64/libinput-1.27.1-1-x86_64.pkg.tar.zst
+  ref: b7dc186f4e4a1a21c276136a7ac76371f0b8c1bd2d1e6aaa83e629ef82e11f9a
 
 runtime-depends:
 - packages/mtdev.bst

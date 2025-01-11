@@ -37,7 +37,11 @@ config:
       PFP_SYSROOT="/tmp/output" pacman-fix-permissions -a
       rm -rf /tmp/output/etc
 
-
+    - |
+      mkdir -p /tmp/output/usr/lib/udev/rules.d
+      cd /tmp/output/usr/lib/udev/rules.d
+      ln -s /dev/null 61-gdm.rules
+      
     - |
       mkdir -p /tmp/output/etc
       cp -T /etc/os-release /tmp/output/etc/os-release
@@ -71,4 +75,6 @@ config:
       --json=pretty > %{install-root}/nvidia-drivers-repart.json
     - install -Dm644 -t '%{install-root}' "nvidia-drivers.usr.raw"
 
-
+    - |
+      chmod 775 /sysroot-nvidia/usr/lib/dbus-daemon-launch-helper
+      chmod 775 /sysroot-base/usr/lib/dbus-daemon-launch-helper

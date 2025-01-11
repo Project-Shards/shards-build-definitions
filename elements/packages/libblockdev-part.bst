@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libblockdev-part-3.2.1-2-x86_64.pkg.tar.zst
-  ref: b687077c1c1fb7489c00d56856546b497c24f949f75508dd5bcd1f98f71aeefb
+  url: arch_archive:extra/os/x86_64/libblockdev-part-3.2.1-3-x86_64.pkg.tar.zst
+  ref: e0d4bda2cfc9fb0cffb95869d3314624c1688c86842af8a95afc95bce76b59dd
 
 runtime-depends:
 - packages/glib2.bst

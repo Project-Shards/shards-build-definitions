@@ -1,20 +1,20 @@
 kind: make
 
 depends:
-  - packages/openssl.bst
-  - packages/sbsigntools.bst
+- packages/openssl.bst
+- packages/sbsigntools.bst
 
 build-depends:
-  - build-bootstrap.bst
-  - packages/gnu-efi.bst
-  - packages/perl-file-slurp.bst
-  - packages/help2man.bst
+- build-bootstrap.bst
+- packages/gnu-efi.bst
+- packages/perl-file-slurp.bst
+- packages/help2man.bst
 
 sources:
 - kind: git_repo
-  url: kernel_git:jejb/efitools.git
+  url: kernel_git:linux/kernel/git/jejb/efitools.git
   track: master
-  ref: 392836a46ce3c92b55dc88a1aebbcfdfc5dcddce
+  ref: b988d20a7f8373cf19c30d5c9c459f3e87f28da2
 - kind: local
   path: files/signing-keys/PK.key
 - kind: local
@@ -65,16 +65,16 @@ variables:
 config:
   build-commands:
     (>):
-      - |
-        ./cert-to-efi-sig-list -g '%{keys_uuid}' PK_MIC.crt PK-mic.esl
-        ./sign-efi-sig-list -k PK_MIC.key -c PK_MIC.crt PK PK-mic.esl PK-mic.auth
-        ./cert-to-efi-sig-list -g '%{keys_uuid}' KEK.crt KEK-mic.esl
-        ./cert-to-efi-sig-list -g '%{keys_uuid}' DB.crt DB-mic.esl
-        bash extra-keys.sh %{keys_uuid}
-        %{make}
+    - |
+      ./cert-to-efi-sig-list -g '%{keys_uuid}' PK_MIC.crt PK-mic.esl
+      ./sign-efi-sig-list -k PK_MIC.key -c PK_MIC.crt PK PK-mic.esl PK-mic.auth
+      ./cert-to-efi-sig-list -g '%{keys_uuid}' KEK.crt KEK-mic.esl
+      ./cert-to-efi-sig-list -g '%{keys_uuid}' DB.crt DB-mic.esl
+      bash extra-keys.sh %{keys_uuid}
+      %{make}
 
   install-commands:
     (>):
-      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' *-signed.efi
-      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK,KEK,DB}.auth
-      - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK-mic,KEK-mic,DB-mic}.auth
+    - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' *-signed.efi
+    - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK,KEK,DB}.auth
+    - install -Dm644 -t '%{install-root}/usr/share/efitools/efi' {PK-mic,KEK-mic,DB-mic}.auth

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-maps-47.2-1-x86_64.pkg.tar.zst
-  ref: bd672ebe211f332de16abc752640066e919f41675daa725fbaa4638ee47b1dca
+  url: arch_archive:extra/os/x86_64/gnome-maps-47.3-1-x86_64.pkg.tar.zst
+  ref: 75beb63683684343ba8ee5a53d8d4d07c4963e628734f78674bd800f13d71d3b
 
 runtime-depends:
 - packages/cairo.bst

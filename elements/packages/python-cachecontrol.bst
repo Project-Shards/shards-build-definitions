@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-cachecontrol-1:0.14.1-1-any.pkg.tar.zst
-  ref: eda236b01f0e88dc3b40b85ec2141004180e7a59b66167430b59367639fab0ec
+  url: arch_archive:extra/os/x86_64/python-cachecontrol-1:0.14.1-2-any.pkg.tar.zst
+  ref: e3c5dfa31956241beeef9c618d44617db4e753163f7d3f71ebd400ff93bc6674
 
 runtime-depends:
 - packages/python.bst

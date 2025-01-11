@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libsynctex-2024.2-4-x86_64.pkg.tar.zst
-  ref: 443a27f21988c2615c0f95e7fa6b7f07b9e27505befb2036ab19236255896106
+  url: arch_archive:extra/os/x86_64/libsynctex-2024.2-5-x86_64.pkg.tar.zst
+  ref: 2261fde8a6228adf4768572cf06bbc873bbae6fa697ab80fbd43e41a3ed78045
 
 runtime-depends:
 - packages/glibc.bst

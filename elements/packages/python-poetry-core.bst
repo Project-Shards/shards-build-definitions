@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-poetry-core-1.9.0-5-any.pkg.tar.zst
-  ref: 8a9b0054dc32892fc3f8caeafbc29913de733a7ce683a19911f7d82e3015098f
+  url: arch_archive:extra/os/x86_64/python-poetry-core-1.9.1-1-any.pkg.tar.zst
+  ref: d058fdd9fce207e8333ca9925685fa1d2c6f9d90893117d383a4cd6be72c22cc
 
 runtime-depends:
 - packages/python.bst

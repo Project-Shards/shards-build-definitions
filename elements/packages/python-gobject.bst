@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-gobject-3.50.0-1-x86_64.pkg.tar.zst
-  ref: 4e4e1b64a09458041ccdb09f713874ba2d8ebbef8907c1325f2137db7cdef83b
+  url: arch_archive:extra/os/x86_64/python-gobject-3.50.0-2-x86_64.pkg.tar.zst
+  ref: b55e841de6b51e5bb9d6ce87118d5b530120e080ffbe7b6907872ca03163571f
 
 runtime-depends:
 - packages/glib2.bst

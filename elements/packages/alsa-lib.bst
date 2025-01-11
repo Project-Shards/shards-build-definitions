@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/alsa-lib-1.2.12-1-x86_64.pkg.tar.zst
-  ref: b23b6497d663d94753cb0226a714c7ca077d2762a993e726fc0c9ef851425bcc
+  url: arch_archive:extra/os/x86_64/alsa-lib-1.2.13-1-x86_64.pkg.tar.zst
+  ref: 4ad79384934be683e294e7edd756b718914305920c739b7d83f7226f0edaf863
 
 runtime-depends:
 - packages/alsa-topology-conf.bst

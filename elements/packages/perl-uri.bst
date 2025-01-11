@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/perl-uri-5.29-1-any.pkg.tar.zst
-  ref: c3883fe94193e0f1ceb234a4f9a52d7a69a057973c5c2ec310be9ced24041df1
+  url: arch_archive:extra/os/x86_64/perl-uri-5.31-1-any.pkg.tar.zst
+  ref: 89caa36249112856abee047557c43f90a0b66f92634b6f50dd57233f88aa794c
 
 runtime-depends:
 - packages/perl.bst

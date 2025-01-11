@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/nautilus-47.0-3-x86_64.pkg.tar.zst
-  ref: 440ce76ca1ebb8a64b41fe0728791c73f2bff09b8ec447711e79a16220ac3e23
+  url: arch_archive:extra/os/x86_64/nautilus-47.1-2-x86_64.pkg.tar.zst
+  ref: cb2d2048a79794e1311fbd4441740f36e6eb33c6f77d8d6ebe0074f9c9ba1f28
 
 runtime-depends:
 - packages/cairo.bst

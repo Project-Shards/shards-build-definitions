@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vapoursynth-R70-1-x86_64.pkg.tar.zst
-  ref: 04737cf3e33d27b571e41895c735adcb29c7ad5eeea6001f888946611c416bf6
+  url: arch_archive:extra/os/x86_64/vapoursynth-R70-2-x86_64.pkg.tar.zst
+  ref: 16885bf1cbbdf672306957b5b3d2242044dfcfd71ab7e28f22687118516bab1c
 
 runtime-depends:
 - packages/zimg.bst

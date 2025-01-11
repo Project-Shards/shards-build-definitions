@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/protobuf-28.3-1-x86_64.pkg.tar.zst
-  ref: d5cf53cf4ddcf3ba152424a9804381d3173f9919477c08a92cf16251bc0a602d
+  url: arch_archive:extra/os/x86_64/protobuf-29.2-1-x86_64.pkg.tar.zst
+  ref: accda0cc4e7e3dc163c8f86e40513d726c9a2aedbb9c2b9114e2723bbf997e3b
 
 runtime-depends:
 - packages/gcc-libs.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libjxl-0.11.0-2-x86_64.pkg.tar.zst
-  ref: dd092d31bff52a824501e4938c02f7c6a15bc4c3a8322df13264c38f58227654
+  url: arch_archive:extra/os/x86_64/libjxl-0.11.1-1-x86_64.pkg.tar.zst
+  ref: 97a6ff8b28edc1e9b851e3609dc734a5b5924986b947cbb5832cdb1e56e66bc6
 
 runtime-depends:
 - packages/brotli.bst

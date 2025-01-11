@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/pipewire-pulse-1:1.2.6-1-x86_64.pkg.tar.zst
-  ref: e07109feae1945ee5beb205ef0b2b0787c959608b22a8bd80d4d5f7970cda3d4
+  url: arch_archive:extra/os/x86_64/pipewire-pulse-1:1.2.7-1-x86_64.pkg.tar.zst
+  ref: 4b10c49f5a1c4350992a30914deb7f54051099e6465a0b4a221beb206bc3839b
 
 runtime-depends:
 - packages/dbus.bst

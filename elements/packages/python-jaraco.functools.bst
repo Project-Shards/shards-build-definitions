@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-jaraco.functools-4.0.2-1-any.pkg.tar.zst
-  ref: f798c2e4bcf7f5953bb72783358130240a55588d166dfd222fd7d04fb1bd1617
+  url: arch_archive:extra/os/x86_64/python-jaraco.functools-4.1.0-1-any.pkg.tar.zst
+  ref: 36c6ca6d460f9c47f7f662fc24f9bbc87d4931ad6dc24464eb89ae88d7a7cdc3
 
 runtime-depends:
 - packages/python.bst

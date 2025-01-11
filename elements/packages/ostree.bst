@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/ostree-2024.9-1-x86_64.pkg.tar.zst
-  ref: 8dea032109b31704249cbb489423af32304df7de21f2d9a49ff8d1ea6977a82c
+  url: arch_archive:extra/os/x86_64/ostree-2024.10-1-x86_64.pkg.tar.zst
+  ref: 364172e3fd0cc37891bbbecbd88c6ac21f391946c0eb063a14aac0783689fd86
 
 runtime-depends:
 - packages/bash.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-music-1:47.1-1-any.pkg.tar.zst
-  ref: cf1bae76292ea536108eca8de7b8fe25f7e2d6e5ea460d096e152c60cb8faf0f
+  url: arch_archive:extra/os/x86_64/gnome-music-1:47.1-2-any.pkg.tar.zst
+  ref: f4453b211811feb0f3f2c4e0cdeefd3374e3c35615de0b7dbe97a0b19ac84cbc
 
 runtime-depends:
 - packages/dconf.bst

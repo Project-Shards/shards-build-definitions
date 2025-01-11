@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libplacebo-7.349.0-2-x86_64.pkg.tar.zst
-  ref: 15ce4fa0ce81463b97ec054da246ce698414ba07dbaa7580b9e269c59bc42fa2
+  url: arch_archive:extra/os/x86_64/libplacebo-7.349.0-3-x86_64.pkg.tar.zst
+  ref: ff219dbd78642e5e58b0ad2ddc8ea16b0ffc4cba1f1fbda5dd8dab0fe2ef0d5a
 
 runtime-depends:
 - packages/vulkan-icd-loader.bst

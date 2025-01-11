@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/file-5.45-1-x86_64.pkg.tar.zst
-  ref: 3ad37e246e893cdf59ae3af862d083c52087c47d3e6210996075ce77d41c5a1a
+  url: arch_archive:core/os/x86_64/file-5.46-3-x86_64.pkg.tar.zst
+  ref: 6470ccaa830f121771f595285aea1d60f6a8976f9323085246928b56d9e8b7d0
 
 runtime-depends:
 - packages/glibc.bst

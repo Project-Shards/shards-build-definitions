@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libcaca-0.99.beta20-4-x86_64.pkg.tar.zst
-  ref: 0430f3d40cafbcd647e908b245b6597067d58d663d68182f7ae54e5b58f8287f
+  url: arch_archive:extra/os/x86_64/libcaca-0.99.beta20-5-x86_64.pkg.tar.zst
+  ref: 662bbbcd219e29e911b42265d3c0734b8f926ec305f1e3899e5d29d5b76a8835
 
 runtime-depends:
 - packages/freeglut.bst

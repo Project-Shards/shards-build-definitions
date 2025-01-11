@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/fakeroot-1.36-1-x86_64.pkg.tar.zst
-  ref: 7bdd5f7580b20ab1574346c673a1d1a1c25aa9a902ef3b9e77944345a934e558
+  url: arch_archive:core/os/x86_64/fakeroot-1.36.2-1-x86_64.pkg.tar.zst
+  ref: 8f44e9b79ee29d92d46772eb3a584aef9f0ffb00e98f1905c1d03058ec925bf4
 
 runtime-depends:
 - packages/glibc.bst

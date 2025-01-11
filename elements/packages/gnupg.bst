@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/gnupg-2.4.6-1-x86_64.pkg.tar.zst
-  ref: 1b0a76cbfc7ae2ab297a9aecb84080cb669138f091ddd7958d88f04f232cafb9
+  url: arch_archive:core/os/x86_64/gnupg-2.4.7-1-x86_64.pkg.tar.zst
+  ref: 5ff9b482170850cf9a5e6daf90bd138a1aec261247a4eab49b080cda9f7da881
 
 runtime-depends:
 - packages/glibc.bst

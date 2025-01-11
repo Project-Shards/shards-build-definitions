@@ -8,6 +8,9 @@ build-depends:
   - filename: component.nvidia/drivers-bootstrap.bst
     config:
       location: '%{install-root}'
+  - filename: custom-packages/filesystem.bst
+    config:
+      location: '%{install-root}'
 
 config:
   install-commands:
@@ -33,74 +36,19 @@ config:
       EOF
       pacman -Qq > %{install-root}/packages
       pacman -Qn > %{install-root}/packagevers
+      sed -i '/^filesystem$/d' %{install-root}/packages
+      sed -i '/^systemd$/d' %{install-root}/packages
+      sed -i '/^pacman$/d' %{install-root}/packages
+      sed -i '/^mkinitcpio$/d' %{install-root}/packages
       sed -i '/nvidia/d' %{install-root}/packages
       sed -i '/^egl-gbm$/d' %{install-root}/packages
       sed -i '/^egl-wayland$/d' %{install-root}/packages
       pacman -Sydd --noconfirm --sysroot=%{install-root} $(cat %{install-root}/packages)
+      chmod 775 %{install-root}/usr/lib/dbus-daemon-launch-helper
+
+
 
     - |
       rm -rf %{install-root}/usr/share/man
       rm -rf %{install-root}/usr/share/help
       rm -rf %{install-root}/usr/share/doc
-
-public:
-  bst:
-    integration-commands:
-      - |
-        /usr/bin/update-mime-database /usr/share/mime
-
-      - |
-        fontconfig="/etc/fonts/conf.d"
-        while read -r f; do
-          link="${fontconfig:?}/${f##*/}"
-          if [[ -e $f && ! -e $link ]]; then
-            ln -sT "/$f" "$link"
-          elif [[ ! -e $f && -L $link ]]; then
-            rm -f "$link"
-          fi
-        done
-
-      - |
-        /usr/bin/update-ca-trust
-
-      - |
-        /usr/bin/appstreamcli refresh-cache --force
-
-      - |
-        /usr/bin/fc-cache -s
-
-      - |
-        /usr/bin/gdk-pixbuf-query-loaders --update-cache
-
-      - |
-        /usr/bin/gio-querymodules /usr/lib/gio/modules
-
-      - |
-        /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
-
-      - |
-        /usr/bin/gtk-query-immodules-3.0 --update-cache
-
-      - |
-        for f in /usr/share/icons/; do
-          if [[ -e ${f}/index.theme ]]; then
-            gtk-update-icon-cache -q "$f"
-          elif [[ -d $f ]]; then
-            rm -f "${f}/icon-theme.cache"
-            rmdir --ignore-fail-on-non-empty "$f"
-          fi
-        done
-
-      - |
-        for d in /usr/lib/gtk-4.0/4.0.0/*/; do
-          [[ -d $d ]] || continue
-          gio-querymodules "$d"
-          rmdir --ignore-fail-on-non-empty "$d"
-        done
-
-      - |
-        /usr/bin/update-desktop-database --quiet
-
-      - |
-        systemd-sysusers
-

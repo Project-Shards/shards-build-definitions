@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/tdb-1.4.12-1-x86_64.pkg.tar.zst
-  ref: 9d92675505c7e13ec1c245d0a6689c51ad34191fca51253f13755aa2e3aee303
+  url: arch_archive:extra/os/x86_64/tdb-1.4.12-2-x86_64.pkg.tar.zst
+  ref: 72ccc9f05d36ffdffa619f79c25c9d5c90a3954007194693bec1b3f91465fbd0
 
 runtime-depends:
 - packages/glibc.bst

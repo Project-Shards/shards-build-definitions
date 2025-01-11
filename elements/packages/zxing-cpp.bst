@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/zxing-cpp-2.2.1-1-x86_64.pkg.tar.zst
-  ref: 293113a12a92dab15760de6e79ae475387427aa4f6c8b3035c72a62ca72f9a88
+  url: arch_archive:extra/os/x86_64/zxing-cpp-2.3.0-4-x86_64.pkg.tar.zst
+  ref: cb18537e2291b6eea1d31b70924ff0bd85d02fb19f670a734750d5ab627ccede
 
 runtime-depends:
 - packages/gcc-libs.bst

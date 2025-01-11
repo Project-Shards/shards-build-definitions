@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libpwquality-1.4.5-5-x86_64.pkg.tar.zst
-  ref: 0ec2acd2553c245f327c18c03ad88d0a2b0dd9ee3244419419acdc4b438f09e5
+  url: arch_archive:extra/os/x86_64/libpwquality-1.4.5-6-x86_64.pkg.tar.zst
+  ref: 0031d18181fe7e187e8631c9cf2d07f1993426c39b997007b5a9398e523b7d64
 
 runtime-depends:
 - packages/cracklib.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-jeepney-0.8.0-3-any.pkg.tar.zst
-  ref: a72bf967679ef7f194e7bb15889a0f37120da73629eba5ab582e8a38f88f6458
+  url: arch_archive:extra/os/x86_64/python-jeepney-0.8.0-4-any.pkg.tar.zst
+  ref: 61e17c210eb0d0540124f65c8b3355e0e31b343dd430bd8d2ec707ca9d54ec29
 
 runtime-depends:
 - packages/python.bst

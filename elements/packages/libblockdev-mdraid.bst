@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libblockdev-mdraid-3.2.1-2-x86_64.pkg.tar.zst
-  ref: 70f08e071b9fcba1ef7095b955ddd38bd6a22057671237cf1e41a54d8806bbbe
+  url: arch_archive:extra/os/x86_64/libblockdev-mdraid-3.2.1-3-x86_64.pkg.tar.zst
+  ref: bfba23ea094046b0fddb2d0e467ac9d54c14ee759dcf4f9e2615ffbaee5aaa18
 
 runtime-depends:
 - packages/gcc-libs.bst

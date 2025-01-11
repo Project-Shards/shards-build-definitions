@@ -20,6 +20,7 @@ config:
   commands:
     - |
       pacman-fix-permissions -a
+      chmod 775 /sysroot/usr/lib/dbus-daemon-launch-helper
 
     - |
       mkdir -p genimg
@@ -63,5 +64,4 @@ config:
 
     - |
       cp /build/images/shards_installer.iso %{install-root}/shards_installer.iso
-#      implantisomd5 %{install-root}/shards_installer.iso
 

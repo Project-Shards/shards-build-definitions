@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/btrfs-progs-6.11-1-x86_64.pkg.tar.zst
-  ref: 4fd58ae25af97c17529c2f6105c7620079ef643d3617eb33646c7a0a40cf448f
+  url: arch_archive:core/os/x86_64/btrfs-progs-6.12-2-x86_64.pkg.tar.zst
+  ref: e45c683bb9927c6cb12d5e64d97646e5aaae2f94b09697cc46ce0756f4464d59
 
 runtime-depends:
 - packages/glibc.bst

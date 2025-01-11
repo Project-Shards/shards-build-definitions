@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libgexiv2-0.14.3-1-x86_64.pkg.tar.zst
-  ref: 3e3ab81080ef0a8a584a76af064732e24fd37f0c028846b4a4142e7190e590ae
+  url: arch_archive:extra/os/x86_64/libgexiv2-0.14.3-2-x86_64.pkg.tar.zst
+  ref: a6494bbc2a76850b3afd34ba17337816cfbc5953e3d4cf94e194f4836fdcb267
 
 runtime-depends:
 - packages/exiv2.bst

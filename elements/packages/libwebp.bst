@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libwebp-1.4.0-3-x86_64.pkg.tar.zst
-  ref: 7332cffbd462be96ba3a091c0c8452dd00e417f8364b36cab3d9c89a09685938
+  url: arch_archive:extra/os/x86_64/libwebp-1.5.0-1-x86_64.pkg.tar.zst
+  ref: f9ef887397469cf2aba550dc7d207ea32f3e6837a2406f31f800135149261b2a
 
 runtime-depends:
 - packages/giflib.bst

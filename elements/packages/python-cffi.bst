@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-cffi-1.17.1-1-x86_64.pkg.tar.zst
-  ref: 7e7c37adbe3e5ee5f4b7bfd3cf22a159a90bbb24d0455627e3861cc83865a1b6
+  url: arch_archive:extra/os/x86_64/python-cffi-1.17.1-2-x86_64.pkg.tar.zst
+  ref: bbbcfbceafcf3d06b2048784a8cced8afeebbf406e8e71a6a728a4937e5d6a32
 
 runtime-depends:
 - packages/python-pycparser.bst

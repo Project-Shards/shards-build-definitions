@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libspeechd-0.11.5-2-x86_64.pkg.tar.zst
-  ref: 8d101e07a83650b287ccd518e7d5e26e0e3d11723788c115b34b35955c9ea34e
+  url: arch_archive:extra/os/x86_64/libspeechd-0.11.5-3-x86_64.pkg.tar.zst
+  ref: f0fbc831a8cc16b256a005f0ed537078e72ee927b13a20ac8b74d15cf41fb33a
 
 runtime-depends:
 - packages/glib2.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/localsearch-3.8.1-1-x86_64.pkg.tar.zst
-  ref: d2cd45bde21013896d8814d68a1d44b7c01902a60df956c0503e2182586e0ff4
+  url: arch_archive:extra/os/x86_64/localsearch-3.8.2-1-x86_64.pkg.tar.zst
+  ref: c30c6fa80d2d647e161c77809703bd10dbba89a2f72b45270b04197369536370
 
 runtime-depends:
 - packages/dconf.bst

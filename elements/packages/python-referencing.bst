@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-referencing-0.35.1-1-any.pkg.tar.zst
-  ref: 7cab9d4a2c5caae36fdd03316c6fb09f8ea593b540ce88317cfe6829a1ee706d
+  url: arch_archive:extra/os/x86_64/python-referencing-0.35.1-3-any.pkg.tar.zst
+  ref: ae1873cb57df693690267dc4b947832e51cd28585d20fd2e351d87e957785fd3
 
 runtime-depends:
 - packages/python.bst

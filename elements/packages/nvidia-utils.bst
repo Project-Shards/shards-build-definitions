@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/nvidia-utils-565.57.01-2-x86_64.pkg.tar.zst
-  ref: 70d56533769a50dce31f54a5cac77de3ec6c01f2e0953f045c97ce3f2d0b58fb
+  url: arch_archive:extra/os/x86_64/nvidia-utils-565.77-3-x86_64.pkg.tar.zst
+  ref: 13122520ea61fd44af99521bb7572d7dfe5dfa304a6532d32bae0a67a25ec85c
 
 runtime-depends:
 - packages/libglvnd.bst

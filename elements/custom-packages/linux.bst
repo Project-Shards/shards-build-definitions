@@ -6,7 +6,7 @@ sources:
   track: v*
   exclude:
   - '*-rc*'
-  ref: d390303b28dabbb91b2d32016a4f72da478733b9
+  ref: 77f85ccd3618f324d221f0faaed6d9cdc118c74a
 - kind: local
   path: files/linux/kconfig
 
@@ -57,12 +57,10 @@ config:
     install -Dm644 "%{image-name}" "%{install-root}/usr/lib/modules/${release}/vmlinuz"
     install -Dm644 System.map '%{install-root}%{bootdir}/System.map'
     install -Dm644 .config '%{install-root}%{bootdir}/config'
-    make -j1 INSTALL_MOD_PATH='%{install-root}/usr' modules_install
 
   - |
     release=$(make -s kernelrelease)
     make INSTALL_MOD_PATH="%{install-root}/usr" INSTALL_MOD_STRIP=1 DEPMOD=/doesnt/exist modules_install
-#      find "%{install-root}/usr/lib/modules/${release}" -type f -name '*.ko' | xargs -P $MAXJOBS -n 2 -r zstd;
 
   - |
     release=$(make -s kernelrelease)

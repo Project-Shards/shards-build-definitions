@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libxshmfence-1.3.2-2-x86_64.pkg.tar.zst
-  ref: c002e8b9f4f815eef4e18aef2b07fddf9054ae0933069e610257a516e4769911
+  url: arch_archive:extra/os/x86_64/libxshmfence-1.3.3-1-x86_64.pkg.tar.zst
+  ref: 39d0f128e4efc393fcd3b42f20046ec0e854341b601f14b457d67add86036d13
 
 runtime-depends:
 - packages/glibc.bst

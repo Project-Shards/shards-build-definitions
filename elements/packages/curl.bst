@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/curl-8.11.0-3-x86_64.pkg.tar.zst
-  ref: fd65151514f0282d297a6d6327e3ee2917e2f0964f169a95de5687caaa0ff750
+  url: arch_archive:core/os/x86_64/curl-8.11.1-3-x86_64.pkg.tar.zst
+  ref: 3cb1d2a639a3fec0388df077a9ddf0ffb2d097b9b85f085ca5321b7aad996777
 
 runtime-depends:
 - packages/ca-certificates.bst

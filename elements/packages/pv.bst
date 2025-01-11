@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/pv-1.9.0-1-x86_64.pkg.tar.zst
-  ref: d360890633bd3f075188c8e86a1b1f1a49da73e54f07e13416b5fc0f2cf8a3b7
+  url: arch_archive:extra/os/x86_64/pv-1.9.25-1-x86_64.pkg.tar.zst
+  ref: a9ad09224246ad34888f59417b92031df47807eb670747fac34e3eeaec645355
 
 runtime-depends:
 - packages/glibc.bst

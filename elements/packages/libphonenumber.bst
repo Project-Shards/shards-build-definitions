@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libphonenumber-1:8.13.50-1-x86_64.pkg.tar.zst
-  ref: d31cd3708515e828694acfd9f212ac32e7f9ef16f0c8723e4f9d0f983d78f113
+  url: arch_archive:extra/os/x86_64/libphonenumber-1:8.13.52-2-x86_64.pkg.tar.zst
+  ref: 94f01b915fece7af290d8ea3e6bbd658c3b755760638894a0d5184fccd20e992
 
 runtime-depends:
 - packages/abseil-cpp.bst

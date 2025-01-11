@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-tomlkit-0.13.2-1-any.pkg.tar.zst
-  ref: cb4a2e000c225737256cd0be53b9e08e91ab69c6c26940f6cc91b395031719e3
+  url: arch_archive:extra/os/x86_64/python-tomlkit-0.13.2-2-any.pkg.tar.zst
+  ref: bce189fd23c5c4939cbfe7c4fb35a2e67e2187a5344f8aa9a5af2e07f87f99de
 
 runtime-depends:
 - packages/python.bst

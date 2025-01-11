@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-setproctitle-1.3.3-2-x86_64.pkg.tar.zst
-  ref: 1b3d39873494b1b730e672fea70b7dc4659912a335d39a68b7d7ed014183aa9c
+  url: arch_archive:extra/os/x86_64/python-setproctitle-1.3.4-1-x86_64.pkg.tar.zst
+  ref: df82f406e92f0a8975a18ab725ebfd755593213cd0195725b181e8200fc94966
 
 runtime-depends:
 - packages/python.bst

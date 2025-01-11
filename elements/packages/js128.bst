@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/js128-128.4.0-1-x86_64.pkg.tar.zst
-  ref: b79a0c5ebc787a9bb3b726d6f130394fb9e365b866d15df4be7567ffdbbb2052
+  url: arch_archive:extra/os/x86_64/js128-128.5.1-1-x86_64.pkg.tar.zst
+  ref: 17e4e2b375b166a86e9b24a4c09a09c9d3ea6c2373e96536e43ffac81a0bb316
 
 runtime-depends:
 - packages/gcc-libs.bst

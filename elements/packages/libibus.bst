@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libibus-1.5.31-1-x86_64.pkg.tar.zst
-  ref: f8bd7b326a034b810ccc4c9e420fe5b36b44d9b01625927a4eeab7b1a98f40a8
+  url: arch_archive:extra/os/x86_64/libibus-1.5.31-2-x86_64.pkg.tar.zst
+  ref: fdbad2eff8c715b537d11e8be2bc6616752e1a65a0fccfdcf66a731d79b31b4b
 
 runtime-depends:
 - packages/glib2.bst

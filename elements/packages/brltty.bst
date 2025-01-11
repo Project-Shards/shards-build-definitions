@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/brltty-6.7-1-x86_64.pkg.tar.zst
-  ref: 1e92ff0e8dc24b393f1ef2eb652dff81454b941e3e111b0c8c04652da4df23f2
+  url: arch_archive:extra/os/x86_64/brltty-6.7-2-x86_64.pkg.tar.zst
+  ref: 76f347d488eef560ecf8e089b92db4f556d5fa82c22176d57092aec1cfe2fe7e
 
 runtime-depends:
 - packages/alsa-lib.bst

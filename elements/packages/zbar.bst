@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/zbar-0.23.93-3-x86_64.pkg.tar.zst
-  ref: c49d1c5b17a1dc0aec498be8d240fe58367693bba09eef3dd36beea38361db8a
+  url: arch_archive:extra/os/x86_64/zbar-0.23.93-4-x86_64.pkg.tar.zst
+  ref: 91c76a1cc020b42f119ac0fdd09e9a5d1e6e5a22545411a8beadd6faf2e154e1
 
 runtime-depends:
 - packages/dbus.bst

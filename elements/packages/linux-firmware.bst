@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/linux-firmware-20241111.b5885ec5-1-any.pkg.tar.zst
-  ref: eba3770f250612f851bf4b0453ca2ae6da468d17c3c8bad601dbc93a0af23687
+  url: arch_archive:core/os/x86_64/linux-firmware-20241210.b00a7f7e-1-any.pkg.tar.zst
+  ref: b8f76fba89173e9a7465133078e3a052e84e5e58a5159c4593b92e3bda8e5437
 
 runtime-depends:
 - packages/linux-firmware-whence.bst

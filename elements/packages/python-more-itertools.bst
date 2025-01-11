@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-more-itertools-10.3.0-1-any.pkg.tar.zst
-  ref: 5055ced36c11a24cbd17ae5233b075b188a75a12868e18408061bfb3b28901a6
+  url: arch_archive:extra/os/x86_64/python-more-itertools-10.5.0-1-any.pkg.tar.zst
+  ref: 3d373cfb0d5aed3ac95382882b5f9f4a9e39efbd678bbb18b51f1e78167c46c4
 
 runtime-depends:
 - packages/python.bst

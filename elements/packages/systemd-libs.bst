@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/systemd-libs-256.8-1-x86_64.pkg.tar.zst
-  ref: c40ae4e1ea20f2d9d9dcb64e66a906b77c8ae9c9dd0aba1d1522e9bf59202b46
+  url: arch_archive:core/os/x86_64/systemd-libs-257.1-1-x86_64.pkg.tar.zst
+  ref: 45f55f4fc60d1fa665ec6433a3085ce15d7058907b06b01631b9e37e50bae63b
 
 runtime-depends:
 - packages/glibc.bst

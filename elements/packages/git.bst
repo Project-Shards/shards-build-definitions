@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/git-2.47.0-1-x86_64.pkg.tar.zst
-  ref: ba8142c24473ec342cd66fd4834d5de8ca4d986868d4ec04c5d0128ef9b4e3e7
+  url: arch_archive:extra/os/x86_64/git-2.47.1-1-x86_64.pkg.tar.zst
+  ref: 231e0888b8d84ab88feb6edd3bedba7ac5610c5dc6947e34ea3605614b509ae9
 
 runtime-depends:
 - packages/curl.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/flashrom-1.4.0-1-x86_64.pkg.tar.zst
-  ref: 5fce57ca0f704011afca7e09ccc89f09c567d08209a2de9e0080692a9eb4a76e
+  url: arch_archive:extra/os/x86_64/flashrom-1.5.1-1-x86_64.pkg.tar.zst
+  ref: 3c670ed775a565afd5b665d577a71b2504b184a2a08087eb2d3b0967168f8116
 
 runtime-depends:
 - packages/libftdi.bst

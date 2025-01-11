@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-cachy-0.3.0-10-any.pkg.tar.zst
-  ref: dcab4721e28f5b056c4103759339d2c6c7886cd3edbcd2a22fe85ce943c4eaa1
+  url: arch_archive:extra/os/x86_64/python-cachy-0.3.0-11-any.pkg.tar.zst
+  ref: 67987ce88191ddabc91845f99a2b8464c5ac599956f89bc1cd79e4460090ae85
 
 runtime-depends:
 - packages/python.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/freerdp-2:3.9.0-4-x86_64.pkg.tar.zst
-  ref: 45728446d87eca89e1cbb5a8aee3d8ce298ee7cc29c292aff36e45fc74713133
+  url: arch_archive:extra/os/x86_64/freerdp-2:3.10.3-1-x86_64.pkg.tar.zst
+  ref: df68a745ead075de3ca80e0bb3bd24ea622d71eb184714290d2501dc81757fef
 
 runtime-depends:
 - packages/fuse3.bst

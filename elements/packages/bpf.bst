@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/bpf-6.10-2-x86_64.pkg.tar.zst
-  ref: 69e7f21406617290874d9092f927062210d983ac7a14957026b298bfa8ea45cd
+  url: arch_archive:extra/os/x86_64/bpf-6.12-9-x86_64.pkg.tar.zst
+  ref: 89b46ecf1414e654f3b31dca51fe3ac9d748ec59dc1505465f3f07db5828d01b
 
 runtime-depends:
 - packages/glibc.bst

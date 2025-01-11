@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/v4l-utils-1.28.1-1-x86_64.pkg.tar.zst
-  ref: 02e7451d355f59f1c269fb318c2afb6122bb4cba35b1aae8b0f64539fbb11b0d
+  url: arch_archive:extra/os/x86_64/v4l-utils-1.28.1-2-x86_64.pkg.tar.zst
+  ref: b7ef99420ef82f78b173bb8267daefa3fd21a088354976163011ccc9b9e9f646
 
 runtime-depends:
 - packages/hicolor-icon-theme.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/webkit2gtk-4.1-2.46.3-1-x86_64.pkg.tar.zst
-  ref: 0fd34b691367bcf0825ef27c7e5aaf2da70a2930c78c63119da001da48ec5d25
+  url: arch_archive:extra/os/x86_64/webkit2gtk-4.1-2.46.5-1-x86_64.pkg.tar.zst
+  ref: cce54e5c5a566c007ad7861581b7eb070dba1ce293e43c61529bd1cfe29a3406
 
 runtime-depends:
 - packages/at-spi2-core.bst

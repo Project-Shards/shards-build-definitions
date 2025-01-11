@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-requests-2.32.3-1-any.pkg.tar.zst
-  ref: f8079ce83aff6efe82f5f9a048424d782b6f0efb3413d01fe678888d431fb4db
+  url: arch_archive:extra/os/x86_64/python-requests-2.32.3-4-any.pkg.tar.zst
+  ref: 83a18777b8e21ff40a19164c089fe2bd80f3443b59ceb88f8b0de7363d6b05b4
 
 runtime-depends:
 - packages/ca-certificates.bst

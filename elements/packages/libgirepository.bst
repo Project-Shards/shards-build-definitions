@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libgirepository-1.82.0-1-x86_64.pkg.tar.zst
-  ref: d3651b421c9376a8021df139a79e539c01901a9b800bb22cf19f6ae4d6b39bad
+  url: arch_archive:extra/os/x86_64/libgirepository-1.82.0-2-x86_64.pkg.tar.zst
+  ref: 503f1add05658e2dfb78d1fb421c69aa09c40e9e9a144cd25cbb45c7744bda37
 
 runtime-depends:
 - packages/glib2.bst

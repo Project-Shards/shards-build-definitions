@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libblockdev-crypto-3.2.1-2-x86_64.pkg.tar.zst
-  ref: e7238a76237f7656b8228cba396a21f7bcc9a43f180922c05ef07e31f1458f1b
+  url: arch_archive:extra/os/x86_64/libblockdev-crypto-3.2.1-3-x86_64.pkg.tar.zst
+  ref: 6bc884933af1614c11e26e00b782ee1041334e111586fb44964aa8ea04648339
 
 runtime-depends:
 - packages/cryptsetup.bst

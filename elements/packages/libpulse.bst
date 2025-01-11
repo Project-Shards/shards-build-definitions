@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libpulse-17.0-3-x86_64.pkg.tar.zst
-  ref: 06d5fc398b74e1f80d06f04fce7153b2bcde1d9d86762bcaf9b9914691329d30
+  url: arch_archive:extra/os/x86_64/libpulse-17.0+r43+g3e2bb8a1e-1-x86_64.pkg.tar.zst
+  ref: cce88cefb00f43e155f56e578fe3f14be854636d1557c4221e847541c8135a44
 
 runtime-depends:
 - packages/dbus.bst

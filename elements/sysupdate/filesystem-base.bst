@@ -49,6 +49,7 @@ config:
       sed -i '/^pacman$/d' %{install-root}/packages
       sed -i '/^mkinitcpio$/d' %{install-root}/packages
       pacman -Sydd --noconfirm --sysroot=%{install-root} $(cat %{install-root}/packages)
+      chmod 775 %{install-root}/usr/lib/dbus-daemon-launch-helper
 
     - |
       rm -rf %{install-root}/usr/share/man
@@ -115,3 +116,6 @@ public:
 
       - |
         systemd-sysusers
+
+      - |
+        chmod 775 /usr/lib/dbus-daemon-launch-helper

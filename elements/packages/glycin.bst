@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/glycin-1.1.2-1-x86_64.pkg.tar.zst
-  ref: e5d36296b5c8c11ab1c7f1986add7105c43ca4a3b883191b4959891055131755
+  url: arch_archive:extra/os/x86_64/glycin-1.1.4-1-x86_64.pkg.tar.zst
+  ref: 532049f56ed20dde5a6abcb79f3437683b531e82136d1244248d14b6f96115fc
 
 runtime-depends:
 - packages/bubblewrap.bst

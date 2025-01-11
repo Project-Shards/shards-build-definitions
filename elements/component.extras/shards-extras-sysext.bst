@@ -37,6 +37,8 @@ config:
       PFP_SYSROOT="/sysroot-extras" pacman-fix-permissions -a
 
     - |
+      chmod 775 /sysroot-extras/usr/lib/dbus-daemon-launch-helper
+      chmod 775 /sysroot/usr/lib/dbus-daemon-launch-helper
       mkdir -p /tmp/output/usr
       make-layer /sysroot/usr /sysroot-extras/usr /tmp/output/usr
 
@@ -72,6 +74,7 @@ config:
       extras.raw \
       --json=pretty > %{install-root}/extras-repart.json
     - install -Dm644 -t '%{install-root}' "extras.usr.raw"
+
 
 
 

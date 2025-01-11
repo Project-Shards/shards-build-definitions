@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libwireplumber-0.5.6-1-x86_64.pkg.tar.zst
-  ref: dc05ac25fc7a2d6cb63f71e2494934289929849a66d879796da9b11b4f1d2aa9
+  url: arch_archive:extra/os/x86_64/libwireplumber-0.5.7-1-x86_64.pkg.tar.zst
+  ref: 124aefa1b556c59f6017d06bb9e7f3d711ee25378b69772fec00b1a68bb8114f
 
 runtime-depends:
 - packages/gcc-libs.bst

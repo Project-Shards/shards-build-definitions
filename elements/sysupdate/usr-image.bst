@@ -66,3 +66,6 @@ config:
         --json=pretty \
         >'%{install-root}/repart.json'
 
+    - |
+      chmod 775 /sysroot/usr/lib/dbus-daemon-launch-helper
+

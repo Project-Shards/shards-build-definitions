@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/mkinitcpio-39.2-2-any.pkg.tar.zst
-  ref: 386b2ea4c1eec9c123d8f81699badd9345e60251fd1109e9eb8d18389948c11c
+  url: arch_archive:core/os/x86_64/mkinitcpio-39.2-3-any.pkg.tar.zst
+  ref: 6ff5287c1dc46fea9976852d7c49d30bf2401493a57b4e5103b7ab87242c7b03
 
 runtime-depends:
 - packages/gawk.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gst-plugins-base-libs-1.24.9-3-x86_64.pkg.tar.zst
-  ref: 22fd2d95abb1edd7e1ef28a00426bf7624bde49129c4f765db0f9ff97733498d
+  url: arch_archive:extra/os/x86_64/gst-plugins-base-libs-1.24.10-2-x86_64.pkg.tar.zst
+  ref: 53db26338cdaee3d3c74b20f384aa76c9abb4e12b41742fee61ef42a4c23f47d
 
 runtime-depends:
 - packages/gstreamer.bst

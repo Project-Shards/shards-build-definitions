@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-pkginfo-1.10.0-1-any.pkg.tar.zst
-  ref: 5595bc6cdc36d2dacdcb8615bb7b540cfd074db8fe132823bf3fdd89e73d42ec
+  url: arch_archive:extra/os/x86_64/python-pkginfo-1.12.0-1-any.pkg.tar.zst
+  ref: 3b977d45ede822c12c514acae910952406c14dae5d355ca7c30d7d672b990756
 
 runtime-depends:
 - packages/python.bst

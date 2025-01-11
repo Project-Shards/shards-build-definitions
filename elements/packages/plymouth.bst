@@ -1,7 +1,7 @@
 #kind: pacman
 #sources:
 #- kind: remote
-#  url: arch_archive:extra/os/x86_64/plymouth-24.004.60-9-x86_64.pkg.tar.zst
+#  url: arch_archive:extra/os/x86_64/plymouth-24.004.60-10-x86_64.pkg.tar.zst
 #  ref: c98cd9089445fc558562fde2ec76263d5486eee807eb5c6980aa111933e71042
 #
 #runtime-depends:

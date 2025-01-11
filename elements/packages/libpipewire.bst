@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libpipewire-1:1.2.6-1-x86_64.pkg.tar.zst
-  ref: c52b37e6c794f71268f2b7e16643a7bc01bb5ff3169430558ec43ea104bc9d29
+  url: arch_archive:extra/os/x86_64/libpipewire-1:1.2.7-1-x86_64.pkg.tar.zst
+  ref: 601d3cb735fc38ee9d2a888b1060987cbe228ffebcb4df9dcbb1b7ae4891d05a
 
 runtime-depends:
 - packages/glibc.bst

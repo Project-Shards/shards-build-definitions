@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/imagemagick-7.1.1.41-1-x86_64.pkg.tar.zst
-  ref: 9d656dbed4eabde2e6bc8b025c6faa95a75898bf44e951d4c7011ef2f2b3af81
+  url: arch_archive:extra/os/x86_64/imagemagick-7.1.1.43-1-x86_64.pkg.tar.zst
+  ref: fcbba91e34bb1724d32ca956cf0662b3bc5424d03ce3d7c8ca64caf79b5c0042
 
 runtime-depends:
 - packages/bzip2.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/sdl2_ttf-2.22.0-1-x86_64.pkg.tar.zst
-  ref: 93abc84ffaed52cc44c75f8fdcca424f7d1e71b71cff02ff17684b2aae77e4e9
+  url: arch_archive:extra/os/x86_64/sdl2_ttf-2.24.0-1-x86_64.pkg.tar.zst
+  ref: b5dafc72a23d10252d2fd2fe259525e67d961b63084d428e82ac305cf8bf886d
 
 runtime-depends:
 - packages/sdl2.bst

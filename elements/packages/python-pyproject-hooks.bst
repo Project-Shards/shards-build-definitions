@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-pyproject-hooks-1.2.0-1-any.pkg.tar.zst
-  ref: d432b6d7fe6905da970d6072c1638c9747dda7c900d0930487ab4b49147ea7c7
+  url: arch_archive:extra/os/x86_64/python-pyproject-hooks-1.2.0-3-any.pkg.tar.zst
+  ref: 555a3c885142ef1977028e49f6db0e9719c4d1e7cfb41a483279cc9bae598a26
 
 runtime-depends:
 - packages/python.bst

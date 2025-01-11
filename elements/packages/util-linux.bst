@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/util-linux-2.40.2-1-x86_64.pkg.tar.zst
-  ref: f6628acab3f6d377865d23f42af01673dc19c9248eb9a325ea9dd648b70e03bf
+  url: arch_archive:core/os/x86_64/util-linux-2.40.2-3-x86_64.pkg.tar.zst
+  ref: a87977f904ded5f9a927e2aae0ad584b7990fd8554f6d3f58079d18508d37918
 
 runtime-depends:
 - packages/util-linux-libs.bst

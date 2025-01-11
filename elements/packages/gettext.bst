@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/gettext-0.22.5-2-x86_64.pkg.tar.zst
-  ref: f613ae60494cf1b4a7fb2d48d15e957ae20968f35cf33ce7c4258a658f221059
+  url: arch_archive:core/os/x86_64/gettext-0.23.1-2-x86_64.pkg.tar.zst
+  ref: f547eea77af57dd70d21b2f0ddc5b4487dd9332b6b9bbb45c70237de1b77a817
 
 runtime-depends:
 - packages/acl.bst

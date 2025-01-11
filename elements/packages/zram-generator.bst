@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/zram-generator-1.1.2-1-x86_64.pkg.tar.zst
-  ref: e721b021e6d840831b80f749a97c82aa8daa7153d9df0ef17e40befdca91852b
+  url: arch_archive:extra/os/x86_64/zram-generator-1.2.1-1-x86_64.pkg.tar.zst
+  ref: 753d8d4d3bb5902c94dcb5459d1e4c9a3280bcf2c5c24e1e4ee67703f430b89a
 
 runtime-depends:
 - custom-packages/systemd.bst

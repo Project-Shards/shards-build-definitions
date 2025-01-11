@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vim-9.1.0866-1-x86_64.pkg.tar.zst
-  ref: a9a0b43dced2aa824c5b32b773b50b4905b87f19002e13b332606a313ba6515d
+  url: arch_archive:extra/os/x86_64/vim-9.1.0954-1-x86_64.pkg.tar.zst
+  ref: 053bf06e50378cf0ecf04dc3d7710611cfd823433e5913527872b3f963a54f75
 
 runtime-depends:
 - packages/vim-runtime.bst

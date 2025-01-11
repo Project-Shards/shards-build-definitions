@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/json-glib-1.10.0-1-x86_64.pkg.tar.zst
-  ref: 59db186010e6fd03191fb36a0d027f7a66ab794bef4340826e62a1b19ad0facf
+  url: arch_archive:extra/os/x86_64/json-glib-1.10.6-1-x86_64.pkg.tar.zst
+  ref: af1d40b1abbb579ccbb3b02bf40d0bbfc1d914946a60420f44726d24f9ef8a9f
 
 runtime-depends:
 - packages/glib2.bst

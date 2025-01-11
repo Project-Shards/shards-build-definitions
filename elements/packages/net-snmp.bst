@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/net-snmp-5.9.4-5-x86_64.pkg.tar.zst
-  ref: 8c86297b149c58e2b2761c0d39bc5e9edb5d1e9994e8f9f076571bb74dd054fe
+  url: arch_archive:extra/os/x86_64/net-snmp-5.9.4-6-x86_64.pkg.tar.zst
+  ref: 86391966c2eb5aa7afc6fcbada3e02a69f04aa7dc35685677ec62c63a9b0057c
 
 runtime-depends:
 - packages/libnsl.bst

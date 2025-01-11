@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/containers-common-1:0.60.4-2-any.pkg.tar.zst
-  ref: 9f9127710b7057b0b47fbb234270b9224a8229c67e6bc1380750ff4f022f12e8
+  url: arch_archive:extra/os/x86_64/containers-common-1:0.61.0-1-any.pkg.tar.zst
+  ref: c61447ad0e7d8fdbf5b7e10d7f57b5bcbefbe2922e3464e7b2d811d9e195718f
 
 runtime-depends:
 - packages/netavark.bst

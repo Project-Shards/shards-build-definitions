@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/evolution-data-server-3.54.2-1-x86_64.pkg.tar.zst
-  ref: 339f6c2ac4aea99f3a06308f9779c2d9c576aa530bd8dfc5b6f7eacb57da9867
+  url: arch_archive:extra/os/x86_64/evolution-data-server-3.54.3-1-x86_64.pkg.tar.zst
+  ref: b1e484aef546c26f2882c08772fd3ea46effaa0fc88123cd353b1c5a94431017
 
 runtime-depends:
 - packages/cairo.bst

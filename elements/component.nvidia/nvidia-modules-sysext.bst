@@ -27,7 +27,11 @@ config:
       options nvidia_drm modeset=1
       options nvidia NVreg_PreserveVideoMemoryAllocations=1
       EOF
-    - echo "nvidia_drm" >> /sysroot/usr/lib/modules-load.d/nvidia.conf
+
+    - |
+      echo "nvidia_drm" >> /sysroot/usr/lib/modules-load.d/nvidia.conf
+      echo "nvidia_uvm" >> /sysroot/usr/lib/modules-load.d/nvidia-uvm.conf
+
     - |
       mkdir -p /sysroot/etc
       cp /etc/os-release /sysroot/etc/os-release

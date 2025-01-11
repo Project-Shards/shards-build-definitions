@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/svt-av1-2.2.1-1-x86_64.pkg.tar.zst
-  ref: 456b38043d343a4257e310dce1fe2bbd2f28954e97510f22a4ba04437066ea45
+  url: arch_archive:extra/os/x86_64/svt-av1-2.3.0-1-x86_64.pkg.tar.zst
+  ref: 6b2c0b3330d67c6effee771df04229a9ac0bc7642ddca18c8db19df554c31aa7
 
 runtime-depends:
 - packages/glibc.bst

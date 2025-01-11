@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-jinja-1:3.1.4-1-any.pkg.tar.zst
-  ref: 096111103cbddcce3dc781c7d6e4a4920385c4e56e58a036bc707d29b0276bb9
+  url: arch_archive:extra/os/x86_64/python-jinja-1:3.1.5-1-any.pkg.tar.zst
+  ref: c158d30db16556bb1d16b8b172cdc33d8692b3968f58c552ecd3f6f3c15793d0
 
 runtime-depends:
 - packages/python.bst

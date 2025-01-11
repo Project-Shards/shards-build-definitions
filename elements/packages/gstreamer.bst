@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gstreamer-1.24.9-3-x86_64.pkg.tar.zst
-  ref: 5d134482b68562d26eabe2e9ef97e72915a7fb908f0ab7b5e403205639740efb
+  url: arch_archive:extra/os/x86_64/gstreamer-1.24.10-2-x86_64.pkg.tar.zst
+  ref: 2068b68704306d3c2e5b3a3079f4df09661ae1361951ea6734ac9117b35e1574
 
 runtime-depends:
 - packages/gcc-libs.bst

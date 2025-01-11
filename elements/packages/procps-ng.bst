@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/procps-ng-4.0.4-3-x86_64.pkg.tar.zst
-  ref: 0dee44a166ef3e6d6f2c0db2d87b0ab32fdd45f44e8f9716d0a64b98ae1e8eab
+  url: arch_archive:core/os/x86_64/procps-ng-4.0.5-1-x86_64.pkg.tar.zst
+  ref: 27662a94614bf44e078d1361521cd99f88d538cb63de30e88886d7c6cc7f55ab
 
 runtime-depends:
 - packages/glibc.bst

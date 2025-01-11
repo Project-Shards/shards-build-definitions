@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libblockdev-swap-3.2.1-2-x86_64.pkg.tar.zst
-  ref: e9b4fee9cc724506c8a51c543bab191d20fe859de3ca66cd2f1b222079f9feb0
+  url: arch_archive:extra/os/x86_64/libblockdev-swap-3.2.1-3-x86_64.pkg.tar.zst
+  ref: 56cf5d47b4ffc8722c8beb1a15fb362ad2f9a4e13a5cff23c981e414eac0e866
 
 runtime-depends:
 - packages/gcc-libs.bst

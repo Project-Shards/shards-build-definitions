@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gtk4-1:4.16.7-1-x86_64.pkg.tar.zst
-  ref: e9692987555947fd0f82ec09146024c045ae0f2260e6c4122de316009d4d72af
+  url: arch_archive:extra/os/x86_64/gtk4-1:4.16.12-1-x86_64.pkg.tar.zst
+  ref: 686326d4924c9cb12b35f3fe583c3faa973d48ffaf779996c8d18038e31281a8
 
 runtime-depends:
 - packages/adwaita-icon-theme.bst

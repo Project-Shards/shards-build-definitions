@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-secretstorage-3.3.3-5-any.pkg.tar.zst
-  ref: 220db050c826f10147f0b93d099a24e865bb4050fad342db09c1a2c6ca1b3310
+  url: arch_archive:extra/os/x86_64/python-secretstorage-3.3.3-6-any.pkg.tar.zst
+  ref: c07fb98ff67d2aa103abb7def21885da5adf6a7abf9b7b8d59d0d5f1da709f11
 
 runtime-depends:
 - packages/python-cryptography.bst

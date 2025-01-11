@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libnvme-1.11.1-1-x86_64.pkg.tar.zst
-  ref: 1298f80dfae21a8da77764e72997e26648284a87c8180f9bb8b4e90edbfcb7d3
+  url: arch_archive:extra/os/x86_64/libnvme-1.11.1-2-x86_64.pkg.tar.zst
+  ref: 455620e3355f0f759d209990b1602bf7446f5082842a0e67b8f7b40ac3581d3e
 
 runtime-depends:
 - packages/json-c.bst

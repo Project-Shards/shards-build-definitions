@@ -13,7 +13,7 @@ sources:
   track: v*
   exclude:
   - '*-rc*'
-  ref: d390303b28dabbb91b2d32016a4f72da478733b9
+  ref: 77f85ccd3618f324d221f0faaed6d9cdc118c74a
 
 config:
   build-commands:

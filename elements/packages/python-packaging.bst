@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-packaging-24.2-1-any.pkg.tar.zst
-  ref: 2c2515013dbf022714b97aafe3b851f36035c347f4ddf2c7e413e3c05d27f7eb
+  url: arch_archive:extra/os/x86_64/python-packaging-24.2-3-any.pkg.tar.zst
+  ref: b6660522deec4f92fea7c73a99a605b3492d3e8e64d2796638d5e75beef56f61
 
 runtime-depends:
 - packages/python.bst

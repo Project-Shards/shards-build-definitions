@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/python-3.12.7-1-x86_64.pkg.tar.zst
-  ref: b8ac694fa299d706cd778eb9c0ab98e1cbb01ed9fe136a07d7a87d78b5fb1550
+  url: arch_archive:core/os/x86_64/python-3.13.1-1-x86_64.pkg.tar.zst
+  ref: 17b1b1128cd9ce31a4468ab8ab0aac3601fff0b4f654ebf84a9652ecce2eb04e
 
 runtime-depends:
 - packages/bzip2.bst

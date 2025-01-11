@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-build-1.2.2-1-any.pkg.tar.zst
-  ref: c24f3b56790ebacb0671f489ab53cefae7a6958ecefe74a917bcd566973e4b9f
+  url: arch_archive:extra/os/x86_64/python-build-1.2.2-3-any.pkg.tar.zst
+  ref: 133951b50674514783d3cbc3a14add892f76ffedcf15faea7439e697d9f17499
 
 runtime-depends:
 - packages/python.bst

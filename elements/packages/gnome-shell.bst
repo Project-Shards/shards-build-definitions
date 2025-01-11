@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-shell-1:47.1-1-x86_64.pkg.tar.zst
-  ref: 76ba5b68de9efb9dcb941ef119ca7fd3b4ff77552474068457054bce0c01d242
+  url: arch_archive:extra/os/x86_64/gnome-shell-1:47.2-1-x86_64.pkg.tar.zst
+  ref: 16700554b505efa7cedeb76847a24433370db67f203396f38dd84fc046d84fb4
 
 runtime-depends:
 - packages/accountsservice.bst

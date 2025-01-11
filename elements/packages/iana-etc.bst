@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/iana-etc-20241016-1-any.pkg.tar.zst
-  ref: bd300d9aa013517a2c4c3d67f2ebb2d9e207e0c38f4c5b0c33a297c41a7494ed
+  url: arch_archive:core/os/x86_64/iana-etc-20241206-1-any.pkg.tar.zst
+  ref: 4da97deaa9574efa50e43bd3d1a8d76ae0404409f384b516859263cfe6e4be15
 
 
 build-depends:

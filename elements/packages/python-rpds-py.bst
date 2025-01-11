@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/python-rpds-py-0.19.0-1-x86_64.pkg.tar.zst
-  ref: 66227059874987c178f79722e04d1ecdeb40ec8ad874168d39b7b4207a4310e6
+  url: arch_archive:extra/os/x86_64/python-rpds-py-0.22.3-1-x86_64.pkg.tar.zst
+  ref: 2154a6a3e09f7432aa8fc47156c2548be1026bc89901b0c8b639a6d51cf990e9
 
 runtime-depends:
 - packages/glibc.bst

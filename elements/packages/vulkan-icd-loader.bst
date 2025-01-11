@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vulkan-icd-loader-1.3.295-1-x86_64.pkg.tar.zst
-  ref: 6c7ee40528983ade9b912be01df9a94bbc57b0c3be754f1d4daeea99c9ee58c8
+  url: arch_archive:extra/os/x86_64/vulkan-icd-loader-1.4.303-1-x86_64.pkg.tar.zst
+  ref: fc7a89bc96611ab9ce4430602fc41eea5457250b90d5885131d71d19f9156001
 
 runtime-depends:
 - packages/glibc.bst

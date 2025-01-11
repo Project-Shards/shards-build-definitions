@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libedataserverui4-3.54.2-1-x86_64.pkg.tar.zst
-  ref: 97787357b8a614d93ad79792d6d2271fd7b9b660819861aaf4d5ba6d3d24c46f
+  url: arch_archive:extra/os/x86_64/libedataserverui4-3.54.3-1-x86_64.pkg.tar.zst
+  ref: 17ca33bdd79656b9425ff61d7898e0f81a8bcf4d3ebb81faff555451789df201
 
 runtime-depends:
 - packages/evolution-data-server.bst
