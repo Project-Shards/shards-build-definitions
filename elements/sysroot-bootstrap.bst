@@ -17,9 +17,9 @@ depends:
   - packages/gnome-initial-setup.bst
   - packages/networkmanager.bst
   - packages/avahi.bst
-#  - packages/vim.bst
   - packages/nano.bst
-#  - packages/pipewire-jack.bst
+  - packages/ufw.bst
+  - packages/ufw-extras.bst
   - packages/vulkan-intel.bst
   - packages/vulkan-radeon.bst
   - packages/vulkan-mesa-layers.bst

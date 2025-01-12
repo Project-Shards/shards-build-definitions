@@ -110,16 +110,19 @@ def main():
         print(sys.argv[0]+" <package>")
         exit (1)
 
-    value = getenv("PACTREE_FORCE")
-    if value.strip() == "1":
-        global force_write
-        force_write = True
+    try:
+        value = getenv("PACTREE_FORCE")
+        if value.strip() == "1":
+            global force_write
+            force_write = True
 
-    value = getenv("PACTREE_NODEPS")
-    if value.strip() == "1":
-        global no_deps
-        no_deps = True
-
+        value = getenv("PACTREE_NODEPS")
+        if value.strip() == "1":
+            global no_deps
+            no_deps = True
+    except:
+        pass
+        
     for pkg in sys.argv[1:]:
         base = Package(pkg)
         base.full_init()
