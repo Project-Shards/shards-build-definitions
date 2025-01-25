@@ -1,9 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: 
-    arch_archive:extra/os/x86_64/gnome-color-manager-3.36.0+r74+g19b6f67d-1-x86_64.pkg.tar.zst
-  ref: b79877ccf7b4d76d4dd740026c2c27e9241ed3c196e17b8b0a7ba857f8442432
+  url: arch_archive:extra/os/x86_64/gnome-color-manager-3.36.2-1-x86_64.pkg.tar.zst
+  ref: 0d7d9f9d3528ca70222b6135b91dbd05d5a45881146ee3d4a8dca3f4e8fa1f98
 
 runtime-depends:
 - packages/cairo.bst

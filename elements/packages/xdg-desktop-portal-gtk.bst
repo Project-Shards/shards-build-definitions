@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/xdg-desktop-portal-gtk-1.15.1-2-x86_64.pkg.tar.zst
-  ref: 6458f96d6edaa5d6e1f5cba2dfca65c9f4b822945cd5274e1e77b4e013d23b5e
+  url: arch_archive:extra/os/x86_64/xdg-desktop-portal-gtk-1.15.2-1-x86_64.pkg.tar.zst
+  ref: 683ba0a6e6f492aabbd4f7d159d1b66be27ed295a09765699232f6f2eb166913
 
 runtime-depends:
 - packages/fontconfig.bst

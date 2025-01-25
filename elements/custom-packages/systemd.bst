@@ -35,7 +35,7 @@ runtime-depends:
 
 variables:
   meson-local: >-
-    -Dversion-tag=256.8-shards
+    -Dversion-tag=257.2-shards
     -Dmode=release
     -Daudit=enabled
     -Dseccomp=enabled
@@ -90,4 +90,4 @@ config:
 sources:
 - kind: git_repo
   url: github:systemd/systemd.git
-  ref: 0ae6f4843e16798e91d1b1da76973398922729b8
+  ref: 7fa3b5018bfffa176c77a2a5794dce792eebadcb

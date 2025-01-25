@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/polkit-125-1-x86_64.pkg.tar.zst
-  ref: 199d2fb0865c3ca4e97ba1259c09fde34e4750f8adc5e17421293d4578528f7f
+  url: arch_archive:extra/os/x86_64/polkit-126-2-x86_64.pkg.tar.zst
+  ref: 95b52733e857861630ac3b0aef9e777e3ef43dca92ceb9735b7ee46b2b3231ee
 
 runtime-depends:
 - packages/duktape.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/pango-1:1.54.0-1-x86_64.pkg.tar.zst
-  ref: cb4c257e209bb5bb7030ff11af23065712337b49efedb3d1c6c324cda77a3d40
+  url: arch_archive:extra/os/x86_64/pango-1:1.56.1-1-x86_64.pkg.tar.zst
+  ref: da21d83bc4f826cd065a210385d3c4db39540f580be182202e2ee20cb64fbac5
 
 runtime-depends:
 - packages/cairo.bst

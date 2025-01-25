@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libadwaita-1:1.6.2-1-x86_64.pkg.tar.zst
-  ref: 617d3a27f6916d4f76d8f7f32ab5dcd924051e8d760393a4afeccf1a869f8d77
+  url: arch_archive:extra/os/x86_64/libadwaita-1:1.6.3-1-x86_64.pkg.tar.zst
+  ref: b67ec154ba358ae1eeba5eeabaf4ccda551726e016639bbbad4b390827330a92
 
 runtime-depends:
 - packages/appstream.bst

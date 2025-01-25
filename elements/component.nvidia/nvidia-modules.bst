@@ -7,6 +7,12 @@ sources:
 - kind: local
   path: patches/nvidia-modules/make-modeset-fbdev-default.patch
 - kind: local
+  path: patches/nvidia-modules/fix-kbuild-paths.patch
+- kind: local
+  path: patches/nvidia-modules/FROM-AOSC-TTM-fbdev-emulation-for-Linux-6.13.patch
+- kind: local
+  path: patches/nvidia-modules/FROM-AOSC-Use-linux-aperture.c-for-removing-conflict.patch
+- kind: local
   path: files/signing-keys/MODULES.key
 - kind: local
   path: files/signing-keys/modules/linux-module-cert.crt
@@ -27,6 +33,9 @@ config:
     sh *.run -x
     cd NVIDIA-Linux-x86_64-*/kernel
     patch -Np1 < ../../make-modeset-fbdev-default.patch -d "$(pwd)"
+    patch -Np2 < ../../fix-kbuild-paths.patch -d "$(pwd)"
+    patch -Np2 < ../../FROM-AOSC-TTM-fbdev-emulation-for-Linux-6.13.patch
+    patch -Np2 < ../../FROM-AOSC-Use-linux-aperture.c-for-removing-conflict.patch
     kernel_version=$(basename /usr/lib/modules/*)
     echo "EXTRA_CFLAGS+=-Wno-error=incompatible-pointer-types" >> Kbuild
     make KERNEL_UNAME="$(basename /usr/lib/modules/*)"

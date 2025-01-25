@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/at-spi2-core-2.54.0-2-x86_64.pkg.tar.zst
-  ref: 57297923829bfca73d748d1d38bbce970ff7016ee23fc90af9d6668e47e616c1
+  url: arch_archive:extra/os/x86_64/at-spi2-core-2.54.1-1-x86_64.pkg.tar.zst
+  ref: 4a363fc94da00a3bcf46b2bf811a9b2c624d294c5260e658a02abc70b2e4a12b
 
 runtime-depends:
 - packages/bash.bst

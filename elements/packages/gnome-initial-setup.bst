@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-initial-setup-47.2-1-x86_64.pkg.tar.zst
-  ref: 94da78ddcfc284970c9f2bb1afb6eac47d66319d140f3b58e70d25675e3467c6
+  url: arch_archive:extra/os/x86_64/gnome-initial-setup-47.3-1-x86_64.pkg.tar.zst
+  ref: 9e3429411fa6b7e6d270cd668b67c21834399da5af16e9542270fd7758051e57
 
 runtime-depends:
 - packages/accountsservice.bst

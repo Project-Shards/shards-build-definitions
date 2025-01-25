@@ -2,8 +2,8 @@ kind: pacman
 sources:
 - kind: remote
   url: 
-    arch_archive:extra/os/x86_64/python-trove-classifiers-2024.10.21.16-3-any.pkg.tar.zst
-  ref: aadc8b179939ff860d96b2cfa67aec8dcdae558bb01cdd43d6162a7899b2ebf8
+    arch_archive:extra/os/x86_64/python-trove-classifiers-2025.1.7.14-1-any.pkg.tar.zst
+  ref: 22296bf0730967a0c5d610b43c38591754547115d9bd0285d51ae6cf40158d45
 
 runtime-depends:
 - packages/python.bst

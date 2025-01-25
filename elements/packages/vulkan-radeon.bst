@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vulkan-radeon-1:24.3.3-1-x86_64.pkg.tar.zst
-  ref: 50bbc4b65f819eaa01e5af2ec96718de859668226e338089e95dd7f532473559
+  url: arch_archive:extra/os/x86_64/vulkan-radeon-1:24.3.3-2-x86_64.pkg.tar.zst
+  ref: 6c3e1b335eb2d4ef829cddb5c2c99a368014e1149a7be6655e9bcd497904655f
 
 runtime-depends:
 - packages/expat.bst

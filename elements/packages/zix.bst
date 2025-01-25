@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/zix-0.4.2-2-x86_64.pkg.tar.zst
-  ref: bcc1be22558bb646aadd246a9c8c3311da166d8f7216ccf471074e2254922009
+  url: arch_archive:extra/os/x86_64/zix-0.6.2-1-x86_64.pkg.tar.zst
+  ref: 665414c1c6f4ed0a0787066f29081d6b785a4a1e4fd6d3d638a3c59449c597ab
 
 runtime-depends:
 - packages/glibc.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/util-linux-libs-2.40.2-3-x86_64.pkg.tar.zst
-  ref: 9233b201ac16585898498b391f6cf281be848369e9ef2713353f89e3c45c0d83
+  url: arch_archive:core/os/x86_64/util-linux-libs-2.40.4-1-x86_64.pkg.tar.zst
+  ref: 6ffcefbd1c5b306be9c4585e5ba7e38fd97c3ee03cc57c534a8e3733b82bc802
 
 runtime-depends:
 - packages/glibc.bst

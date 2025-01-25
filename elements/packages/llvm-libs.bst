@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/llvm-libs-18.1.8-5-x86_64.pkg.tar.zst
-  ref: 81a960ea29e3c1feeb9db52c27eebdb4240228890b0093e1099aae0379ba0c6a
+  url: arch_archive:extra/os/x86_64/llvm-libs-19.1.7-1-x86_64.pkg.tar.zst
+  ref: 44de8dac4c85c2297d8a8b9b4f8a71d422bd2452b6b0f442859f92c5319daad3
 
 runtime-depends:
 - packages/gcc-libs.bst

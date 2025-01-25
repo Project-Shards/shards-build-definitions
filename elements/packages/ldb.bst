@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/ldb-2:4.21.2-3-x86_64.pkg.tar.zst
-  ref: 4ed8c71f1aad1dce618fd96332521c1a4e8028bf8df0d2c30afbdf6e17bf6139
+  url: arch_archive:extra/os/x86_64/ldb-2:4.21.3-1-x86_64.pkg.tar.zst
+  ref: c768baec8195e2f4cb9884588349b673a161bc0fe8252063171757d6007b1bf8
 
 runtime-depends:
 - packages/tevent.bst

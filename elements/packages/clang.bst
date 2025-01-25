@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/clang-18.1.8-5-x86_64.pkg.tar.zst
-  ref: 0273c0a11b6312c6daf3a83dd5ac3a264c54ad9bbeaeba01ead4e6f420fd44a4
+  url: arch_archive:extra/os/x86_64/clang-19.1.7-1-x86_64.pkg.tar.zst
+  ref: c0b48b5e501d0c4dc11712807a5078dbb795c4ffb4da4488fc1776ad01d79bde
 
 runtime-depends:
 - packages/llvm-libs.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-remote-desktop-47.2-1-x86_64.pkg.tar.zst
-  ref: 5c8c7b45f5fd0fc5a160918d12ab0eb5f43e1ab38f490b000e4d0a42e4228480
+  url: arch_archive:extra/os/x86_64/gnome-remote-desktop-47.3-1-x86_64.pkg.tar.zst
+  ref: 0de0fe2eff22c117f62bb5173adef049fe2b85a6c4e03a32b9fe56e2e97ba35c
 
 runtime-depends:
 - packages/cairo.bst

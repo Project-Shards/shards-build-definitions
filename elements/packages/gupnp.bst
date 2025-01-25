@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gupnp-1:1.6.7-1-x86_64.pkg.tar.zst
-  ref: 9c3ac6a4ee96277eda54a28080456bd8823dacbfe4a89e9b2de80900611648a8
+  url: arch_archive:extra/os/x86_64/gupnp-1:1.6.8-1-x86_64.pkg.tar.zst
+  ref: 731931dba01284480ded718d6025c505072654e94d30a5fc3daa805191fc9c5f
 
 runtime-depends:
 - packages/gcc-libs.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libnm-1.50.1-1-x86_64.pkg.tar.zst
-  ref: c6efdd4caf2a08d988bdf8e25b890995a9567657fb8e20d9ea0b55d28858cc2c
+  url: arch_archive:extra/os/x86_64/libnm-1.50.1-2-x86_64.pkg.tar.zst
+  ref: 013baccc46f536e648f538b85874a821c85132e7c114f1bff8d1d9b79cc3bd19
 
 runtime-depends:
 - packages/gcc-libs.bst

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-software-47.3-1-x86_64.pkg.tar.zst
-  ref: 5ae578a60323db43533e2b1fdf1ae85fb672e6c4e8d81abb57c04bcb0dc13176
+  url: arch_archive:extra/os/x86_64/gnome-software-47.4-1-x86_64.pkg.tar.zst
+  ref: 410d7efb88bf4592eaaebc53076979c8c9744cf45e7e7b8c050460537074331c
 
 runtime-depends:
 - packages/appstream.bst

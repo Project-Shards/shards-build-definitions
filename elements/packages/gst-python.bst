@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gst-python-1.24.10-2-x86_64.pkg.tar.zst
-  ref: 6ad14de325c542dc864d891177f0a53f4cfc5e8f7266cd2c9b5e1854939df148
+  url: arch_archive:extra/os/x86_64/gst-python-1.24.11-2-x86_64.pkg.tar.zst
+  ref: cb3d959cb7fa9a69bef4e7380f5585a9cb8970915c0f380785f534cfeb712829
 
 runtime-depends:
 - packages/gst-plugins-base-libs.bst

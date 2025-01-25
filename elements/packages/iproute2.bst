@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/iproute2-6.12.0-1-x86_64.pkg.tar.zst
-  ref: e038ed32aef85970d24b64d5324319b656255698ede3a784d8a9371cc4a1e99c
+  url: arch_archive:core/os/x86_64/iproute2-6.13.0-1-x86_64.pkg.tar.zst
+  ref: 6d83ab08956572df93492f1a2e85b07dfffac11d809bffe16ffd0469669c420a
 
 runtime-depends:
 - packages/glibc.bst

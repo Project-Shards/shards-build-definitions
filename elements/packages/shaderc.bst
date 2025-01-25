@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/shaderc-2024.3-2-x86_64.pkg.tar.zst
-  ref: 7f11176b45b906c9fa7bff1ec54af503ca7b5031dfc0ad8303c3b030a76db82e
+  url: arch_archive:extra/os/x86_64/shaderc-2024.4-1-x86_64.pkg.tar.zst
+  ref: 121a427dfae5d4baaa899fbd3114ffa576c186927e16514aba5d87710687ed98
 
 runtime-depends:
 - packages/glibc.bst

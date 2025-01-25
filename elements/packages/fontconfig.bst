@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/fontconfig-2:2.15.0-2-x86_64.pkg.tar.zst
-  ref: cfa706104b534e6f5e6f9206f2153633515be5d55fbcd49d84f2b34e9ffbe67c
+  url: arch_archive:extra/os/x86_64/fontconfig-2:2.16.0-1-x86_64.pkg.tar.zst
+  ref: 65991cb903b516b011d5263e868e809c24f8923f1aa6044d2229f3a7a0cbb168
 
 runtime-depends:
 - packages/expat.bst

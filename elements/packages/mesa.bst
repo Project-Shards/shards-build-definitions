@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/mesa-1:24.3.3-1-x86_64.pkg.tar.zst
-  ref: bf22369efd0a914811a619ec06458922cae20604e874c55cea42f6f69bf26967
+  url: arch_archive:extra/os/x86_64/mesa-1:24.3.3-2-x86_64.pkg.tar.zst
+  ref: 34522f7c97029b561c3598fa095da504a9ff0e3717ddfcfad0c54da2fad209f6
 
 runtime-depends:
 - packages/expat.bst

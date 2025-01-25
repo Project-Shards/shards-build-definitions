@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libportal-gtk3-0.8.1-1-x86_64.pkg.tar.zst
-  ref: c161b2a268d0f687a4ac9544bc02fd76fa30dfe796ce4151d3d836020f3c7265
+  url: arch_archive:extra/os/x86_64/libportal-gtk3-0.9.0-1-x86_64.pkg.tar.zst
+  ref: b2c1016a94b74ec273c6666112afc5d4d47d213d6482ecdf3a55fb437d99b58f
 
 runtime-depends:
 - packages/gcc-libs.bst

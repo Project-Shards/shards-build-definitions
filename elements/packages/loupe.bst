@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/loupe-47.2-1-x86_64.pkg.tar.zst
-  ref: fd6c00efb642e9769444cb147529f3b33ceb3894515189670f56705128c4063a
+  url: arch_archive:extra/os/x86_64/loupe-47.4-1-x86_64.pkg.tar.zst
+  ref: 1d4918b92d25195e2e3f63d6fd7e75738f7617655ecd4603e6c3fb0ed5f1e716
 
 runtime-depends:
 - packages/bubblewrap.bst

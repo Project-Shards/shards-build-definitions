@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gtk-vnc-1.3.1-2-x86_64.pkg.tar.zst
-  ref: e0f82528649c05b75087ad59c09c94e1b999bf9dd5df299951e7f0c93bf7618f
+  url: arch_archive:extra/os/x86_64/gtk-vnc-1.4.0-1-x86_64.pkg.tar.zst
+  ref: edf79568444d63f82a7e139011fc11c97f67e8742e489c1bf58a8db9590147ba
 
 runtime-depends:
 - packages/cairo.bst

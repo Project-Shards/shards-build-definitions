@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libwnck3-43.1-1-x86_64.pkg.tar.zst
-  ref: 4066d14a499b3df55696a6259211af7d6d652fcb19b707bad476424d4853a44b
+  url: arch_archive:extra/os/x86_64/libwnck3-43.2-1-x86_64.pkg.tar.zst
+  ref: 654dfe451fead0d6198a283fa42ece3d24d8a9ae848344903a4a4c8bd9dfc7fd
 
 runtime-depends:
 - packages/at-spi2-core.bst

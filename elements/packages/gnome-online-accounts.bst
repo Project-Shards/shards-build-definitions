@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-online-accounts-3.52.2-1-x86_64.pkg.tar.zst
-  ref: b6e52c83443512ebf0022eb1041498094f5fbb41b4156134a6ab4cf40c084cf6
+  url: arch_archive:extra/os/x86_64/gnome-online-accounts-3.52.3.1-1-x86_64.pkg.tar.zst
+  ref: f68f9a8df87caa42ae66d2831c0cb185ccc3f909fa956f5cd24540ca64af5347
 
 runtime-depends:
 - packages/dbus.bst

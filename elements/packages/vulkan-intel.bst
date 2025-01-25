@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/vulkan-intel-1:24.3.3-1-x86_64.pkg.tar.zst
-  ref: da8b27538745a1083e4585e69aaba90a010e6bc7cb7b3864add64d81e282ed95
+  url: arch_archive:extra/os/x86_64/vulkan-intel-1:24.3.3-2-x86_64.pkg.tar.zst
+  ref: b62da998cc876ebd5b6339ac234aa81e8c6d5bf989f68cff0e843073de21708c
 
 runtime-depends:
 - packages/expat.bst

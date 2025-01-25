@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-control-center-47.2-1-x86_64.pkg.tar.zst
-  ref: 3568bf8f58d5926fc723e8afbc0312f209356653c258adb7ce3c85a5a6deb809
+  url: arch_archive:extra/os/x86_64/gnome-control-center-47.3-1-x86_64.pkg.tar.zst
+  ref: aef310691ad8b9200237bb413e9e5f5734be43de068a8f406aaec95bbe8ec96f
 
 runtime-depends:
 - packages/accountsservice.bst

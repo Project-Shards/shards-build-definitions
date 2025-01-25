@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gnome-shell-extensions-47.2-1-any.pkg.tar.zst
-  ref: 64110ac0bf9ea56cc2dfbecc88143f083694200e3a31096b5fb6f6f1cd2ed824
+  url: arch_archive:extra/os/x86_64/gnome-shell-extensions-47.3-1-any.pkg.tar.zst
+  ref: 9d995b0c21d41de7e92062dee4046fafb4d4bbe0f49cd6a314c2bc8e0a619c40
 
 runtime-depends:
 - packages/dconf.bst

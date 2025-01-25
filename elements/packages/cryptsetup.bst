@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/cryptsetup-2.7.5-1-x86_64.pkg.tar.zst
-  ref: 7f603f586ccb21d946408ffe2f6011a3b0025e3051dfa70dbedb02a8a96476f3
+  url: arch_archive:core/os/x86_64/cryptsetup-2.7.5-2-x86_64.pkg.tar.zst
+  ref: fc1191f26eb0bddcd1464dd350d6e629eaea050c1fc67e8f4078d29ed73da7b1
 
 runtime-depends:
 - packages/device-mapper.bst

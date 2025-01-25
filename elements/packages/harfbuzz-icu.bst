@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/harfbuzz-icu-10.1.0-1-x86_64.pkg.tar.zst
-  ref: 7c6e020883c090f4a39d63dac6e173392654dc99a985d57c2d8122f22b8fee58
+  url: arch_archive:extra/os/x86_64/harfbuzz-icu-10.2.0-1-x86_64.pkg.tar.zst
+  ref: ddf370b10970f295f6911ce222e4a9c70d9fe632c7c9b92b78d933d9fbf12901
 
 runtime-depends:
 - packages/glibc.bst

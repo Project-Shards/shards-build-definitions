@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/compiler-rt-18.1.8-1-x86_64.pkg.tar.zst
-  ref: e17ddb0d33dd17e190fccd6e4cf364352d38c0310d128e8f53b17d4d2ec78c6c
+  url: arch_archive:extra/os/x86_64/compiler-rt-19.1.7-1-x86_64.pkg.tar.zst
+  ref: ee9bc2a1369f53e8f327d54bce638832fbbad046d96884110b929c3ea60998a1
 
 runtime-depends:
 - packages/gcc-libs.bst

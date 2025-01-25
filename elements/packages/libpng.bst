@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libpng-1.6.44-1-x86_64.pkg.tar.zst
-  ref: 08b6a22b78dc7dc4b63c7610dc6adc7ed9e49e4ebaa9d8c21f993a873365cfe4
+  url: arch_archive:extra/os/x86_64/libpng-1.6.45-1-x86_64.pkg.tar.zst
+  ref: 15f2f995ec088ae121a480d2338bde86ca61070db9fcd6ba099e93f581464bc0
 
 runtime-depends:
 - packages/zlib.bst

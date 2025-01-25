@@ -1,4 +1,4 @@
-# https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/master/elements/vm-secure/make-layer.bst?ref_type=heads
+# https://gitlab.gnome.org/GNOME/gnome-build-meta/-/blob/master/elements/gnomeos/make-layer.bst?ref_type=heads
 
 kind: manual
 
@@ -15,6 +15,6 @@ config:
 sources:
 - kind: remote
   url:
-    https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/master/files/vm/make-layer.py
+    https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/master/files/gnomeos/make-layer.py
   ref: 57abd835eeea7d3af176b65211ec96f8de349dcd9ceba417a0b0313efc36ab76
 

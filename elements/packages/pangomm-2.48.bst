@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/pangomm-2.48-2.54.0-1-x86_64.pkg.tar.zst
-  ref: 29c5c5323b0903bee0e2dcc8b7318b62e619adb26ecb543b7075d455af8603b7
+  url: arch_archive:extra/os/x86_64/pangomm-2.48-2.56.1-1-x86_64.pkg.tar.zst
+  ref: 790835dbe1db5d15135ed4d9a711c2aef813dec1fbec14e45625de293ff406df
 
 runtime-depends:
 - packages/cairomm-1.16.bst

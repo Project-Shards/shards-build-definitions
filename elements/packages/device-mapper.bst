@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:core/os/x86_64/device-mapper-2.03.29-1-x86_64.pkg.tar.zst
-  ref: e9c01f8ea5db7f3b9efb6f1a83a9dc5d961eae3199af516265ea747b547aab23
+  url: arch_archive:core/os/x86_64/device-mapper-2.03.30-1-x86_64.pkg.tar.zst
+  ref: e191a46086438ce664e4ada87ea23d50622ef214d964da8276b984933de3c6dd
 
 runtime-depends:
 - packages/glibc.bst

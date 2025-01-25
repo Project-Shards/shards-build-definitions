@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libopenmpt-0.7.12-1-x86_64.pkg.tar.zst
-  ref: 065152547fea8ee41cf700859db13bc488418684bc8dd483533e5733a0b0c7bb
+  url: arch_archive:extra/os/x86_64/libopenmpt-0.7.13-1-x86_64.pkg.tar.zst
+  ref: c18944f778f056ccead6be095ef83fec494a0976a4d0adda7f0bf820d487902f
 
 runtime-depends:
 - packages/flac.bst

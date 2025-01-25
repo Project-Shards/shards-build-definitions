@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/fluidsynth-2.4.1-1-x86_64.pkg.tar.zst
-  ref: c792b439e09e86860ec0949705e7bc14e96c8be2a5a97a7117079add885ebe55
+  url: arch_archive:extra/os/x86_64/fluidsynth-2.4.2-1-x86_64.pkg.tar.zst
+  ref: 9da6092b81e09e5462f3b11d7a78794c061378c0e35d7089bba31e5a69dcc8b3
 
 runtime-depends:
 - packages/gcc-libs.bst

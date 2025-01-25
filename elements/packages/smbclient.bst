@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/smbclient-2:4.21.2-3-x86_64.pkg.tar.zst
-  ref: 638755862d7394b6cb26ef3ba18b595f3ebbf3e852e1bc37631d8baf67fc203c
+  url: arch_archive:extra/os/x86_64/smbclient-2:4.21.3-1-x86_64.pkg.tar.zst
+  ref: 8e7e0df171cd14c059a4f0c5f5a6fa277a30a150bf447581ddd77c84c6bec33d
 
 runtime-depends:
 - packages/cifs-utils.bst

@@ -119,9 +119,6 @@ public:
 
       - |
         ufw default deny
-	ufw allow "KDE Connect"
-	ufw allow "CUPS"
-        ufw enable
 
       - |
         chmod 775 /usr/lib/dbus-daemon-launch-helper

@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gst-editing-services-1.24.10-2-x86_64.pkg.tar.zst
-  ref: a5544c567389270316dd1a04a0ebf5fcf060c893098918358220b8a71a9ba0f6
+  url: arch_archive:extra/os/x86_64/gst-editing-services-1.24.11-2-x86_64.pkg.tar.zst
+  ref: 0f4c6e8958d54fb1f587af72242b8297558cee76cc5c98227f8c411b81dfe851
 
 runtime-depends:
 - packages/gst-devtools-libs.bst

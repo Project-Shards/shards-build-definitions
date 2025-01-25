@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gst-devtools-libs-1.24.10-2-x86_64.pkg.tar.zst
-  ref: e96d8d65afa50eeb7f3c4d6534e760dd3ab306b4788ac76326751f865fff7b1a
+  url: arch_archive:extra/os/x86_64/gst-devtools-libs-1.24.11-2-x86_64.pkg.tar.zst
+  ref: bd257b8283af437782a2a3b27e7b252a4d36c21e65359812fb4dc0573f91b717
 
 runtime-depends:
 - packages/gst-plugins-base-libs.bst

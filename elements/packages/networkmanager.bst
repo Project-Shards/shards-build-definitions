@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/networkmanager-1.50.1-1-x86_64.pkg.tar.zst
-  ref: e567cc8d6a9256f017b6d19e149127c7512e931e01171ea438f1152e263e4675
+  url: arch_archive:extra/os/x86_64/networkmanager-1.50.1-2-x86_64.pkg.tar.zst
+  ref: 9f1fb94f02f1e5af686a9035675ac21ac350d5f54343ee5e53a8a55a1f65e0f1
 
 runtime-depends:
 - packages/audit.bst

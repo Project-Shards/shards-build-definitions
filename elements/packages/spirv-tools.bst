@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/spirv-tools-2024.4.rc1-1-x86_64.pkg.tar.zst
-  ref: 71d57aeae724c203368a7c93a21aa89c609c5aa84eb8c5f30c8fd0b42dd96a09
+  url: arch_archive:extra/os/x86_64/spirv-tools-2024.4.rc2-1-x86_64.pkg.tar.zst
+  ref: 91decd586a6a6051c97f91d1cf4a2e608cd5a0a353d5cdf65292605ee9887d0b
 
 runtime-depends:
 - packages/gcc-libs.bst

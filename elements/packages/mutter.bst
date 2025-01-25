@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/mutter-47.3-1-x86_64.pkg.tar.zst
-  ref: 34d13203d9d5adec408d6e103856ae246b16710b22b28897755294d327b4ca3c
+  url: arch_archive:extra/os/x86_64/mutter-47.4-1-x86_64.pkg.tar.zst
+  ref: abc9d6cbcb02d93aac6fa5d860aa055a4306e3a8c52bb484ba3f8aab3290a624
 
 runtime-depends:
 - packages/at-spi2-core.bst

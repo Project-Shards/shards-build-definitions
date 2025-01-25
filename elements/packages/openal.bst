@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/openal-1.24.1-1-x86_64.pkg.tar.zst
-  ref: d5a76d3c7c9cd6bba6107338e29f3bb3354f46e9cb1a24edfd018272a0d2191b
+  url: arch_archive:extra/os/x86_64/openal-1.24.2-1-x86_64.pkg.tar.zst
+  ref: e4e709e75d10dd242f2f8ec5029620c7b1cdb17caf598e417e001a7cb076835c
 
 runtime-depends:
 - packages/gcc-libs.bst

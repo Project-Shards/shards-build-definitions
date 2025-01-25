@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/flatpak-1:1.15.91-1-x86_64.pkg.tar.zst
-  ref: 6552dcdb4a334f6c09941acca4d9673272cfed9f6cc94c19a9665a98172e28d3
+  url: arch_archive:extra/os/x86_64/flatpak-1:1.16.0-1-x86_64.pkg.tar.zst
+  ref: d320ee1e5c3737edc6f3714c861567f1f70e3118514c0d6afc9e8f69a5e9eb6e
 
 runtime-depends:
 - packages/appstream.bst

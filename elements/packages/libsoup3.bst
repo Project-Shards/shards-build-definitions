@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/libsoup3-3.6.1-1-x86_64.pkg.tar.zst
-  ref: 500f96c439f656406d97097c79dc0c3bbfb207a1b68b9be5ed32dad403b9f0ca
+  url: arch_archive:extra/os/x86_64/libsoup3-3.6.4-1-x86_64.pkg.tar.zst
+  ref: 754499ca69398042a3156866d007d1ebf4de48ca9cdf42be257114d105bc50c0
 
 runtime-depends:
 - packages/brotli.bst

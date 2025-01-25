@@ -4,6 +4,11 @@ enable accounts-daemon.service
 enable avahi-daemon.*
 enable NetworkManager.service
 enable ufw.service
+disable healthd.service
+disable httpd.service
+disable krb5-kadmid.service
+disable krb5-kdc.service
+disable krb5-kpropd.service
 disable systemd-networkd.socket
 disable systemd-networkd.service
 disable systemd-networkd-wait-online.service

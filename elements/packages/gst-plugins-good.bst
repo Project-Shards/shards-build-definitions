@@ -1,8 +1,8 @@
 kind: pacman
 sources:
 - kind: remote
-  url: arch_archive:extra/os/x86_64/gst-plugins-good-1.24.10-2-x86_64.pkg.tar.zst
-  ref: 472da24d466d871a9e44e82e538e6f3d0e167891341b056b7a2e32e2e136f8cb
+  url: arch_archive:extra/os/x86_64/gst-plugins-good-1.24.11-2-x86_64.pkg.tar.zst
+  ref: cf7a30d641eb50c9133927159d49b583fba1cd99d4171c15bf6abab1b77dcab4
 
 runtime-depends:
 - packages/gst-plugins-base-libs.bst
