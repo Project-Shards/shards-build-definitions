@@ -32,6 +32,7 @@ config:
       rm -rf /usr/share/factory/etc
       mkdir -p /sysroot/usr/share/factory/etc
       mv -T /sysroot/etc /sysroot/usr/share/factory/etc
+      cp /sysroot/usr/share/fontconfig/conf.default/10-scale-bitmap-fonts.conf /sysroot/usr/share/factory/etc/fonts/conf.d/10-scale-bitmap-fonts.conf
 
     - |
       mkdir -p /sysroot/etc

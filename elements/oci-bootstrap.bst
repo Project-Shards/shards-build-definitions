@@ -6,4 +6,4 @@ sources:
   image: library/archlinux
   track: latest
   architecture: "%{arch}"
-  ref: 1e0c18173ffb7db8ce33172877859d2ca46c389eb360d60223149ff05541014d
+  ref: c2a6685fa6fe41de064ce806e155c3f367e42f8c02d15570f52d2b4ba5caa3a8

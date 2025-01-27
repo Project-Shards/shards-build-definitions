@@ -32,10 +32,7 @@ config:
   - |
     sh *.run -x
     cd NVIDIA-Linux-x86_64-*/kernel
-    patch -Np1 < ../../make-modeset-fbdev-default.patch -d "$(pwd)"
     patch -Np2 < ../../fix-kbuild-paths.patch -d "$(pwd)"
-    patch -Np2 < ../../FROM-AOSC-TTM-fbdev-emulation-for-Linux-6.13.patch
-    patch -Np2 < ../../FROM-AOSC-Use-linux-aperture.c-for-removing-conflict.patch
     kernel_version=$(basename /usr/lib/modules/*)
     echo "EXTRA_CFLAGS+=-Wno-error=incompatible-pointer-types" >> Kbuild
     make KERNEL_UNAME="$(basename /usr/lib/modules/*)"
