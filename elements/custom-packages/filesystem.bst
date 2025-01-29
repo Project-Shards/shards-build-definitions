@@ -31,6 +31,9 @@ config:
         cp import-pubring.gpg '%{install-root}/usr/lib/systemd/import-pubring.gpg'
 
       - |
+        cp -r skel/. '%{install-root}/etc/skel/'
+
+      - |
         install -Dm644 systemd-preset '%{install-root}/usr/lib/systemd/system-preset/50-shards.conf'
 
       - |
