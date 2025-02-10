@@ -53,12 +53,17 @@ sources:
   path: patches/efitools/Add-static-keyword-for-IsValidVariableHeader.patch
 
 variables:
-  keys_uuid: de24fbbf-d47f-401a-98b0-116ce8a27458
+  uuid: d92aff37-d2f9-4eed-81a7-a3f06cd37060
   notparallel: true
   make-args: >-
     PREFIX="/usr"
     CRTPATHS="/usr/lib"
-    MYGUID="%{keys_uuid}"
+    EXTRAKEYS=''
+    EXTERNALKEYS=''
+    KEYUPDATEAUTH=''
+    KEYBLACKLISTAUTH=''
+    KEYHASHBLACKLISTAUTH=''
+    MYGUID='%{uuid}'
     CFLAGS+=-Wno-error=implicit-function-declaration
     CFLAGS+=-fno-stack-protector
 
@@ -66,11 +71,12 @@ config:
   build-commands:
     (>):
     - |
-      ./cert-to-efi-sig-list -g '%{keys_uuid}' PK_MIC.crt PK-mic.esl
+      ./cert-to-efi-sig-list -g '%{uuid}' PK_MIC.crt PK-mic.esl
       ./sign-efi-sig-list -k PK_MIC.key -c PK_MIC.crt PK PK-mic.esl PK-mic.auth
-      ./cert-to-efi-sig-list -g '%{keys_uuid}' KEK.crt KEK-mic.esl
-      ./cert-to-efi-sig-list -g '%{keys_uuid}' DB.crt DB-mic.esl
-      bash extra-keys.sh %{keys_uuid}
+      ./cert-to-efi-sig-list -g '%{uuid}' KEK.crt KEK-mic.esl
+      ./cert-to-efi-sig-list -g '%{uuid}' DB.crt DB-mic.esl
+      bash extra-keys.sh '%{uuid}'
+    - |
       %{make}
 
   install-commands:

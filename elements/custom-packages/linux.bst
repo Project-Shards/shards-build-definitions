@@ -6,9 +6,11 @@ sources:
   track: v*
   exclude:
   - '*-rc*'
-  ref: ffd294d346d185b70e28b1a28abe367bbfe53c04
+  ref: 0da4b4b84ffe5efe12f5fd96dd294aa9d20ba2de
 - kind: local
   path: files/linux/kconfig
+- kind: local
+  path: patches/linux/fuse-prevent-use-after-free.patch
 
 depends:
 - packages/kmod.bst
@@ -25,6 +27,7 @@ build-depends:
 - packages/python.bst
 - packages/tar.bst
 - packages/xz.bst
+- packages/git.bst
 - common-deps/linux-signing-keys.bst
 
 variables:
@@ -49,6 +52,7 @@ config:
   - |
     cp kconfig .config
     make olddefconfig
+    patch -Np1 < fuse-prevent-use-after-free.patch -d "$(pwd)"
 
   install-commands:
   - |

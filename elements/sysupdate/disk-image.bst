@@ -12,6 +12,9 @@ build-depends:
   - filename: sysupdate/kernel-image.bst
     config:
       location: '/sysroot'
+  - filename: sysupdate/signed-shim.bst
+    config:
+      location: '/sysroot'
   - filename: sysupdate/filesystem.bst
     config:
       location: '/sysroot'

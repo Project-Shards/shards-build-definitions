@@ -28,7 +28,7 @@ sources:
     path: files/signing-keys/VENDOR.crt
 
 variables:
-  sysroot-seed: d2006edc-a112-4e3d-9502-c04ded047acd
+  sysroot-seed: d92aff37-d2f9-4eed-81a7-a3f06cd37060
   cmdline: >-
     rw
     quiet
@@ -61,11 +61,20 @@ config:
         --output=shards_${image_version}.efi
       mkdir -p %{install-root}/etc
       cp /etc/os-release %{install-root}/etc/os-release
+
+    - |
+      mkdir -p %{install-root}/usr/lib/systemd/boot/efi
+      sbsign --key VENDOR.key --cert VENDOR.crt --output %{install-root}/usr/lib/systemd/boot/efi/systemd-bootx64.efi /sysroot/usr/lib/systemd/boot/efi/systemd-bootx64.efi
+      
+    - |
       SYSTEMD_ESP_PATH=/efi bootctl install --root=%{install-root} --make-entry-directory=no --no-variables
       cat << EOF> %{install-root}/efi/loader/loader.conf
       timeout 3
       EOF
+      
+    - |    
       rm -rf %{install-root}/etc
+      rm %{install-root}/efi/EFI/BOOT/BOOTX64.EFI
 
     - |
       install -Dm655 -t '%{install-root}/efi/EFI/Linux/' shards*.efi
@@ -74,7 +83,12 @@ config:
       cp /sysroot/usr/share/efitools/efi/PK.auth %{install-root}/efi/loader/keys/private/PK.auth
       cp /sysroot/usr/share/efitools/efi/KEK.auth %{install-root}/efi/loader/keys/private/KEK.auth
       cp /sysroot/usr/share/efitools/efi/DB.auth %{install-root}/efi/loader/keys/private/DB.auth
+      
       cp /sysroot/usr/share/efitools/efi/PK-mic.auth %{install-root}/efi/loader/keys/auto/PK.auth
       cp /sysroot/usr/share/efitools/efi/KEK-mic.auth %{install-root}/efi/loader/keys/auto/KEK.auth
       cp /sysroot/usr/share/efitools/efi/DB-mic.auth %{install-root}/efi/loader/keys/auto/DB.auth
 
+public:
+  bst:
+    overlap-whitelist:
+      - /usr/lib/systemd/boot/efi/systemd-bootx64.efi

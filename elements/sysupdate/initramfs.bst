@@ -22,6 +22,7 @@ build-depends:
   - common-deps/signed-modules.bst
   - custom-packages/plymouth.bst
   - component.nvidia/nvidia-modules.bst
+  - custom-packages/shim.bst
   - filename: sysupdate/usr-image.bst
     config:
       location: /usr-image
