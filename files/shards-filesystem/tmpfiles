@@ -104,6 +104,7 @@ C /etc/sysctl.d
 C /etc/tpm2-tss
 C /etc/udev
 C /etc/udisks2
+C /etc/ufw
 C /etc/uresourced.conf
 C /etc/vdpau_wrapper.cfg
 C /etc/xattr.conf
